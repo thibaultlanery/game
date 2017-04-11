@@ -1,0 +1,36 @@
+<h1>List of events</h1>
+
+<div>
+
+  <%= simple_form_for :search, url: events_path, method: :get, html: { class: "form-inline" } do |f| %>
+  <%= f.input :game, label: false %>
+  <%= f.input :happen_at, label: false %>
+  <%= f.input :address, label: false %>
+  <%= f.input :happen_at %>
+  <%= f.submit "Find", :class => "btn" %>
+<% end %>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card ">
+          <div class="card-category">
+            <p><%= event.happen_at.strftime("%A %v") %></p>
+          </div>
+          <div class="card-user">
+            <%= event.user.firstname %>
+          </div>
+          <div class="card-description">
+           <h2><%= event.game.capitalize %></h2>
+           <p><%= event.address %></p>
+          </div>
+           <%= link_to "", event_path(event), class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
