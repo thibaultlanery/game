@@ -1,16 +1,21 @@
-<h1>List of events</h1>
 
-<div>
-
-  <%= simple_form_for :search, url: events_path, method: :get, html: { class: "form-inline" } do |f| %>
-  <%= f.input :game, label: false %>
-  <%= f.input :happen_at, label: false %>
-  <%= f.input :address, label: false %>
-  <%= f.input :happen_at %>
-  <%= f.submit "Find", :class => "btn" %>
-<% end %>
+<div class="container_search_bar">
+  <div class="logo">
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo.png" %>
+    <% end %>
+  </div>
+  <div class="search_bar">
+    <%= simple_form_for :search, url: events_path, method: :get, html: { class: "form-inline" } do |f| %>
+    <%= f.input :game, placeholder: 'Choose a game' %>
+    <%= f.input :happen_at, placeholder: 'Choose when' %>
+    <%= f.input :address, placeholder: 'Select location' %>
+    <%= f.submit "Find", :class => "btn btn" %>
+    <% end %>
+  </div>
 </div>
 
+<h1>List of events</h1>
 
 <div class="container">
   <div class="row">
