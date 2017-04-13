@@ -11,11 +11,18 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1) !important;
   height: 105px !important;
   margin-bottom: 15px;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
 
 }
 
 .container_search_bar label {
 margin-right: 10px;
+}
+
+.search-result {
+width: 60% !important;
+margin-left: 15px;
 }

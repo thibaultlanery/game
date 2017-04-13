@@ -7,20 +7,57 @@
   </div>
   <div class="search_bar">
     <%= simple_form_for :search, url: events_path, method: :get, html: { class: "form-inline" } do |f| %>
-    <%= f.input :game, placeholder: 'Choose a game' %>
-    <%= f.input :happen_at, placeholder: 'Choose when' %>
-    <%= f.input :address, placeholder: 'Select location' %>
+    <%= f.input :game, label: false, placeholder: 'Choose a game' %>
+    <%= f.input :happen_at, label: false, placeholder: 'Choose when' %>
+    <%= f.input :address, label: false, placeholder: 'Select location' %>
     <%= f.submit "Find", :class => "btn btn" %>
+    <% end %>
+  </div>
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <% if user_signed_in? %>
+      <!-- Notification -->
+      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+        <div class="badge-container">
+          <i class="fa fa-envelope-o"></i>
+          <div class="badge badge-blue">3</div>
+        </div>
+      <% end %>
+      <!-- Profile picture and dropdown -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <!-- Login text link -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
 </div>
 
 <h1>List of events</h1>
 
-<div class="container">
+<div class="search-result">
   <div class="row">
     <% @events.each do |event| %>
-      <div class="col-xs-12 col-sm-4">
+      <div class="col-xs-12 col-md-6">
         <div class="card ">
           <div class="card-category">
             <p><%= event.happen_at.strftime("%A %v") %></p>
