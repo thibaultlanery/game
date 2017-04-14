@@ -56,6 +56,7 @@
 
 <div class="search-result">
   <div class="row">
+    <div class="search-result-card col-md-7">
     <% @events.each do |event| %>
       <div class="col-xs-12 col-md-6">
         <div class="card ">
@@ -73,6 +74,12 @@
         </div>
       </div>
     <% end %>
+    </div>
+    <div class="search-result-location col-md-5">
+      <div class="google-map">
+        <h1>GOOGLE MAP HERE</h1>
+      </div>
+    </div>
   </div>
 </div>
 
