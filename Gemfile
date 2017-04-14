@@ -42,6 +42,12 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.4.1'
 gem 'simple-form-datepicker', '~> 0.1.3'
 gem "geocoder"
+gem "gmaps4rails"
+gem 'figaro'
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

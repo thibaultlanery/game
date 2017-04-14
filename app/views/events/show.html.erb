@@ -1,0 +1,9 @@
+<p>Here is your show of the <%= @event.game %></p>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      alert('<%= j @alert_message %>');
+    });
+  <% end %>
+<% end %>
