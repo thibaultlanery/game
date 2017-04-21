@@ -61,51 +61,51 @@ events = [
   {
     game: "jungle",
     user: User.first,
-    address: "5, rue Muller, 75018 paris",
-    happen_at: DateTime.now + (18/24.0),
-    due_at: DateTime.now + (14/24.0)
+    address: "5, rue Muller, 75018 Paris",
+    happen_at: Date.today + 2,
+    due_at: Date.today + 1,
   },
     {
     game: "jeu de dé",
     user: User.first,
-    address: "88, rue de la folie méricourt, 75011 paris",
-    happen_at: DateTime.now + (24/24.0),
-    due_at: DateTime.now + (18/24.0)
+    address: "88, rue de la folie méricourt, 75011 Paris",
+    happen_at: Date.today + 7,
+    due_at: Date.today + 5,
   },
    {
     game: "bixit",
     user: User.third,
-    address: "88, passage bradi, 75011 paris",
-    happen_at: DateTime.now + (48/24.0),
-    due_at: DateTime.now + (32/24.0)
+    address: "8, passage bradi, 75011 Paris",
+    happen_at: Date.today + 5,
+    due_at: Date.today + 3,
   },
    {
     game: "jeux de cochon",
     user: User.fourth,
-    address: "46, avenue porte dauphine , 75016 paris",
-    happen_at: DateTime.now + (168/24.0),
-    due_at: DateTime.now + (72/24.0)
+    address: "46, avenue porte dauphine , 75016 Paris",
+    happen_at: Date.today + 6,
+    due_at: Date.today + 5,
   },
    {
     game: "bridge",
     user: User.second,
-    address: "46, avenue des champs élysées, 75016 paris",
-    happen_at: DateTime.now + (5/24.0),
-    due_at: DateTime.now + (4/24.0)
+    address: "16, rue des Juifs, 50210 Cerisy la salle",
+    happen_at: Date.today + 2,
+    due_at: Date.today + 1,
   },
    {
     game: "poker",
     user: User.all.sample,
-    address: "46, impasse du cochonnet, 75019 paris",
-    happen_at: DateTime.now + (5/24.0),
-    due_at: DateTime.now + (4/24.0)
+    address: "29, rue diaz, 33000 Bordeaux",
+    happen_at: Date.today + 4,
+    due_at: Date.today + 3,
   },
    {
     game: "puissance 4",
     user: User.all.sample,
-    address: "46, impasse du cochonnet, 75019 paris",
-    happen_at: DateTime.now + (5/24.0),
-    due_at: DateTime.now + (4/24.0)
+    address: "46, impasse du cochonnet, 75019 Paris",
+    happen_at: Date.today + 5,
+    due_at: Date.today + 4,
   }
 ]
 

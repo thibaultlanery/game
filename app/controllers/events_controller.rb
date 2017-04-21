@@ -1,7 +1,16 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.where.not(latitude: nil, longitude: nil)
+    search = params[:search]
+    if search
+      @location = search["address"]
+      @events = Event.all.select do |e| e.address.include? @location.to_s end
+
+
+    else
+      @events = Event.where.not(latitude: nil, longitude: nil)
+
+    end
 
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
       marker.lat event.latitude
@@ -16,3 +25,8 @@ class EventsController < ApplicationController
   end
 
 end
+   # @choosen_date = Date.new search["happen_at(1i)"].to_i, search["happen_at(2i)"].to_i, search["happen_at(3i)"].to_i
+      # @date = @choosen_date.strftime("%F")
+      # @game = search["game"]
+
+      # @event_search = Event.where(happen_at: @date, game: @game)

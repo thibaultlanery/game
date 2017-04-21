@@ -24,15 +24,21 @@ margin-right: 10px;
 
 .search-result {
 margin-left: 15px;
+
+}
+
+.search-result h1 {
+text-align: center;
 }
 
 .search-result-card {
-
+overflow:scroll;
 
 }
 
 
 .search-result-location {
+  margin-top: 20px;
 
 }
 
