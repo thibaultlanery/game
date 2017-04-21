@@ -1,0 +1,44 @@
+
+
+.container_search_bar {
+  height: 150px;
+  padding: 15px;
+  background: #ffffff !important;
+  position: fixed !important;
+  top: 0px !important;
+  width: 100% !important;
+  z-index: 10 !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1) !important;
+  height: 105px !important;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+}
+
+.container_search_bar label {
+margin-right: 10px;
+}
+
+.search-result {
+margin-left: 15px;
+
+}
+
+.search-result h1 {
+text-align: center;
+}
+
+.search-result-card {
+overflow:scroll;
+
+}
+
+
+.search-result-location {
+  margin-top: 20px;
+
+}
+

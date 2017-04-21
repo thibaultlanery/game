@@ -5,3 +5,109 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Event.destroy_all
+User.destroy_all
+
+
+users = [
+
+  {
+    firstname: "Thibault",
+    lastname: "Lanery",
+    email: "thibaultlanery@gmail.com",
+    password: "123456",
+  },
+  {
+    firstname: "Anteo",
+    lastname: "Guillot",
+    email: "anteo737@hotmail.fr",
+    password: "123456",
+  },
+  {
+    firstname: "Julie",
+    lastname: "Pesnel",
+    email: "juliepesnel@gmail.com",
+    password: "123456",
+  },
+  {
+    firstname: "Antoine",
+    lastname: "Veaux",
+    email: "antoine.veaux@gmail.com ",
+    password: "123456",
+  },
+  {
+    firstname: "Benjamin",
+    lastname: "Gahéry",
+    email: "benjamingahery@gmail.com",
+    password: "123456",
+  },
+  {
+    firstname: "Julia",
+    lastname: "Lissague",
+    email: "julia.lissague@gmail.com",
+    password: "123456",
+  },
+  {
+    firstname: "Sibylle",
+    lastname: "De Courcel",
+    email: " sibylle44@gmail.com",
+    password: "123456",
+  }
+]
+
+users.each { |user| User.create!(user) }
+
+events = [
+  {
+    game: "jungle",
+    user: User.first,
+    address: "5, rue Muller, 75018 Paris",
+    happen_at: Date.today + 2,
+    due_at: Date.today + 1,
+  },
+    {
+    game: "jeu de dé",
+    user: User.first,
+    address: "88, rue de la folie méricourt, 75011 Paris",
+    happen_at: Date.today + 7,
+    due_at: Date.today + 5,
+  },
+   {
+    game: "bixit",
+    user: User.third,
+    address: "8, passage bradi, 75011 Paris",
+    happen_at: Date.today + 5,
+    due_at: Date.today + 3,
+  },
+   {
+    game: "jeux de cochon",
+    user: User.fourth,
+    address: "46, avenue porte dauphine , 75016 Paris",
+    happen_at: Date.today + 6,
+    due_at: Date.today + 5,
+  },
+   {
+    game: "bridge",
+    user: User.second,
+    address: "16, rue des Juifs, 50210 Cerisy la salle",
+    happen_at: Date.today + 2,
+    due_at: Date.today + 1,
+  },
+   {
+    game: "poker",
+    user: User.all.sample,
+    address: "29, rue diaz, 33000 Bordeaux",
+    happen_at: Date.today + 4,
+    due_at: Date.today + 3,
+  },
+   {
+    game: "puissance 4",
+    user: User.all.sample,
+    address: "46, impasse du cochonnet, 75019 Paris",
+    happen_at: Date.today + 5,
+    due_at: Date.today + 4,
+  }
+]
+
+
+events.each { |event| Event.create!(event) }
