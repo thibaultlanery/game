@@ -9,8 +9,7 @@
     <%= simple_form_for :search, url: events_path, method: :get, html: { class: "form-inline" } do |f| %>
     <%= f.input :address, label: false, collection: ["Paris", "Cerisy la salle", "Bordeaux"] %>
     <%= f.input :game, label: false, selected: @game, placeholder: 'Choose a game' %>
-    <%= f.input :happen_at, as: :date,  selected: @happen_at, order: [:day,:month,:year], start_year: Date.today.year, end_year: Date.today.year + 2, label: false %>
-
+    <%= f.input :happen_at, as: :date,  selected: @happen_at, order: [:day,:month,:year], start_year: Date.today.year, end_year: Date.today.year + 2,  label: false %>
     <%= f.submit "Find", :class => "btn btn" %>
     <% end %>
   </div>
@@ -88,9 +87,9 @@
                   handler.bounds.extendWith(markers);
                   handler.fitMapToBounds();
                   if (markers.length == 0) {
-                    handler.getMap().setZoom(2);
+                    handler.getMap().setZoom(12);
                   } else if (markers.length == 1) {
-                    handler.getMap().setZoom(2);
+                    handler.getMap().setZoom(12);
                   }
                 });
               });
