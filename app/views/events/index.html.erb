@@ -7,7 +7,7 @@
   </div>
   <div class="search_bar">
     <%= simple_form_for :search, url: events_path, method: :get, html: { class: "form-inline" } do |f| %>
-    <%= f.input :happen_at, input_html: { id: "mydatepicker", value: @happen_at}, required: false, label: false %>
+    <%= f.input :date, input_html: { id: "mydatepicker", value: @happen_at}, required: false, label: false %>
     <%= f.input_field :address, label: false, id: "user_input_autocomplete_address", placeholder: "Votre adresse..." %>
     <%= f.input_field :game, label: false, selected: @game, placeholder: 'Choose a game' %>
    <!--  <%= f.input_field :happen_at, as: :date, selected: @happen_at, order: [:day,:month,:year], start_year: Date.today.year, end_year: Date.today.year + 2,  label: false %> -->

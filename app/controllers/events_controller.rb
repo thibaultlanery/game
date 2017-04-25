@@ -4,10 +4,12 @@ class EventsController < ApplicationController
     search = params[:search]
     if search
       @location = search["address"]
-      @choosen_date = Date.new search["happen_at(1i)"].to_i, search["happen_at(2i)"].to_i, search["happen_at(3i)"].to_i
-      @date = @choosen_date.strftime("%F")
+      # @choosen_date = Date.new search["happen_at(1i)"].to_i, search["happen_at(2i)"].to_i, search["happen_at(3i)"].to_i
+      @date = Date.parse(search["date"])
+      @formated_date = @date.strftime("%F")
+      # @date = @choosen_date.strftime("%F")
       @game = search["game"]
-      @events = Event.include_address(@location).event_date(@date)
+      @events = Event.include_address(@location).event_date(@formated_date)
     else
       @events = Event.where.not(latitude: nil, longitude: nil)
 
