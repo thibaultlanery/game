@@ -7,7 +7,7 @@ class EventsController < ApplicationController
       @choosen_date = Date.new search["happen_at(1i)"].to_i, search["happen_at(2i)"].to_i, search["happen_at(3i)"].to_i
       @date = @choosen_date.strftime("%F")
       @game = search["game"]
-      @events = Event.include_address(@location).event_date(@date).game_name(@game)
+      @events = Event.include_address(@location).event_date(@date)
     else
       @events = Event.where.not(latitude: nil, longitude: nil)
 
@@ -27,3 +27,4 @@ class EventsController < ApplicationController
 
 end
 
+# .game_name(@game)

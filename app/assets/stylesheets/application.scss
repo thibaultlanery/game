@@ -8,18 +8,16 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "vendor/index";
+@import "bootstrap-datepicker";
+
+/*
+*= require jquery.ui.datepicker-fr
+*= require bootstrap
+*/
+
 
 // Your CSS
 @import "layout/index";
 @import "components/index";
 @import "pages/index";
-
-
-/*
- *= require jquery-ui
- */
-
-/*
- *= require jquery-ui/datepicker
- */
 
