@@ -15,10 +15,11 @@ class EventsController < ApplicationController
       # end
       # elsif params[:search].present? && params[:search][:address].present? && params[:search][:date].present?  && params[:search][:game].present?
       @location = search["address"]
-      @date = Date.parse(search["date"])
-      @formated_date = @date.strftime("%F")
+      # @date = Date.parse(search["date"])
+      # @formated_date = @date.strftime("%F")
       @game = search["game"]
-      @events = Event.include_address(@location).event_date(@formated_date).game_name(@game)
+      @events = Event.include_address(@location).game_name(@game)
+      # .event_date(@formated_date)
     else
       @events = Event.where.not(latitude: nil, longitude: nil)
     end
