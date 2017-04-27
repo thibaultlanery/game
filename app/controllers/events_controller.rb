@@ -1,16 +1,27 @@
 class EventsController < ApplicationController
 
   def index
-    search = params[:search]
+      search = params[:search]
     if search
+      # if params[:search] && params[:search][:address].present? && params[:search][:game].present?
+        # @location = search["address"]
+        # @game = search["game"]
+        # @events = Event.include_address(@location)
+        # .game_name(@game)
+
+      # elsif params[:search] && params[:search][:address].present?
+      #   @location = params[:address]
+      #   @events = Event.include_address(@location)
+      # end
+      # elsif params[:search].present? && params[:search][:address].present? && params[:search][:date].present?  && params[:search][:game].present?
       @location = search["address"]
-      @choosen_date = Date.new search["happen_at(1i)"].to_i, search["happen_at(2i)"].to_i, search["happen_at(3i)"].to_i
-      @date = @choosen_date.strftime("%F")
+      # @date = Date.parse(search["date"])
+      # @formated_date = @date.strftime("%F")
       @game = search["game"]
-      @events = Event.include_address(@location).event_date(@date).game_name(@game)
+      @events = Event.include_address(@location).game_name(@game)
+      # .event_date(@formated_date)
     else
       @events = Event.where.not(latitude: nil, longitude: nil)
-
     end
 
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
@@ -25,5 +36,10 @@ class EventsController < ApplicationController
     @alert_message = "You are viewing #{@event.game}"
   end
 
+def create
+  #ne pas oublier de formater les dates et les noms de villes en capitalise
 end
+
+end
+
 
