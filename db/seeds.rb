@@ -16,12 +16,14 @@ users = [
     lastname: "Lanery",
     email: "thibaultlanery@gmail.com",
     password: "123456",
+    address: "1, Avenue des Champs Elysées, 75008, Paris "
   },
   {
     firstname: "Anteo",
     lastname: "Guillot",
     email: "anteo737@hotmail.fr",
     password: "123456",
+    address: "157 cours Balguerie Stuttenberg, 33000, Bordeaux"
   },
   {
     firstname: "Julie",

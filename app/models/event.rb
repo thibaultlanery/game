@@ -9,8 +9,9 @@ geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
 def self.include_address(location)
-  Event.near(location, 15)
+  Event.near(location, 50)
 end
+
 
 # scope :include_address, -> (location) { where("address like ?", "%#{@location}%" )}
 scope :event_date, -> (formated_date) { where(happen_at: formated_date )}

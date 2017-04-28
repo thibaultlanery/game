@@ -2,27 +2,47 @@ class EventsController < ApplicationController
 
   def index
       search = params[:search]
-    if search
-      # if params[:search] && params[:search][:address].present? && params[:search][:game].present?
-        # @location = search["address"]
-        # @game = search["game"]
-        # @events = Event.include_address(@location)
-        # .game_name(@game)
+      if search.present?
+          if search["game"].present? && search["address"].present? && search["date"].present?
+            @location = search["address"]
+            @game = search["game"]
+            @date = Date.parse(search["date"])
+            @formated_date = @date.strftime("%F")
+            @events = Event.game_name(@game.capitalize).event_date(@formated_date).include_address(@location)
+          elsif search["address"].present? && search["game"].present?
+            @location = search["address"]
+            @game = search["game"]
+            @events = Event.game_name(@game.capitalize).include_address(@location)
+          elsif search["address"].present? && search["date"].present?
+            @location = search["address"]
+            @date = Date.parse(search["date"])
+            @formated_date = @date.strftime("%F")
+            @events = Event.include_address(@location).event_date(@formated_date)
+          elsif search["game"].present? && search["date"].present?
+            @location = current_user.address
+            @date = Date.parse(search["date"])
+            @formated_date = @date.strftime("%F")
+            @game = search["game"]
+            @events = Event.include_address(@location).event_date(@formated_date).game_name(@game.capitalize)
+          elsif search["date"].present?
+            @location = current_user.address
+            @date = Date.parse(search["date"])
+            @formated_date = @date.strftime("%F")
+            @events = Event.include_address(@location).event_date(@formated_date)
+          elsif search["game"].present?
+            @location = current_user.address
+            @game = search["game"]
+            @events = Event.include_address(@location).game_name(@game.capitalize)
+          else search["address"].present?
+            @location = search["address"]
+            @events = Event.include_address(@location)
+          end
+      else
+        # @events = Event.where.not(latitude: nil, longitude: nil)
+        @location = current_user.address
+        @events = Event.include_address(@location)
+      end
 
-      # elsif params[:search] && params[:search][:address].present?
-      #   @location = params[:address]
-      #   @events = Event.include_address(@location)
-      # end
-      # elsif params[:search].present? && params[:search][:address].present? && params[:search][:date].present?  && params[:search][:game].present?
-      @location = search["address"]
-      # @date = Date.parse(search["date"])
-      # @formated_date = @date.strftime("%F")
-      @game = search["game"]
-      @events = Event.include_address(@location).game_name(@game)
-      # .event_date(@formated_date)
-    else
-      @events = Event.where.not(latitude: nil, longitude: nil)
-    end
 
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
       marker.lat event.latitude
@@ -36,9 +56,9 @@ class EventsController < ApplicationController
     @alert_message = "You are viewing #{@event.game}"
   end
 
-def create
-  #ne pas oublier de formater les dates et les noms de villes en capitalise
-end
+  def create
+    #ne pas oublier de formater les dates et les noms de villes en capitalise
+  end
 
 end
 
