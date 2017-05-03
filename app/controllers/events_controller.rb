@@ -51,8 +51,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @event_coordinates = { lat: @event.latitude, lng: @event.longitude }
-    @alert_message = "You are viewing #{@event.game}"
   end
 
   def create
