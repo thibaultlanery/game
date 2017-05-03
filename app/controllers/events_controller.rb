@@ -3,7 +3,10 @@ class EventsController < ApplicationController
   def index
       search = params[:search]
       if search.present?
-          if search["game"].present? && search["address"].present? && search["date"].present?
+          if search["game"].empty? && search["address"].empty? && search["date"].empty?
+            @location = current_user.address
+            @events = Event.include_address(@location)
+          elsif search["game"].present? && search["address"].present? && search["date"].present?
             @location = search["address"]
             @game = search["game"]
             @date = Date.parse(search["date"])
