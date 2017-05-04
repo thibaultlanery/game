@@ -1,0 +1,40 @@
+
+
+
+<div class=container>
+<%= simple_form_for(@event) do |f| %>
+  <div class="game">
+    <div class="row">
+      <div class="col-xs-12 text-left">
+        <h3>Which game?</h3>
+        <%= f.input_field :game %>
+    </div>
+  </div>
+  <div class="when">
+    <div class="row">
+      <div class="col-xs-12 text-left">
+        <h3>When ?</h3>
+        <%= f.input_field :happen_at %>
+      </div>
+    </div>
+  </div>
+<div class="address">
+    <div class="row">
+      <div class="col-xs-12 text-left">
+        <h3>type your address</h3>
+        <%= f.input_field :address,label: false, id: "user_input_create_autocomplete_address" %>
+      </div>
+    </div>
+<div class="address">
+    <div class="row">
+      <div class="col-xs-12 text-left">
+        <%= f.button :submit %>
+      </div>
+    </div>
+ <% end %>
+</div>
+
+
+
+
+
