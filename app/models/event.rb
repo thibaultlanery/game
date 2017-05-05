@@ -3,6 +3,10 @@ class Event < ApplicationRecord
 
   has_many :participations, dependent: :destroy
   has_many :users, through: :participations
+  validates :game, presence: true
+  validates :happen_at, presence: true
+  validates :description, presence: true
+  validates :address, presence: true
 
 
 geocoded_by :address
