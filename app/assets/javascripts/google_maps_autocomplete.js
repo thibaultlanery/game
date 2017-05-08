@@ -1,27 +1,16 @@
-function initializeAutocomplete(id) {
- var element = document.getElementById(id);
- if (element) {
-   var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-   google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
- }
-}
+getPlace_dynamic();
 
-function onPlaceChanged() {
- var place = this.getPlace();
+  function getPlace_dynamic() {
+             var defaultBounds = new google.maps.LatLngBounds(
+             new google.maps.LatLng(-33.8902, 151.1759),
+             new google.maps.LatLng(-33.8474, 151.2631));
 
- console.log(place);  // Uncomment this line to view the full object returned by Google API.
+             var input = document.getElementsByClassName('user_input_autocomplete_address');
+             var options = {
+                 bounds: defaultBounds,
+             };
 
- for (var i in place.address_components) {
-   var component = place.address_components[i];
-   for (var j in component.types) {  // Some types are ["country", "political"]
-     var type_element = document.getElementById(component.types[j]);
-     if (type_element) {
-       type_element.value = component.long_name;
-     }
-   }
- }
-}
-
-google.maps.event.addDomListener(window, 'load', function() {
- initializeAutocomplete('user_input_autocomplete_address');
-});
+             for (i = 0; i < input.length; i++) {
+                 autocomplete = new google.maps.places.Autocomplete(input[i], options);
+             }
+         }

@@ -6,6 +6,11 @@ class User < ApplicationRecord
 
   has_many :events, dependent: :destroy
   has_many :participations, dependent: :destroy
+  validates :gender, presence: true
+  validates :age, presence: true
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 end
