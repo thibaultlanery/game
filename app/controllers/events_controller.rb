@@ -71,6 +71,15 @@ class EventsController < ApplicationController
     #ne pas oublier de formater les dates et les noms de villes en capitalise
   end
 
+  def myevents
+    @events = current_user.events
+    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+    end
+  end
+
+
 
 def event_params
    params.require(:event).permit(:game, :title, :description, :happen_at, :address)

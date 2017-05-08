@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   validates :happen_at, presence: true
   validates :description, presence: true
   validates :address, presence: true
-
+  validates :user, presence: true
 
 geocoded_by :address
   after_validation :geocode, if: :address_changed?
