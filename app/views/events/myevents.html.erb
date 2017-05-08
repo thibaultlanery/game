@@ -1,49 +1,51 @@
-<div class="search-result">
-  <div class="row">
-    <div class="search-result-card col-md-7">
-      <h1>the events your organising</h1>
-      <% @events.each do |event| %>
-        <div class="col-xs-12 col-md-6">
-          <div class="card ">
-            <div class="card-category">
-              <p><%= event.happen_at.strftime("%A %v") %></p>
+<div class="container">
+  <div class="search-result">
+    <div class="row">
+      <div class="search-result-card col-md-7">
+        <h1>the events your organising</h1>
+        <% @events.each do |event| %>
+          <div class="col-xs-12 col-md-6">
+            <div class="card ">
+              <div class="card-category">
+                <p><%= event.happen_at.strftime("%A %v") %></p>
+              </div>
+              <div class="card-user">
+                <%= event.user.firstname %>
+              </div>
+              <div class="card-description">
+               <h2><%= event.game.capitalize %></h2>
+               <p><%= event.address %></p>
+              </div>
+               <%= link_to "", event_path(event), class: "card-link" %>
             </div>
-            <div class="card-user">
-              <%= event.user.firstname %>
-            </div>
-            <div class="card-description">
-             <h2><%= event.game.capitalize %></h2>
-             <p><%= event.address %></p>
-            </div>
-             <%= link_to "", event_path(event), class: "card-link" %>
           </div>
-        </div>
-      <% end %>
-    </div>
-  <div class="search-result-location col-md-5">
-      <div class="google-map" >
-        <div id="map" style="width: 100%; height: 900px;">
-          <% content_for(:after_js) do %>
-            <%= javascript_tag do %>
-              $(document).ready(function() {
-                var handler = Gmaps.build('Google');
-                handler.buildMap({
-                  zoomControl: true,
-                  zoomControlPosition: {position: google.maps.ControlPosition.BOTTOM_CENTER
-                  },
-                internal: { id: 'map' } }, function() {
-                  markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                  handler.bounds.extendWith(markers);
-                  handler.fitMapToBounds();
-                  if (markers.length == 0) {
-                    handler.getMap().setZoom(20);
-                  } else if (markers.length == 1) {
-                    handler.getMap().setZoom(20);
-                  }
+        <% end %>
+      </div>
+    <div class="search-result-location col-md-5">
+        <div class="google-map" >
+          <div id="map" style="width: 100%; height: 900px;">
+            <% content_for(:after_js) do %>
+              <%= javascript_tag do %>
+                $(document).ready(function() {
+                  var handler = Gmaps.build('Google');
+                  handler.buildMap({
+                    zoomControl: true,
+                    zoomControlPosition: {position: google.maps.ControlPosition.BOTTOM_CENTER
+                    },
+                  internal: { id: 'map' } }, function() {
+                    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                    handler.bounds.extendWith(markers);
+                    handler.fitMapToBounds();
+                    if (markers.length == 0) {
+                      handler.getMap().setZoom(20);
+                    } else if (markers.length == 1) {
+                      handler.getMap().setZoom(20);
+                    }
+                  });
                 });
-              });
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>

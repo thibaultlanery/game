@@ -5,7 +5,7 @@ getPlace_dynamic();
              new google.maps.LatLng(-33.8902, 151.1759),
              new google.maps.LatLng(-33.8474, 151.2631));
 
-             var input = document.getElementsByClassName('string required user_input_autocomplete_address');
+             var input = document.getElementsByClassName('user_input_autocomplete_address');
              var options = {
                  bounds: defaultBounds,
              };
