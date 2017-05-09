@@ -72,18 +72,31 @@ class EventsController < ApplicationController
   end
 
   def myevents
-    @events = current_user.events
+    @events = current_user.events.where(canceled_at: nil)
+    @cancelled_events = current_user.events.where.not(canceled_at: nil)
+    @participations = current_user.participations
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
-      marker.lat event.latitude
-      marker.lng event.longitude
+    marker.lat event.latitude
+    marker.lng event.longitude
+    end
+  end
+
+  def edit
+  @event = Event.find(params[:id])
+  @event.canceled_at = Date.today
+    if @event.save
+    redirect_to event_path(@event), notice: "Event cancelled"
+    else
+    redirect_to event_path(@event), alert: "something went wrong"
     end
   end
 
 
 
-def event_params
+  def event_params
    params.require(:event).permit(:game, :title, :description, :happen_at, :address)
- end
+  end
+
 end
 
 
