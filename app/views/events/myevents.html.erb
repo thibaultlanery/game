@@ -1,13 +1,24 @@
 
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-
 <div class="container_search_bar">
   <div class="logo">
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
     <% end %>
   </div>
+
+
+  <div class="tabs">
+    <a class="tab active" data-target="#bio">
+      <h3>Bio</h3>
+    </a>
+    <a class="tab" data-target="#projects">
+      <h3>Projects</h3>
+    </a>
+    <a class="tab" data-target="#contact">
+      <h3>Contact</h3>
+    </a>
+  </div>
+
 
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <% if user_signed_in? %>
@@ -44,12 +55,16 @@
   </div>
 </div>
 
-  <div class="container">
-    <div class="search-result">
-      <div class="row">
-      <div class="search-result-card col-md-7">
-          <h1>the events your organising</h1>
-            <% @events.each do |event| %>
+
+<div class="container text-center">
+  <div class="tab-content" id="bio">
+    <p>This is my bio.</p>
+    <div class="container">
+      <div class="search-result">
+        <div class="row">
+          <div class="search-result-card col-md-7">
+            <h1>the events your organising</h1>
+              <% @events.each do |event| %>
               <div class="col-xs-12 col-md-6">
                 <div class="card ">
                   <div class="card-category">
@@ -66,6 +81,17 @@
                 </div>
               </div>
             <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content hidden" id="projects">
+    <p>Here are my projects.</p>
+    <div class="container">
+      <div class="search-result">
+        <div class="row">
+          <div class="search-result-card col-md-7">
             <% @cancelled_events.each do |cancelled_event| %>
               <div class="col-xs-12 col-md-6">
                 <div class="card ">
@@ -84,38 +110,39 @@
               </div>
             <% end %>
           </div>
-        <div class="search-result-location col-md-5">
-          <div class="google-map" >
-            <div id="map" style="width: 100%; height: 900px;">
-              <% content_for(:after_js) do %>
-                <%= javascript_tag do %>
-                  $(document).ready(function() {
-                    var handler = Gmaps.build('Google');
-                    handler.buildMap({
-                      zoomControl: true,
-                      zoomControlPosition: {position: google.maps.ControlPosition.BOTTOM_CENTER
-                      },
-                    internal: { id: 'map' } }, function() {
-                      markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                      handler.bounds.extendWith(markers);
-                      handler.fitMapToBounds();
-                      if (markers.length == 0) {
-                        handler.getMap().setZoom(20);
-                      } else if (markers.length == 1) {
-                        handler.getMap().setZoom(20);
-                      }
-                    });
-                  });
-                <% end %>
-              <% end %>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="tab-content hidden" id="contact">
+    <p>Contact me if you want.</p>
+  </div>
 </div>
-</div>
-
-
+  <div class="search-result-location col-md-5">
+    <div class="google-map" >
+      <div id="map" style="width: 100%; height: 900px;">
+        <% content_for(:after_js) do %>
+          <%= javascript_tag do %>
+            $(document).ready(function() {
+              var handler = Gmaps.build('Google');
+              handler.buildMap({
+                zoomControl: true,
+                zoomControlPosition: {position: google.maps.ControlPosition.BOTTOM_CENTER
+                },
+              internal: { id: 'map' } }, function() {
+                markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                if (markers.length == 0) {
+                  handler.getMap().setZoom(20);
+                } else if (markers.length == 1) {
+                  handler.getMap().setZoom(20);
+                }
+              });
+            });
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
