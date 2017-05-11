@@ -1,55 +1,62 @@
 
-<div class="container_search_bar">
-  <div class="logo">
-    <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
-    <% end %>
-  </div>
-  <div class="tabs">
-    <a class="tab active" data-target="#yourevent">
-      <h3>Bio</h3>
-    </a>
-    <a class="tab" data-target="#participation">
-      <h3>Projects</h3>
-    </a>
-    <a class="tab" data-target="#cancelled_event">
-      <h3>Contact</h3>
-    </a>
-  </div>
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <% if user_signed_in? %>
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+<div class="navbar_myevents">
+  <div class="left_side_myevents">
+    <div class="logo_myevents">
+      <%= link_to root_path, class: "navbar-wagon-brand" do %>
+      <%= image_tag "logo.png" %>
       <% end %>
-      <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
+    </div>
+  <div class="tabs">
+        <a class="tab active" data-target="#yourevent">
+          <p>Your events</p>
+        </a>
+      <a class="tab" data-target="#participation">
+        <p>Your participations</p>
+      </a>
+      <a class="tab" data-target="#cancelled_event">
+        <p>Deleted events</p>
+      </a>
+    </div>
+  </div>
+  <div class="right_side_myevents">
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+      <% if user_signed_in? %>
+        <!-- Notification -->
+        <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+        <% end %>
+        <!-- Profile picture and dropdown -->
+        <div class="navbar-wagon-item">
+          <div class="dropdown">
+            <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
         </div>
+      <% else %>
+        <!-- Login text link -->
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
       </div>
-    <% else %>
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% end %>
   </div>
 </div>
+
+
+
 <div class="wrapper-myevents">
   <div class="container">
     <div class="row">
