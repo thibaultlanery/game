@@ -1,0 +1,39 @@
+.navbar_myevents {
+  font-family: 'Raleway', sans-serif;
+  height: 165px;
+  background: #ffffff !important;
+  position: fixed !important;
+  top: 0px !important;
+  width: 100% !important;
+  z-index: 10 !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1) !important;
+  height: 105px !important;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.left_side_myevents {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.right_side_myevents {
+  width: 50%;
+  // background-color: blue;
+}
+.logo_myevents {
+  width:15%;
+  margin-left: 20px;
+// background-color: red;
+}
+
+
+
+.wrapper-myevents h1 {
+text-align: center;
+}
+

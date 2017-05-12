@@ -1,4 +1,5 @@
 .form_style {
+
     height: 34px;
     font-size: 14px;
     line-height: 1.42857;
@@ -54,25 +55,28 @@ user_input_autocomplete_address {
 
 .container_search_bar label {
 margin-right: 10px;
+
 }
 
 .search-result {
 margin-left: 15px;
-
+text-align: center;
 }
 
 .search-result h1 {
-text-align: center;
+
+font-family: 'Raleway', sans-serif;
 }
+
 
 .search-result-card {
 overflow:scroll;
 
 }
 
-
 .search-result-location {
   margin-top: 20px;
 
 }
+
 
