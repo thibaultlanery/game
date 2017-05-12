@@ -3,7 +3,7 @@
   <div class="left_side_myevents">
     <div class="logo_myevents">
       <%= link_to root_path, class: "navbar-wagon-brand" do %>
-      <%= image_tag "logo.png" %>
+      <%= image_tag "game.svg" %>
       <% end %>
     </div>
   <div class="tabs">
@@ -62,7 +62,6 @@
     <div class="row">
       <div class="col-md-7">
         <div class="tab-content" id="yourevent">
-          <h1>the events your organising</h1>
             <% @events.each do |event| %>
             <div class="col-xs-12 col-md-6">
               <div class="card ">
@@ -82,7 +81,9 @@
           <% end %>
         </div>
     <div class="tab-content hidden" id="participation">
-      <h1>Your participations</h1>
+
+        </div>
+    <div class="tab-content hidden" id="cancelled_event">
           <% @cancelled_events.each do |cancelled_event| %>
             <div class="col-xs-12 col-md-6">
               <div class="card ">
@@ -100,9 +101,6 @@
               </div>
             </div>
           <% end %>
-        </div>
-    <div class="tab-content hidden" id="cancelled_event">
-      <h1>Canceled events</h1>
     </div>
   </div>
       <div class="myevents-location col-md-5">
