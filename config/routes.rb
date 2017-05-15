@@ -11,4 +11,6 @@ root to: "pages#home"
       get 'myevents', to: "events#myevents"
     end
   end
+
+  resources :participations, only: [:update]
 end

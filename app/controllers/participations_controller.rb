@@ -1,9 +1,18 @@
 class ParticipationsController < ApplicationController
 
+  def new
+    @participation = Participation.new
+  end
+
+  def create
+  end
+
+
+
   def update
     participation = Participation.find(params[:id])
     if participation.update(participation_params)
-      flash[:notice] = 'Thank you for answering'
+      flash[:notice] = 'Invitation sent'
     else
       flash[:alert] = 'Something went wrong'
     end
