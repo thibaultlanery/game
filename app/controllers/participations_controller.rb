@@ -5,7 +5,6 @@ class ParticipationsController < ApplicationController
   # end
 
   def create
-
     @participation = Participation.new(participation_params)
     @event = Event.find(params[:id])
     @participation.event = @event
