@@ -17,7 +17,7 @@
         <p><%= @event.description %></p>
 
         <% if current_user != @event.user %>
-         <%= link_to 'Send interest', participation_path(@participation, participation: {status: :confirmed}), method: :patch, class: "btn-btn-medium"%>
+         <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :confirmed}), method: :post, class: "btn-btn-medium"%>
         <% end %>
 
         <% if current_user == @event.user %>

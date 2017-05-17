@@ -7,10 +7,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 root to: "pages#home"
   resources :events do
+
     collection do
       get 'myevents', to: "events#myevents"
     end
+    member do
+    resources :participations, only: [:update, :create]
   end
+end
 
-  resources :participations, only: [:update]
 end

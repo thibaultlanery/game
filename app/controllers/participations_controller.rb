@@ -1,10 +1,21 @@
 class ParticipationsController < ApplicationController
 
-  def new
-    @participation = Participation.new
-  end
+  # def new
+  #   participation = @event.participations.build
+  # end
 
   def create
+
+    @participation = Participation.new(participation_params)
+    @event = Event.find(params[:id])
+    @participation.event = @event
+    @participation.user = current_user
+    if @participation.save
+      flash[:notice] = 'Invitation sent'
+    else
+      flash[:alert] = 'Something went wrong'
+    end
+    redirect_to event_path(@event)
   end
 
 
