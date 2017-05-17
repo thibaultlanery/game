@@ -29,11 +29,7 @@
           <div class="dropdown">
             <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li>
-                <%= link_to "#myevents", myevents_events_path do %>
-                  <i class="fa fa-user"></i> <%= t(".profile", default: "My events") %>
-                <% end %>
-              </li>
+
               <li>
                 <%= link_to "#" do %>
                   <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
@@ -85,9 +81,25 @@
             </div>
           <% end %>
         </div>
-    <div class="tab-content hidden" id="participation">
-
-        </div>
+      <div class="tab-content hidden" id="participation">
+            <% @participations.each do |participation, event| %>
+              <div class="col-xs-12 col-md-6">
+                <div class="card ">
+                  <div class="card-category">
+                    <p><%= participation.event.happen_at.strftime("%A %v") %></p>
+                  </div>
+                  <div class="card-user">
+                    <%= participation.event.user.firstname %>
+                  </div>
+                  <div class="card-description">
+                   <h2><%= participation.event.game.capitalize %></h2>
+                   <p><%= participation.event.address %></p>
+                  </div>
+                   <%= link_to "", event_path(participation.event), class: "card-link" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
     <div class="tab-content hidden" id="cancelled_event">
           <% @cancelled_events.each do |cancelled_event| %>
             <div class="col-xs-12 col-md-6">

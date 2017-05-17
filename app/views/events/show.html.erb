@@ -16,6 +16,10 @@
         <p> organiser spirit: </p>
         <p><%= @event.description %></p>
 
+        <% if current_user != @event.user %>
+         <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :pending}), method: :post, class: "btn-btn-medium"%>
+        <% end %>
+
         <% if current_user == @event.user %>
         <%= link_to 'Cancel event', edit_event_path(@event), class: "btn-declined" %>
         <% end %>

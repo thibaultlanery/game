@@ -10,5 +10,8 @@ root to: "pages#home"
     collection do
       get 'myevents', to: "events#myevents"
     end
+    member do
+    resources :participations, only: [:update, :create]
+    end
   end
 end
