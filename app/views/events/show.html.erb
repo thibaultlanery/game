@@ -16,14 +16,18 @@
         <p> organiser spirit: </p>
         <p><%= @event.description %></p>
 
+         <% if current_user == @event.user %>
+
+          <% end %>
         <% if current_user != @event.user %>
-         <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :pending}), method: :post, class: "btn-btn-medium"%>
+         <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :confirmed}), method: :post, class: "btn-btn-medium"%>
         <% end %>
 
         <% if current_user == @event.user %>
         <%= link_to 'Cancel event', edit_event_path(@event), class: "btn-declined" %>
         <% end %>
-        <%= link_to 'Back to myevents', myevents_events_path(@event), class: "btn-declined" %>
+        <%= link_to 'List of events', myevents_events_path(@event), class: "btn-declined" %>
+        <%= link_to 'Manage my events', myevents_events_path(@event), class: "btn-declined" %>
       </div>
     </div>
       <div class="container_map_show">
