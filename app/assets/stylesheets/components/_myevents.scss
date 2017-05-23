@@ -5,10 +5,11 @@
 //   position: fixed !important;
 //   top: 0px !important;
 //   width: 100% !important;
-    position: absolute;
-    z-index: 2 !important;
+    position: fixed;
+    top: 80px;
+    z-index: 11 !important;
     background-color: white;
-    margin-top: -15px;
+    // margin-top: -15px;
     margin-bottom: 15px;
     width: 100%;
     border-bottom-color: black;
@@ -22,15 +23,17 @@
 }
 
 .result-myevents {
-padding-top: 40px;
+padding-top: 80px;
 background-color:#f6f7f8;
+max-width: 750px;
+
 
 }
 
 .left_side_myevents {
-  width: 50%;
-  display: flex;
-  align-items: center;
+width: 50%;
+display: flex;
+align-items: center;
 }
 
 .right_side_myevents {
@@ -43,9 +46,38 @@ background-color:#f6f7f8;
 // background-color: red;
 // }
 
+.tab-content {
+
+}
 
 
 .wrapper-myevents h1 {
 text-align: center;
 }
+
+.myevents-location {
+    display: block;
+    position: fixed;
+    width: calc(100% - 750px);
+    height: calc(100% - 50px);
+    top: 110px;
+    right: 0;
+    background-color: #f6f7f8;
+    border-left: 1px solid #CCC;
+}
+
+// .google-map-myevents {
+//     position: absolute;
+//     left: 0px;
+//     top: 0px;
+//     height: 100%;
+//     width: 100%;
+//     padding: 0px;
+//     border-width: 0px;
+//     margin: 0px;
+//     z-index: 1;
+// }
+
+
+
 

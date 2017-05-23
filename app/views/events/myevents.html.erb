@@ -19,9 +19,9 @@
     </div>
   </div>
 <div class="result-myevents">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7">
+  <!-- <div class="container"> -->
+    <!-- <div class="row"> -->
+     <!--  <div class="col-md-7"> -->
         <div class="tab-content" id="yourevent">
             <% @events.each do |event| %>
             <div class="col-xs-12 col-md-6">
@@ -79,10 +79,10 @@
             </div>
           <% end %>
     </div>
-  </div>
-      <div class="myevents-location col-md-5">
-        <div class="google-map-myevents" >
-          <div id="map" style="width: 100%; height: 900px;">
+<!--   </div> -->
+      <div class="myevents-location">
+       <!--  <div class="google-map-myevents"> -->
+          <div id="map" style="width: 100%; height: 90%;" >
             <% content_for(:after_js) do %>
               <%= javascript_tag do %>
                 $(document).ready(function() {
@@ -105,9 +105,9 @@
               <% end %>
             <% end %>
           </div>
-        </div>
+        <!-- </div> -->
       </div>
-    </div>
-  </div>
+    <!-- </div> -->
+ <!--  </div> -->
 </div>
 </div>
