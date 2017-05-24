@@ -1,5 +1,12 @@
+
+.wrapper-myevents h1 {
+text-align: center;
+
+}
+
+
 .navbar_myevents {
-//   font-family: 'Raleway', sans-serif;
+ font-family: 'Raleway', sans-serif;
 //   height: 165px;
 //   // background: #ffffff !important;
 //   position: fixed !important;
@@ -23,8 +30,7 @@
 }
 
 .result-myevents {
-padding-top: 80px;
-background-color:#f6f7f8;
+// background-color:#f6f7f8;
 max-width: 750px;
 
 
@@ -50,10 +56,6 @@ align-items: center;
 
 }
 
-
-.wrapper-myevents h1 {
-text-align: center;
-}
 
 .myevents-location {
     display: block;
