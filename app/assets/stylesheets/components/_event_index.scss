@@ -1,3 +1,20 @@
+.container_search_bar {
+  padding: 15px;
+  background:  #4BC7CF !important;
+  position: fixed !important;
+  top: 60px !important;
+  width: 100% !important;
+  z-index: 11 !important;
+  height: 50px !important;
+  margin-bottom: 15px;
+  display: flex;
+  // justify-content: space-around;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+  box-shadow: 0 7px 4px -2px rgba(0, 0, 0, 0.2);
+
+}
+
 .form_style {
   font-family: 'Raleway', sans-serif;
   height: 34px;
@@ -33,8 +50,8 @@
     border-radius: 50px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     font-family: inherit;
-
 }
+
 user_input_autocomplete_address {
     height: 34px;
     font-size: 14px;
@@ -53,22 +70,7 @@ user_input_autocomplete_address {
     font-family: inherit;
 }
 
-.container_search_bar {
-  padding: 15px;
-  background: white !important;
-  position: fixed !important;
-  top: 80px !important;
-  width: 100% !important;
-  z-index: 11 !important;
-  height: 50px !important;
-  margin-bottom: 15px;
-  display: flex;
-  // justify-content: space-around;
-  align-items: center;
-  font-family: 'Raleway', sans-serif;
-  box-shadow: 0 7px 4px -2px rgba(0, 0, 0, 0.2);
 
-}
 
 .container_search_bar label {
 margin-right: 10px;
@@ -90,7 +92,7 @@ font-family: 'Raleway', sans-serif;
 
 .search-result-card {
   max-width: 750px;
-
+padding-top: 10px;
 }
 
 .search-result-location {
@@ -98,7 +100,7 @@ font-family: 'Raleway', sans-serif;
     position: fixed;
     width: calc(100% - 750px);
     height: calc(100% - 50px);
-    top: 120px;
+    top: 110px;
     right: 0;
     background-color: #f6f7f8;
     border-left: 1px solid #CCC;
