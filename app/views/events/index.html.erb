@@ -1,57 +1,18 @@
-
-<div class="container_search_bar">
-  <div class="logo">
-    <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
-    <% end %>
+<div class="wrapper-myevents">
+  <div class="container_search_bar">
+    <div class="search_bar">
+      <%= simple_form_for :search, url: events_path, method: :get, html: { class: 'form-inline' } do |f| %>
+      <%= f.input :address, label: false, input_html: {class: 'user_input_autocomplete_address'}, placeholder: "Enter your address" %>
+      <%= f.input_field :game, required: false, label: false, selected: @game, placeholder: 'Choose a game', class: 'form_style'  %>
+      <%= f.input_field :date, id: 'mydatepicker', value: @happen_at, required: false, label: false, placeholder: 'Select a date', class: 'form_style' %>
+      <%= f.submit "Find", :class => "btn btn" %>
+      <%end%>
+    </div>
   </div>
-  <div class="search_bar">
-    <%= simple_form_for :search, url: events_path, method: :get, html: { class: 'form-inline' } do |f| %>
-    <%= f.input :address, label: false, input_html: {class: 'user_input_autocomplete_address'}, placeholder: "Enter your address" %>
-    <%= f.input_field :game, required: false, label: false, selected: @game, placeholder: 'Choose a game', class: 'form_style'  %>
-    <%= f.input_field :date, id: 'mydatepicker', value: @happen_at, required: false, label: false, placeholder: 'Select a date', class: 'form_style' %>
-    <%= f.submit "Find", :class => "btn btn" %>
-    <%end%>
-  </div>
-
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <% if user_signed_in? %>
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-      <% end %>
-      <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    <% else %>
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% end %>
-  </div>
-</div>
 
 <div class="search-result">
-  <div class="row">
-    <div class="search-result-card col-md-7">
+
+    <div class="search-result-card">
       <h4>Event's nearby!</h4>
       <% @events.each do |event| %>
         <div class="col-xs-12 col-md-6">
@@ -71,9 +32,9 @@
         </div>
       <% end %>
     </div>
-    <div class="search-result-location col-md-5">
-      <div class="google-map" >
-        <div id="map" style="width: 100%; height: 900px;">
+    <div class="search-result-location">
+
+        <div id="map" style="width: 100%; height: 90%;">
           <% content_for(:after_js) do %>
             <%= javascript_tag do %>
               $(document).ready(function() {
@@ -96,5 +57,4 @@
     </div>
   </div>
 </div>
-
 
