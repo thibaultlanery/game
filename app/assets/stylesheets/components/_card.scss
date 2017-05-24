@@ -3,12 +3,22 @@
   background-size: cover !important;
   color: black;
   position: relative;
-  margin-bottom: 10px;
+  margin-top: 20px;
   border: 1px solid #ededf0;
-  border-bottom: 1px solid #dcdce0;
+  border-bottom: 1,4px solid #dcdce0;
+  border-radius: 3px;
   height: 220px;
-
+  background-color: white;
   }
+
+  .col-xs-12 {
+    background-color: #f6f7f8;
+  }
+
+  .col-md-6 {
+    background-color: #f6f7f8;
+  }
+
 
 .card-user {
   position: absolute;
