@@ -33,7 +33,9 @@
                   <%= event.user.firstname %>
                 </div>
                 <div class="card-description">
-                 <h2><%= event.game.capitalize %></h2>
+                 <p><%= event.game.capitalize %></p>
+                </div>
+                <div class="card-address">
                  <p><%= event.address %></p>
                 </div>
                  <%= link_to "", event_path(event), class: "card-link" %>
@@ -52,7 +54,9 @@
                     <%= participation.event.user.firstname %>
                   </div>
                   <div class="card-description">
-                   <h2><%= participation.event.game.capitalize %></h2>
+                   <p><%= participation.event.game.capitalize %></p>
+                  </div>
+                  <div class="card-address">
                    <p><%= participation.event.address %></p>
                   </div>
                    <%= link_to "", event_path(participation.event), class: "card-link" %>
@@ -71,7 +75,9 @@
                   <%= cancelled_event.user.firstname %>
                 </div>
                 <div class="card-description">
-                 <h2><%= cancelled_event.game.capitalize %></h2>
+                 <p><%= cancelled_event.game.capitalize %></p>
+                </div>
+                 <div class="card-address">
                  <p><%= cancelled_event.address %></p>
                 </div>
                  <%= link_to "", event_path(cancelled_event), class: "card-link" %>
