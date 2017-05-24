@@ -66,16 +66,22 @@ user_input_autocomplete_address {
   // justify-content: space-around;
   align-items: center;
   font-family: 'Raleway', sans-serif;
+  box-shadow: 0 7px 4px -2px rgba(0, 0, 0, 0.2);
+
 }
 
 .container_search_bar label {
 margin-right: 10px;
 
 }
-
+.search_bar{
+  margin-left: 60px;
+}
 .search-result {
 text-align: center;
 }
+
+
 
 .search-result h1 {
 font-family: 'Raleway', sans-serif;
