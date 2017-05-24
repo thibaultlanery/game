@@ -2,7 +2,7 @@
   <div class="container_search_bar">
     <div class="search_bar">
       <%= simple_form_for :search, url: events_path, method: :get, html: { class: 'form-inline' } do |f| %>
-      <%= f.input :address, label: false, input_html: {class: 'user_input_autocomplete_address'}, placeholder: "Enter your address" %>
+      <%= f.input :address, label: false, input_html: {class: 'user_input_autocomplete_address', id: 'style'}, placeholder: "Enter your address" %>
       <%= f.input_field :game, required: false, label: false, selected: @game, placeholder: 'Choose a game', class: 'form_style'  %>
       <%= f.input_field :date, id: 'mydatepicker', value: @happen_at, required: false, label: false, placeholder: 'Select a date', class: 'form_style' %>
       <%= f.submit "Find", :class => "btn btn" %>
