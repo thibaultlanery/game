@@ -1,0 +1,60 @@
+.wrapper {
+
+// background-color: #f6f7f8;
+}
+.container_show {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 48px;
+    margin-left: 48px;
+    position: relative;
+
+}
+.content_show {
+  font-family: 'Raleway', sans-serif;
+  background-color: white;
+
+}
+
+.banner_head {
+height: 50px;
+margin: 0px;
+}
+
+.event_game {
+position: absolute;
+top: 10px;
+left: 0px;
+width: 60%;
+background-color: #4BC7CF;
+text-align: center;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+
+}
+
+.event_game p {
+color: white;
+margin-top: 0px;
+margin-bottom: 0px;
+font-size: 24px;
+letter-spacing: 1,5px;
+
+}
+
+.organiser {
+position: absolute;
+top: 10px;
+right: 10px;
+}
+
+.date {
+
+
+}
+
+.event_description {
+padding: 50px;
+
+}
+

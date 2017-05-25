@@ -1,3 +1,5 @@
+// $body-bg:  #f6f7f8 !important;
+
 // Graphical variables
 @import "config/variables";
 @import "config/bootstrap_variables";
@@ -20,4 +22,17 @@
 @import "layout/index";
 @import "components/index";
 @import "pages/index";
+
+
+
+body {
+  padding-top: 100px !important;
+  background: #f6f7f8 !important;
+}
+
+// html {
+// background: #f6f7f8 !important;
+
+// }
+
 
