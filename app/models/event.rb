@@ -15,9 +15,12 @@ def self.include_address(location)
   Event.near(location, 50)
 end
 
+def self.exclude_user(user)
+  Event.where.not(user: user)
+end
 
 # scope :include_address, -> (location) { where("address like ?", "%#{@location}%" )}
 scope :event_date, -> (formated_date) { where(happen_at: formated_date )}
 scope :game_name, -> (game) { where(game: game )}
-
+# scope :exclude_user, -> (current_user) { where(user: != current_user )}
 end
