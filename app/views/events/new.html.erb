@@ -41,6 +41,14 @@
         <%= f.input :address,label: false, input_html: {class: 'user_input_autocomplete_address'}, required: true %>
       </div>
     </div>
+<div class="photo">
+  <div class="row">
+      <div class="col-xs-12 text-left">
+      <%= f.input :photos, as: :attachinary %>
+      </div>
+    </div>
+</div>
+
 <div class="address">
     <div class="row">
       <div class="col-xs-12 text-left">
