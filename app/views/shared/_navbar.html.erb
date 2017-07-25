@@ -8,18 +8,19 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
+  <!--   <form action="" class="navbar-wagon-search">
       <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
       <button type="submit" class="navbar-wagon-search-btn">
         <i class="fa fa-search"></i>
       </button>
-    </form>
+    </form> -->
 
     <!-- Text link -->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Contact</a>
+    <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Contact</a> -->
+    <%= link_to "Back to search", events_path(@event), class: "navbar-wagon-item navbar-wagon-link"%>
 
     <!-- Text link -->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Team</a>
+    <%= link_to "Manage my events", myevents_events_path(@event), class: "navbar-wagon-item navbar-wagon-link"%>
 
     <!-- Notification link-->
     <a href="" class="navbar-wagon-item navbar-wagon-link">
@@ -42,7 +43,7 @@
     </div>
 
     <!-- Button (call-to-action) -->
-    <a href="" class="navbar-wagon-item navbar-wagon-button btn">Post stuff</a>
+    <a href="" class="navbar-wagon-item navbar-wagon-button btn">Create event</a>
   </div>
 
   <!-- Dropdown appearing on mobile only -->

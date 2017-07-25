@@ -1,40 +1,66 @@
 
-<div class=container>
-  <div class=row>
-    <div class="container_event_description">
-      <div class="col-xs-12 col-md-6">
-        <h1><%= @event.title %><h1>
-        <h4><% if @event.canceled_at %>
-          <%= "EVENT CANCELLED" %>
-        <% else %>
-          <% "" %>
-        <% end %></h4>
-        <h3><%= @event.game %></h3>
-        <h2>an event created by <%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></h2>
-        <h4> occuring the <%=@event.happen_at.strftime("%A %v") %></h4>
+<div class="wrapper">
+  <div class="container_show">
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
+        <div class="content_show">
 
-        <p> organiser spirit: </p>
-        <p><%= @event.description %></p>
+            <div class="col-xs-12 banner_head">
+              <h1><%= @event.title %></h1>
+                <h4><% if @event.canceled_at %>
+                <%= "EVENT CANCELLED" %>
+                <% else %>
+                <% "" %>
+                <% end %></h4>
+              <div class="event_game">
+                <p><%= @event.game %></p>
+              </div>
+              <div class="organiser">
+                <p> Created by <%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
+              </div>
+            </div>
 
-         <% if current_user == @event.user %>
-
-          <% end %>
-        <% if current_user != @event.user %>
-         <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :confirmed}), method: :post, class: "btn-btn-medium"%>
-        <% end %>
-
-        <% if current_user == @event.user %>
-        <%= link_to 'Cancel event', edit_event_path(@event), class: "btn-declined" %>
-        <% end %>
-        <%= link_to 'List of events', myevents_events_path(@event), class: "btn-declined" %>
-        <%= link_to 'Manage my events', myevents_events_path(@event), class: "btn-declined" %>
-      </div>
-    </div>
-      <div class="container_map_show">
-        <div class="col-xs-12 col-md-6">
-          <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=13&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="date">
+                <h4> occuring the <%=@event.happen_at.strftime("%A %v") %></h4>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="event_description">
+                <div class="col-xs-6">
+                <p> organiser spirit: </p>
+                </div>
+                <div class="col-xs-6">
+                <p><%= @event.description %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <% if current_user == @event.user %>
+              <% end %>
+              <% if current_user != @event.user %>
+              <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :confirmed}), method: :post, class: "btn-btn-medium"%>
+              <% end %>
+              <% if current_user == @event.user %>
+              <%= link_to 'Cancel event', edit_event_path(@event), class: "btn-declined" %>
+              <% end %>
+              <%= link_to 'List of events', myevents_events_path(@event), class: "btn-declined" %>
+              <%= link_to 'Manage my events', myevents_events_path(@event), class: "btn-declined" %>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="container_map_show">
+          <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=14&scale=false&size=300x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
+        </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
