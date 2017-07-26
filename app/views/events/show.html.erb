@@ -17,6 +17,7 @@
               </div>
               <div class="organiser">
                 <p> Created by <%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
+                <%= image_tag @event.user.facebook_picture_url, class: "avatar-large" %>
               </div>
             </div>
 
