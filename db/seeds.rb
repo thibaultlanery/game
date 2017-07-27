@@ -19,6 +19,7 @@ users = [
     address: "1, Avenue des Champs Elysées, 75008, Paris ",
     gender: "male",
     age: 30,
+    facebook_picture_url: "http://res.cloudinary.com/dcljc9muz/image/upload/v1501089028/24874723_wr10p6.jpg"
   },
   {
     firstname: "Anteo",
@@ -28,6 +29,7 @@ users = [
     address: "157 cours Balguerie Stuttenberg, 33000, Bordeaux",
     gender: "male",
     age: 21,
+    facebook_picture_url: "http://res.cloudinary.com/dcljc9muz/image/upload/v1501087708/24993995_bemgvh.jpg"
   },
   {
     firstname: "Julie",
@@ -37,6 +39,7 @@ users = [
     address: "5, rue Muller, 75018, Paris",
     gender: "female",
     age: 37,
+    facebook_picture_url: "http://res.cloudinary.com/dcljc9muz/image/upload/v1501087779/22370710_lgkuwm.jpg"
   },
   {
     firstname: "Antoine",
@@ -46,6 +49,7 @@ users = [
     address: "29, rue Diaz, 33000, Bordeaux",
     gender: "male",
     age: 29,
+    facebook_picture_url: "http://res.cloudinary.com/dcljc9muz/image/upload/v1501087896/24845658_izyopb.jpg"
   },
   {
     firstname: "Benjamin",
@@ -54,6 +58,7 @@ users = [
     password: "123456",
     gender: "male",
     age: 28,
+    facebook_picture_url: "http://res.cloudinary.com/dcljc9muz/image/upload/v1501087946/24872784_hwzeal.jpg"
   },
   {
     firstname: "Julia",
@@ -62,6 +67,7 @@ users = [
     password: "123456",
     gender: "female",
     age: 30,
+    facebook_picture_url: "http://res.cloudinary.com/dcljc9muz/image/upload/v1501087964/24210576_mtag7s.jpg"
   },
   {
     firstname: "Sibylle",
@@ -70,6 +76,7 @@ users = [
     password: "123456",
     gender: "female",
     age: 34,
+    facebook_picture_url: "http://res.cloudinary.com/dcljc9muz/image/upload/v1501087987/23135475_vyds11.jpg"
   }
 ]
 

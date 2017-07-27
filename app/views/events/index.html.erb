@@ -19,7 +19,10 @@
               <p><%= event.happen_at.strftime("%A %v") %></p>
             </div>
             <div class="card-user">
-              <%= event.user.firstname %>
+            <%= image_tag event.user.facebook_picture_url, class: "avatar-large" %>
+              <div class="name">
+                <%= event.user.firstname %>
+              </div>
             </div>
             <div class="card-description">
              <p><%= event.game.capitalize %></p>

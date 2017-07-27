@@ -12,11 +12,12 @@
                 <% else %>
                 <% "" %>
                 <% end %></h4>
-              <div class="event_game">
+              <div class="eventgame">
                 <p><%= @event.game %></p>
               </div>
               <div class="organiser">
                 <p> Created by <%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
+                <%= image_tag @event.user.facebook_picture_url, class: "avatar-large" %>
               </div>
             </div>
 
@@ -29,7 +30,7 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <div class="event_description">
+              <div class="eventdescription">
                 <div class="col-xs-6">
                 <p> organiser spirit: </p>
                 </div>
