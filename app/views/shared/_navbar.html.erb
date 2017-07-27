@@ -17,7 +17,10 @@
 
     <!-- Text link -->
     <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Contact</a> -->
-    <%= link_to "Back to search", events_path(@event), class: "navbar-wagon-item navbar-wagon-link"%>
+
+    <%= link_to events_path(@event) do %>
+    <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+    <% end %>
 
     <!-- Text link -->
     <%= link_to "Manage my events", myevents_events_path(@event), class: "navbar-wagon-item navbar-wagon-link"%>
