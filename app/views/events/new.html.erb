@@ -19,7 +19,7 @@
           <div class="row">
             <div class="col-xs-12 text-left">
               <h3>Title?</h3>
-              <%= f.input :title, input_html: { maxlength: 30 }, required: true, label: false %>
+              <%= f.input :title, input_html: { maxlength: 50 }, required: true, label: false %>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
           <div class="row">
             <div class="col-xs-12 text-left">
               <h3>Description of the event?</h3>
-              <%= f.input :description, label: false %>
+              <%= f.input :description, as: :text, label: false %>
             </div>
           </div>
         </div>
