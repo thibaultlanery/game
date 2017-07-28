@@ -17,7 +17,7 @@
 }
 
 .banner_head {
-height: 100px;
+height: 150px;
 margin: 0px;
 }
 
@@ -44,12 +44,19 @@ letter-spacing: 1,9px;
 
 .organiser {
 position: absolute;
-top: 10px;
-right: 10px;
+top: 20px;
+right: 15px;
+
+}
+.organiser p {
+  padding-top: 15px;
+}
+.avatar-show {
+margin-left: 25%;
 }
 
 .date {
-height: 40px;
+margin-left: 10px;
 
 }
 
