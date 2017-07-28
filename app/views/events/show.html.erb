@@ -14,9 +14,9 @@
               <div class="eventgame">
                 <p><%= @event.game %></p>
               </div>
-              <div class="organiser">
+              <div class="organiser text-center">
                 <%= image_tag @event.user.facebook_picture_url, class: "avatar-xl avatar-show" %>
-                <p> Created by <%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
+                <p><%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
               </div>
             </div>
           <div class="row">
@@ -38,6 +38,29 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="eventparticipation">
+                <% @event.participations.each do |participation| %>
+                  <div class="col-xs-4">
+                    <div class="badg-container">
+                    <p><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-large avatar-show" %></p>
+                      <% if participation.status == "interested" %>
+                        <div class="badg badg-blue"> </div>
+                      <% elsif participation.status == "confirmed" %>
+                        <div class="badg badg-green"> </div>
+                      <% elsif participation.status == "declined" %>
+                        <div class="badg badg-red"> </div>
+                      <% else %>
+                        <div class="badg badg-bordered">?</div>
+                      <% end %>
+                    <p><%= participation.user.firstname %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
 
           <% if @event.photos? %>
           <% @event.photos.each do |photo|%>
@@ -49,7 +72,7 @@
               <% if current_user == @event.user %>
               <% end %>
               <% if current_user != @event.user %>
-              <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :confirmed}), method: :post, class: "btn-btn-medium"%>
+              <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :interested}), method: :post, class: "btn-btn-medium"%>
               <% end %>
               <% if current_user == @event.user %>
               <%= link_to 'Update event', edit_event_path(@event), class: "btn-declined" %>
