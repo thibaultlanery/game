@@ -52,8 +52,6 @@ class EventsController < ApplicationController
     end
   end
 
-
-
   def show
     @event = Event.find(params[:id])
   end
@@ -73,6 +71,32 @@ class EventsController < ApplicationController
     #ne pas oublier de formater les dates et les noms de villes en capitalise
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+
+  def update
+  @event = Event.find(params[:id])
+  @event.update(event_params)
+  if @event.save
+      redirect_to event_path(@event), notice: "Event updated"
+      else
+      redirect_to event_path(@event), alert: "something went wrong"
+      end
+  end
+
+  def destroy
+   @event = Event.find(params[:id])
+    @event.canceled_at = Date.today
+      if @event.save
+      redirect_to event_path(@event), notice: "Event cancelled"
+      else
+      redirect_to event_path(@event), alert: "something went wrong"
+      end
+  end
+
+
   def myevents
     @events = current_user.events.where(canceled_at: nil)
     @cancelled_events = current_user.events.where.not(canceled_at: nil)
@@ -82,17 +106,6 @@ class EventsController < ApplicationController
     marker.lng event.longitude
     end
   end
-
-  def edit
-  @event = Event.find(params[:id])
-  @event.canceled_at = Date.today
-    if @event.save
-    redirect_to event_path(@event), notice: "Event cancelled"
-    else
-    redirect_to event_path(@event), alert: "something went wrong"
-    end
-  end
-
 
 
   def event_params
