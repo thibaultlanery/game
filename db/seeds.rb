@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Event.destroy_all
 User.destroy_all
-
+Participation.destroy_all
 
 users = [
 
@@ -144,4 +144,100 @@ events = [
 
 events.each { |event| Event.create!(event) }
 
+participations = [
+{
+user: User.second,
+event: Event.first,
+status: 1,
+},
+{
+user: User.third,
+event: Event.first,
+status: 1,
+},
+{
+user: User.fourth,
+event: Event.first,
+status: 1,
+},
+{
+user: User.fifth,
+event: Event.first,
+status: 1,
+},
+{
+user: User.find(6),
+event: Event.first,
+status: 1,
+},
+{
+user: User.find(7),
+event: Event.first,
+status: 1,
+},
+
+{
+user: User.second,
+event: Event.second,
+status: 1,
+},
+{
+user: User.third,
+event: Event.second,
+status: 1,
+},
+{
+user: User.fourth,
+event: Event.second,
+status: 1,
+},
+{
+user: User.fifth,
+event: Event.second,
+status: 1,
+},
+{
+user: User.find(6),
+event: Event.second,
+status: 1,
+},
+{
+user: User.find(7),
+event: Event.second,
+status: 1,
+},
+
+{
+user: User.second,
+event: Event.third,
+status: 1,
+},
+{
+user: User.third,
+event: Event.third,
+status: 1,
+},
+{
+user: User.fourth,
+event: Event.third,
+status: 1,
+},
+{
+user: User.fifth,
+event: Event.third,
+status: 1,
+},
+{
+user: User.find(6),
+event: Event.third,
+status: 1,
+},
+{
+user: User.find(7),
+event: Event.third,
+status: 1,
+}
+]
+
+participations.each { |participation| Participation.create!(participation) }
 
