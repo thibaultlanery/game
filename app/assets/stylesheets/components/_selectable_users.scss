@@ -2,7 +2,10 @@
 //   position: relative;
 // }
 
-// .selectable_users {
+ .mcs-horizontal-example {
+  overflow-x: auto;
+  white-space: nowrap;
+
 //   font-size: 12px;
 //   padding-top: 10px;
 //   margin-bottom: 20px;
@@ -28,4 +31,8 @@
 //   p {
 //     margin: 0 16px 11px;
 //   }
-// }
+}
+
+.item{
+  display: inline-block;
+}

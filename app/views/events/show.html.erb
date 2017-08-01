@@ -40,37 +40,6 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <div class="eventparticipation">
-              <div class="selectable_users" id="myscroll-user">
-                <% @event.participations.each do |participation| %>
-                  <div class="col-xs-2">
-                    <div class="badg-container">
-                    <p><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show" %></p>
-                      <% if participation.status == "interested" %>
-                        <div class="badg badg-blue"> </div>
-                      <% elsif participation.status == "confirmed" %>
-                        <div class="badg badg-green"> </div>
-                      <% elsif participation.status == "declined" %>
-                        <div class="badg badg-red"> </div>
-                      <% else %>
-                        <div class="badg badg-bordered">?</div>
-                      <% end %>
-                    <p><%= participation.user.firstname %></p>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-              </div>
-            </div>
-          </div>
-
-          <% if @event.photos? %>
-          <% @event.photos.each do |photo|%>
-          <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail" %>
-            <% end %>
-          <% end %>
-          <div class="row">
-            <div class="col-xs-12">
               <% if current_user == @event.user %>
               <% end %>
               <% if current_user != @event.user %>
@@ -90,8 +59,46 @@
         <div class="container_map_show">
           <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=14&scale=false&size=300x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
         </div>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="eventparticipation">
+            <div class="mcs-horizontal-example" >
+              <div class="item">
+                <% @event.participations.each do |participation| %>
+                <div class="col-xs-2">
+                  <div class="badg-container">
+                  <p><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show" %></p>
+                    <% if participation.status == "interested" %>
+                      <div class="badg badg-blue"> </div>
+                    <% elsif participation.status == "confirmed" %>
+                      <div class="badg badg-green"> </div>
+                    <% elsif participation.status == "declined" %>
+                      <div class="badg badg-red"> </div>
+                    <% else %>
+                      <div class="badg badg-bordered">?</div>
+                    <% end %>
+                  <p><%= participation.user.firstname %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="mcs-horizontal-example" >
+      <div class="item">
+        <% if @event.photos? %>
+        <% @event.photos.each do |photo|%>
+        <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    </div>
   </div>
-</div>
