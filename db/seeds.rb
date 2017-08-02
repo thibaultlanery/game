@@ -89,7 +89,7 @@ events = [
     address: "5, rue Muller, 75018, Paris, France",
     happen_at: Date.today + 2,
     due_at: Date.today + 1,
-    description: "Venez Jouer a Jungle les amis c'est si rigolo!",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos possimus amet nam mollitia ut eveniet, similique est quibusdam illo libero, quas maxime magni quasi exercitationem praesentium nihil, modi veritatis iure!",
   },
     {
     game: "Jeu de dé",
@@ -97,7 +97,7 @@ events = [
     address: "88, rue de la folie méricourt, 75011, Paris, France",
     happen_at: Date.today + 7,
     due_at: Date.today + 5,
-    description: "On reprends les memes et on recommence?? un bon vieux jeux de dés!",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem quibusdam soluta eos amet dolore laudantium optio id saepe voluptates, atque placeat vitae ea reiciendis aspernatur explicabo harum voluptatibus cum quos.",
   },
    {
     game: "Bixit",

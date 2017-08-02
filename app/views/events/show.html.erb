@@ -1,6 +1,6 @@
 
 <div class="wrapper">
-  <div class="container_show">
+  <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-8">
         <div class="content_show">
@@ -55,22 +55,25 @@
           </div>
         </div>
       </div>
-      <div class="col-xs-12 col-md-4">
-        <div class="container_map_show">
-          <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=14&scale=false&size=300x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
-        </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="container_map_show">
+        <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=14&scale=false&size=300x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
       </div>
-      </div>
-
+    </div>
+  </div>
+</div>
+  <div class="container">
+    <div class="content_show">
       <div class="row">
         <div class="col-xs-12">
-          <div class="eventparticipation">
-            <div class="mcs-horizontal-example" >
-              <div class="item">
-                <% @event.participations.each do |participation| %>
-                <div class="col-xs-2">
+          <div class="mcs-horizontal-example" >
+
+              <ul class="list-inline">
+              <% @event.participations.each do |participation| %>
+                <li>
+                <div class="card">
                   <div class="badg-container">
-                  <p><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show" %></p>
+                    <p><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show" %></p>
                     <% if participation.status == "interested" %>
                       <div class="badg badg-blue"> </div>
                     <% elsif participation.status == "confirmed" %>
@@ -82,23 +85,27 @@
                     <% end %>
                   <p><%= participation.user.firstname %></p>
                   </div>
-                </div>
+                  </div>
+                </li>
               <% end %>
-            </div>
+
           </div>
         </div>
       </div>
     </div>
-
-    <div class="mcs-horizontal-example" >
-      <div class="item">
-        <% if @event.photos? %>
-        <% @event.photos.each do |photo|%>
-        <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail" %>
+  </div>
+  <div class="container">
+    <div class="content_show">
+      <div class="mcs-horizontal-example" >
+        <div class="item">
+          <% if @event.photos? %>
+          <% @event.photos.each do |photo|%>
+          <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail" %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
-
-    </div>
   </div>
+</div>
+
