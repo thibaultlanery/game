@@ -57,12 +57,12 @@
 
 
 
-      <div class="mcs-horizontal-example" >
-        <div class="item">
+          <div class="mcs-horizontal-example" >
+            <div class="item" >
               <ul class="list-inline">
                 <% @event.participations.each do |participation| %>
                 <li>
-                  <div class="mini-card-user text-center">
+                  <div class="mini-card-user ">
                     <div class="badg-container">
                       <p><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show" %></p>
                       <% if participation.status == "interested" %>
@@ -75,28 +75,32 @@
                         <div class="badg badg-bordered">?</div>
                       <% end %>
                        </div>
+                      <div class="user-infos">
                         <p><%= participation.user.firstname %></p>
                         <p><%= participation.user.gender %></p>
                         <p><%= participation.user.age %></p>
-                       <!--  <p><%= participation.user.address %></p> -->
+                        <p><%= participation.user.address %></p>
+                      </div>
                     </div>
                     </li>
                 <% end %>
               </ul>
-
-            </div>
+           </div>
           </div>
 
 
 
         <div class="mcs-horizontal-example">
-          <div class="item" ">
+            <div class="item" >
+            <ul class="list-inline">
             <% if @event.photos? %>
             <% @event.photos.each do |photo|%>
+            <li>
               <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail"  %>
             <% end %>
+            </li>
           <% end %>
-
+          </ul>
           </div>
         </div>
 
