@@ -1,4 +1,10 @@
 
+<div class="wrapper">
+  <div class="show-layout">
+  <div class="testgrid1">
+    <div class="container_show">
+        <div class="row">
+          <div class="col-xs-12 col-md-8">
             <div class="content_show">
                 <div class="col-xs-12 banner_head">
                   <h1><%= @event.title %></h1>
@@ -50,19 +56,29 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="testgrid2">
+        <div class="col-xs-12 col-sm-4">
+            <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=15&scale=false&size=350x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
+        </div>
         </div>
 
 
-            <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=15&scale=false&size=400x250&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
 
+    <div class="container_show">
+      <div class="content_show">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="mcs-horizontal-example" >
 
-
-      <div class="mcs-horizontal-example" >
-        <div class="item">
-              <ul class="list-inline">
+                <ul class="list-inline">
                 <% @event.participations.each do |participation| %>
-                <li>
-                  <div class="mini-card-user text-center">
+                  <li>
+                  <div class="card">
                     <div class="badg-container">
                       <p><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show" %></p>
                       <% if participation.status == "interested" %>
@@ -74,30 +90,29 @@
                       <% else %>
                         <div class="badg badg-bordered">?</div>
                       <% end %>
-                       </div>
-                        <p><%= participation.user.firstname %></p>
-                        <p><%= participation.user.gender %></p>
-                        <p><%= participation.user.age %></p>
-                       <!--  <p><%= participation.user.address %></p> -->
+                    <p><%= participation.user.firstname %></p>
                     </div>
-                    </li>
+                    </div>
+                  </li>
                 <% end %>
-              </ul>
 
             </div>
           </div>
-
-
-
-        <div class="mcs-horizontal-example">
-          <div class="item" ">
+        </div>
+      </div>
+    </div>
+    <div class="container_show">
+      <div class="content_show">
+        <div class="mcs-horizontal-example" >
+          <div class="item">
             <% if @event.photos? %>
             <% @event.photos.each do |photo|%>
-              <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail"  %>
+            <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail" %>
+              <% end %>
             <% end %>
-          <% end %>
-
           </div>
         </div>
-
-
+      </div>
+    </div>
+  </div>
+</div>
