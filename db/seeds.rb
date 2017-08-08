@@ -101,7 +101,7 @@ events = [
   },
    {
     game: "Bixit",
-    user: User.third,
+    user: User.first,
     address: "8, passage bradi, 75011, Paris, France",
     happen_at: Date.today + 5,
     due_at: Date.today + 3,

@@ -36,16 +36,15 @@
               </div>
               <div class="row">
                 <div class="col-xs-12">
-                  <% if current_user == @event.user %>
-                  <% end %>
+
                   <% if current_user != @event.user %>
                   <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :interested}), method: :post, class: "btn-btn-medium"%>
                   <% end %>
                   <% if current_user == @event.user %>
-                  <%= link_to 'Update event', edit_event_path(@event), class: "btn-declined" %>
-                  <%= link_to 'delete event', event_path(@event), method: :delete, class: "btn-declined" %>
-                  <%= link_to 'List of events', myevents_events_path(@event), class: "btn-declined" %>
-                  <%= link_to 'Manage my events', myevents_events_path(@event), class: "btn-declined" %>
+                    <%= link_to 'Update event', edit_event_path(@event), class: "btn btn-outline-primary btn-sm " %>
+                    <%= link_to 'delete event', event_path(@event), method: :delete, class: "btn btn-outline-primary btn-sm" %>
+                    <%= link_to 'List of events', myevents_events_path(@event), class: "btn btn-outline-primary btn-sm" %>
+                    <%= link_to 'Manage my events', myevents_events_path(@event), class: "btn btn-outline-primary btn-sm" %>
                   <% end %>
                 </div>
               </div>
@@ -80,7 +79,16 @@
                         <p><%= participation.user.gender %></p>
                         <p><%= participation.user.age %></p>
                         <p><%= participation.user.address %></p>
+                        <p><%= participation.id %></p>
+                         <p><%= participation.status %></p>
                       </div>
+
+                      <div class="user-selection">
+                      <% if current_user == @event.user %>
+                        <%= link_to "ok", participation_path(participation, participation: {status: :confirmed}), method: :patch, class: "btn btn-outline-primary btn-sm " %>
+                        <%= link_to "ko", participation_path(participation, participation: {status: :declined}), method: :patch, class: "btn btn-outline-primary btn-sm "  %>
+                      <% end %>
+                       </div>
                     </div>
                     </li>
                 <% end %>
@@ -91,16 +99,16 @@
 
 
         <div class="mcs-horizontal-example">
-            <div class="item" >
+          <div class="item" >
             <ul class="list-inline">
-            <% if @event.photos? %>
-            <% @event.photos.each do |photo|%>
-            <li>
-              <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail"  %>
-            <% end %>
-            </li>
-          <% end %>
-          </ul>
+              <% if @event.photos? %>
+                <% @event.photos.each do |photo|%>
+                  <li>
+                    <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail"  %>
+                  <% end %>
+                  </li>
+                <% end %>
+            </ul>
           </div>
         </div>
 

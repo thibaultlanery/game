@@ -10,6 +10,7 @@
   height: 300px;
   width: 240px;
   background-color: white;
+  display: flex;
 
   // overflow-wrap: break-word;
 }
@@ -36,7 +37,9 @@
 
 .user-infos p:first-child {
   color: white;
-  background-color: #7F95D1;
+  // background-color: #7F95D1;
+  background-color: #e50064;
+  background-color: #302683;
   width: 90%;
   border-top-right-radius: 5px;
   letter-spacing: 1,5px;
@@ -45,3 +48,8 @@
       margin-left: -10px;
 }
 
+.user-selection {
+position: absolute;
+bottom: 10px;
+justify-content: space-between;
+}
