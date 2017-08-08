@@ -13,6 +13,7 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+
 //= require jquery-ui
 //= require jquery-ui/widgets/datepicker
 //= require_tree .
@@ -23,3 +24,4 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
+//= require jquery.mCustomScrollbar

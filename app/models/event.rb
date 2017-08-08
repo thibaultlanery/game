@@ -11,10 +11,10 @@ class Event < ApplicationRecord
 geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  has_attachments :photos, maximum: 5
+  has_attachments :photos, maximum:4
 
 def self.include_address(location)
-  Event.near(location, 50)
+  Event.near(location, 1000)
 end
 
 def self.exclude_user(user)

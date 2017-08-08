@@ -2,17 +2,39 @@
 
 // background-color: #f6f7f8;
 }
+
+.show-layout {
+  display: grid;
+  grid-template-columns:700px 1fr 1fr 1fr 1fr ;
+  grid-template-rows: 40% 30% 30%;
+}
+
+.testgrid1 {
+  grid-row: 1 / span 1;
+}
+
+.testgrid2 {
+grid-row: 1 / span 4;
+}
+
+.testgrid3 {
+grid-row: 2 / span 1;
+
+}
+
 .container_show {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: 48px;
     margin-left: 48px;
+    margin-bottom: 25px;
     position: relative;
 
 }
 .content_show {
   font-family: 'Raleway', sans-serif;
   background-color: white;
+
 
 }
 
@@ -51,9 +73,7 @@ right: 15px;
 .organiser p {
   padding-top: 15px;
 }
-.avatar-show {
-margin-left: 25%;
-}
+
 
 .date {
 margin-left: 10px;
@@ -61,7 +81,14 @@ margin-left: 10px;
 }
 
 .eventdescription {
-padding: 50px;
+
 
 }
 
+.eventparticipation {
+
+}
+
+.google_map {
+
+}
