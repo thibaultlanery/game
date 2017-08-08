@@ -85,8 +85,8 @@
 
                       <div class="user-selection">
                       <% if current_user == @event.user %>
-                        <%= link_to "ok", participation_path(participation, participation: {status: :confirmed}), method: :patch, class: "btn btn-outline-primary btn-sm " %>
-                        <%= link_to "ko", participation_path(participation, participation: {status: :declined}), method: :patch, class: "btn btn-outline-primary btn-sm "  %>
+                        <%= link_to "send confirmation", participation_path(participation, participation: {status: :confirmed}), method: :patch, class: "btn btn-outline-primary btn-sm " %>
+                        <%= link_to "another time!", participation_path(participation, participation: {status: :declined}), method: :patch, class: "btn btn-outline-primary btn-sm "  %>
                       <% end %>
                        </div>
                     </div>
