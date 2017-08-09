@@ -16,7 +16,7 @@
 
 //= require jquery-ui
 //= require jquery-ui/widgets/datepicker
-//= require_tree .
+
 //= require underscore
 //= require gmaps/google
 //= require bootstrap
@@ -25,3 +25,4 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require jquery.mCustomScrollbar
+//= require_tree .
