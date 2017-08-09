@@ -11,21 +11,19 @@
 // about supported directives.
 //
 
-//= require gmaps/google
+
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
-
 //= require jquery-ui
 //= require jquery-ui/widgets/datepicker
-
 //= require underscore
-
+//= require jquery.mCustomScrollbar
 //= require bootstrap
 
 //= require jquery-fileupload/basic
+//= require gmaps/google
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
-//= require jquery.mCustomScrollbar
 
 //= require_tree .
