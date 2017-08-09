@@ -1,115 +1,116 @@
-
-            <div class="content_show">
-                <div class="col-xs-12 banner_head">
-                  <h1><%= @event.title %></h1>
-                    <h4><% if @event.canceled_at %>
-                    <%= "EVENT CANCELLED" %>
-                    <% else %>
-                    <% "" %>
-                    <% end %></h4>
-                  <div class="eventgame">
-                    <p><%= @event.game %></p>
-                  </div>
-                  <div class="organiser text-center">
-                    <%= image_tag @event.user.facebook_picture_url, class: "avatar-xl avatar-show" %>
-                    <p><%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
-                  </div>
-                </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="date">
-                    <h4><%=@event.happen_at.strftime("%A %v") %></h4>
-                  </div>
-                </div>
+<div class="wrapper">
+  <div class="container">
+    <div class="show-layout">
+      <div class="testgrid1">
+        <div class="content_show">
+            <div class="col-xs-12 banner_head">
+              <h1><%= @event.title %></h1>
+                <h4><% if @event.canceled_at %>
+                <%= "EVENT CANCELLED" %>
+                <% else %>
+                <% "" %>
+                <% end %></h4>
+              <div class="eventgame">
+                <p><%= @event.game %></p>
               </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="eventdescription">
-                    <div class="col-xs-12 col-md-6">
-                    <p> organiser spirit: </p>
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                    <p><%= @event.description %></p>
-                    </div>
-                  </div>
-                </div>
+              <div class="organiser text-center">
+                <%= image_tag @event.user.facebook_picture_url, class: "avatar-xl avatar-show" %>
+                <p><%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
               </div>
-              <div class="row">
-                <div class="col-xs-12">
-
-                  <% if current_user != @event.user %>
-                  <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :interested}), method: :post, class: "btn-btn-medium"%>
-                  <% end %>
-                  <% if current_user == @event.user %>
-                    <%= link_to 'Update event', edit_event_path(@event), class: "btn btn-outline-primary btn-sm " %>
-                    <%= link_to 'delete event', event_path(@event), method: :delete, class: "btn btn-outline-primary btn-sm" %>
-                    <%= link_to 'List of events', myevents_events_path(@event), class: "btn btn-outline-primary btn-sm" %>
-                    <%= link_to 'Manage my events', myevents_events_path(@event), class: "btn btn-outline-primary btn-sm" %>
-                  <% end %>
+            </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="date">
+                <h4><%=@event.happen_at.strftime("%A %v") %></h4>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="eventdescription">
+                <div class="col-xs-12 col-md-6">
+                <p> organiser spirit: </p>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                <p><%= @event.description %></p>
                 </div>
               </div>
             </div>
-        </div>
-
-
-            <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=15&scale=false&size=400x250&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
-
-
-
-          <div class="mcs-horizontal-example" >
-            <div class="item" >
-              <ul class="list-inline">
-                <% @event.participations.each do |participation| %>
-                <li>
-                  <div class="mini-card-user ">
-                    <div class="badg-container">
-                      <p><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show" %></p>
-                      <% if participation.status == "interested" %>
-                        <div class="badg badg-blue"> </div>
-                      <% elsif participation.status == "confirmed" %>
-                        <div class="badg badg-green"> </div>
-                      <% elsif participation.status == "declined" %>
-                        <div class="badg badg-red"> </div>
-                      <% else %>
-                        <div class="badg badg-bordered">?</div>
-                      <% end %>
-                       </div>
-                      <div class="user-infos">
-                        <p><%= participation.user.firstname %></p>
-                        <p><%= participation.user.gender %></p>
-                        <p><%= participation.user.age %></p>
-                        <p><%= participation.user.address %></p>
-                        <p><%= participation.id %></p>
-                         <p><%= participation.status %></p>
-                      </div>
-
-                      <div class="user-selection">
-                      <% if current_user == @event.user %>
-                        <%= link_to "send confirmation", participation_path(participation, participation: {status: :confirmed}), method: :patch, class: "btn btn-outline-primary btn-sm " %>
-                        <%= link_to "another time!", participation_path(participation, participation: {status: :declined}), method: :patch, class: "btn btn-outline-primary btn-sm "  %>
-                      <% end %>
-                       </div>
-                    </div>
-                    </li>
-                <% end %>
-              </ul>
-           </div>
           </div>
-
-
-
-        <div class="mcs-horizontal-example">
-          <div class="item" >
-            <ul class="list-inline">
-              <% if @event.photos? %>
-                <% @event.photos.each do |photo|%>
-                  <li>
-                    <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail"  %>
+          <div class="row">
+            <div class="col-xs-12">
+              <% if current_user != @event.user %>
+              <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :interested}), method: :post, class: "btn-btn-medium"%>
+              <% end %>
+              <% if current_user == @event.user %>
+                <%= link_to 'Update event', edit_event_path(@event), class: "btn btn-outline-primary btn-sm " %>
+                <%= link_to 'delete event', event_path(@event), method: :delete, class: "btn btn-outline-primary btn-sm" %>
+                <%= link_to 'List of events', myevents_events_path(@event), class: "btn btn-outline-primary btn-sm" %>
+                <%= link_to 'Manage my events', myevents_events_path(@event), class: "btn btn-outline-primary btn-sm" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="testgrid2">
+        <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=15&scale=false&size=450x250&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
+    </div>
+    <div class="testgrid3">
+      <div class="mcs-horizontal-example" >
+        <div class="item" >
+          <ul class="list-inline">
+            <% @event.participations.each do |participation| %>
+            <li>
+              <div class="mini-card-user ">
+                <div class="badg-container">
+                  <p><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show" %></p>
+                  <% if participation.status == "interested" %>
+                    <div class="badg badg-blue"> </div>
+                  <% elsif participation.status == "confirmed" %>
+                    <div class="badg badg-green"> </div>
+                  <% elsif participation.status == "declined" %>
+                    <div class="badg badg-red"> </div>
+                  <% else %>
+                    <div class="badg badg-bordered">?</div>
                   <% end %>
-                  </li>
+                   </div>
+                  <div class="user-infos">
+                    <p><%= participation.user.firstname %></p>
+                    <p><%= participation.user.gender %></p>
+                    <p><%= participation.user.age %></p>
+                    <p><%= participation.user.address %></p>
+                    <p><%= participation.id %></p>
+                     <p><%= participation.status %></p>
+                  </div>
+
+                  <div class="user-selection">
+                  <% if current_user == @event.user %>
+                    <%= link_to "send confirmation", participation_path(participation, participation: {status: :confirmed}), method: :patch, class: "btn btn-outline-primary btn-sm " %>
+                    <%= link_to "another time!", participation_path(participation, participation: {status: :declined}), method: :patch, class: "btn btn-outline-primary btn-sm "  %>
+                  <% end %>
+                   </div>
+                </div>
+                </li>
+            <% end %>
+          </ul>
+       </div>
+      </div>
+    </div>
+    <div class="testgrid4">
+      <div class="mcs-horizontal-example">
+        <div class="item" >
+          <ul class="list-inline">
+            <% if @event.photos? %>
+              <% @event.photos.each do |photo|%>
+                <li>
+                  <%= cl_image_tag photo.path, width: 145, height: 145, crop: :fill, class: "img-thumbnail"  %>
                 <% end %>
-            </ul>
-          </div>
+                </li>
+              <% end %>
+          </ul>
         </div>
-
-
+      </div>
+    </div>
+  </div>
+</div>
+</div>
