@@ -6,3 +6,7 @@
 .mcs-horizontal-example .item {
 display: inline-block;
 }
+
+.mCSB_horizontal.mCSB_inside > .mCSB_container {
+  margin: 0px;
+}
