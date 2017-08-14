@@ -11,7 +11,7 @@
       },
       keyboard:{
         enable: true
-      },
+      }
     });
   });
 })(jQuery);
