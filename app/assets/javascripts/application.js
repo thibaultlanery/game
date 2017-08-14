@@ -22,8 +22,9 @@
 //= require bootstrap
 
 //= require jquery-fileupload/basic
-//= require gmaps/google
+
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
+//= require gmaps/google
 
 //= require_tree .
