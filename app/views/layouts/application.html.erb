@@ -22,7 +22,8 @@
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
   <%= yield %>
-  <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+
+
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 
@@ -32,12 +33,13 @@
 
  <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
-<%= cloudinary_js_config %>
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 
+<%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+
+
+<%= cloudinary_js_config %>
 
   <%= yield(:after_js) %>
   </body>
