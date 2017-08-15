@@ -18,7 +18,7 @@
 //= require jquery-ui
 //= require jquery-ui/widgets/datepicker
 //= require jquery-fileupload/basic
-//= require jquery.mCustomScrollbar
+
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require underscore
