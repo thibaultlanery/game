@@ -114,3 +114,13 @@ padding: 7%;
 // max-height: 100%;
 // max-width: 100%;
 }
+
+.scrollmenu {
+
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.scrollmenu .item {
+display: inline-block;
+}
