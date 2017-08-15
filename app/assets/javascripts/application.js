@@ -23,10 +23,6 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require gmaps/google
-
-
-
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
-
 //= require_tree .
