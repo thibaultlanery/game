@@ -17,14 +17,16 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery-ui/widgets/datepicker
-//= require underscore
+//= require jquery-fileupload/basic
 //= require jquery.mCustomScrollbar
 //= require bootstrap
+//= require bootstrap-sprockets
+//= require underscore
+//= require gmaps/google
 
-//= require jquery-fileupload/basic
+
 
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
-//= require gmaps/google
 
 //= require_tree .

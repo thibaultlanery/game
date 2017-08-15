@@ -1,8 +1,8 @@
 (function($){
-  $(window).on("load",function(){
+  $(document).ready(function() {
     $(".mcs-horizontal-example").mCustomScrollbar({
       axis:"x",
-      theme:"dark-3",
+      theme:"dark-thick",
       mouseWheel:{
         enable: true
       },
