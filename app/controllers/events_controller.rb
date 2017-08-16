@@ -102,9 +102,12 @@ class EventsController < ApplicationController
     @events = current_user.events.where(canceled_at: nil)
     @cancelled_events = current_user.events.where.not(canceled_at: nil)
     @participations = current_user.participations
-    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
-    marker.lat event.latitude
-    marker.lng event.longitude
+    @participations_loc = current_user.participations.map do |participation, event| participation.event end
+    @coordonates = @events + @cancelled_events + @participations_loc
+    @hash = Gmaps4rails.build_markers(@coordonates) do |coordonate, marker|
+    marker.lat coordonate.latitude
+    marker.lng coordonate.longitude
+    marker.title coordonate.title
     end
   end
 

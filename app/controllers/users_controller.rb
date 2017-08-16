@@ -6,3 +6,4 @@ class UsersController < ApplicationController
   end
 
 end
+#ajout dans le schema userpreference user status enum userdescription(txt)

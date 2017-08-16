@@ -32,19 +32,17 @@ niveau de jeux echelle horizontale
 <div class="wrapper">
   <div class="container">
     <div class="tab-content" id="yourevent">
-      <div class="user-show-layout text-center">
-        <div class="user-infos">
-          <p><%= @user.firstname %></p>
+      <div class="user-show-layout">
+        <div class="user-info">
+          <h1><%= @user.firstname %></h1>
           <p><%=@user.age%> year old</p>
           <p><%=@user.gender%></p>
-        </div>
-        <div class="user-infos2">
           <p><%= @user.email %></p>
-          <p><%=@user.created_at %></p>
+          <p>member since: <%=@user.created_at.strftime("%d %B %Y") %></p>
           <p><%=@user.address %></p>
         </div>
         <div class="user-pic">
-          <p><%= cl_image_tag @user.facebook_picture_url, class: "avatar-xl"%></p>
+          <p><%= cl_image_tag @user.facebook_picture_url, class: "avatar-mega-xl"%></p>
         </div>
       </div>
     </div>

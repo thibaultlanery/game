@@ -19,4 +19,10 @@ function initMap() {
     },
     fullscreenControl: true
   });
+
+  var contentString = "<%= coordonate.title %>";
+
+  var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
 }
