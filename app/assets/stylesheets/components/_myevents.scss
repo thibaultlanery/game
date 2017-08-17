@@ -29,14 +29,14 @@ text-align: center;
 
 .result-myevents {
 // background-color:#f6f7f8;
-max-width: 750px;
+max-width: 850px;
 padding-top: 15px;
 text-align: center;
 
 }
 
 .left_side_myevents {
-width: 50%;
+width: 65%;
 display: flex;
 align-items: center;
 height: 100%;
@@ -60,7 +60,7 @@ height: 100%;
 .myevents-location {
     display: block;
     position: fixed;
-    width: calc(100% - 750px);
+    width: calc(100% - 850px);
     height: calc(100% - 50px);
     top: 110px;
     right: 0;
