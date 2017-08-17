@@ -15,12 +15,13 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require jquery-ui
 //= require jquery-ui/widgets/datepicker
 //= require jquery-fileupload/basic
 
 //= require bootstrap
-//= require bootstrap-sprockets
+
 //= require underscore
 //= require gmaps/google
 //= require cloudinary/jquery.cloudinary
