@@ -19,4 +19,6 @@ function initMap() {
     },
     fullscreenControl: true
   });
+
+  
 }

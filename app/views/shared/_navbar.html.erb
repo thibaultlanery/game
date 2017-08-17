@@ -41,7 +41,7 @@
       <%= image_tag avatar_url, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
      <!--    <img src="http://placehold.it/50x50" class="avatar-large dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Profile</a></li>
+          <li><%= link_to("Profile", user_path(current_user)) %></li>
           <li><%= link_to "Manage my events", myevents_events_path(@event)%></li>
           <li><%= link_to('Logout', destroy_user_session_path, method: :delete)%></li>
         </ul>
@@ -56,17 +56,21 @@
     </div>
 
     <!-- Button (call-to-action) -->
-    <a href="" class="navbar-wagon-item navbar-wagon-button btn">Create event</a>
+    <%= link_to "Create event", new_event_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
 
   <!-- Dropdown appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
+    <% if user_signed_in? %>
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li><%= link_to "Profile", user_path(current_user) %></li>
+        <li><%= link_to "Manage my events", myevents_events_path(@event)%></li>
+        <li><%= link_to('Logout', destroy_user_session_path, method: :delete)%></li>
+        <% else %>
+        <li><%= link_to('Login', new_user_session_path)  %></li>
+        <% end %>
       </ul>
     </div>
   </div>

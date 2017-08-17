@@ -6,8 +6,11 @@
           <a class="tab active" data-target="#yourevent">
             <p>Your events</p>
           </a>
-          <a class="tab" data-target="#participation">
-            <p>Your participations</p>
+          <a class="tab" data-target="#participations_confirmed">
+            <p>Coming participations</p>
+          </a>
+          <a class="tab" data-target="#participations_requests">
+            <p>Pending request</p>
           </a>
           <a class="tab" data-target="#cancelled_event">
             <p>Deleted events</p>
@@ -43,23 +46,44 @@
             </div>
           <% end %>
         </div>
-      <div class="tab-content hidden" id="participation">
-            <% @participations.each do |participation, event| %>
+      <div class="tab-content hidden" id="participations_confirmed">
+            <% @participations_confirmed.each do | participations_confirmed, event| %>
               <div class="col-xs-12 col-md-6">
                 <div class="card ">
                   <div class="card-category">
-                    <p><%= participation.event.happen_at.strftime("%A %v") %></p>
+                    <p><%=  participations_confirmed.event.happen_at.strftime("%A %v") %></p>
                   </div>
                   <div class="card-user">
-                    <%= participation.event.user.firstname %>
+                    <%=  participations_confirmed.event.user.firstname %>
                   </div>
                   <div class="card-description">
-                   <p><%= participation.event.game.capitalize %></p>
+                   <p><%=  participations_confirmed.event.game.capitalize %></p>
                   </div>
                   <div class="card-address">
-                   <p><%= participation.event.address %></p>
+                   <p><%=  participations_confirmed.event.address %></p>
                   </div>
-                   <%= link_to "", event_path(participation.event), class: "card-link" %>
+                   <%= link_to "", event_path(participations_confirmed.event), class: "card-link" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="tab-content hidden" id="participations_requests">
+            <% @participation_demand.each do | participation_demand, event| %>
+              <div class="col-xs-12 col-md-6">
+                <div class="card ">
+                  <div class="card-category">
+                    <p><%= participation_demand.event.happen_at.strftime("%A %v") %></p>
+                  </div>
+                  <div class="card-user">
+                    <%=  participation_demand.event.user.firstname %>
+                  </div>
+                  <div class="card-description">
+                   <p><%= participation_demand.event.game.capitalize %></p>
+                  </div>
+                  <div class="card-address">
+                   <p><%= participation_demand.event.address %></p>
+                  </div>
+                   <%= link_to "", event_path(participation_demand.event), class: "card-link" %>
                 </div>
               </div>
             <% end %>

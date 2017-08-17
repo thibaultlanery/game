@@ -1,13 +1,56 @@
+
+  <div class="container">
+
+
+</div>
+<!-- sous forme de tabs?
+evaluation du user
+descriptif dans le container (similaire a la show event)
+jeux preferes sous forme de card illustrée
+amis sous forme de list inline fb
+photos
+niveau de jeux echelle horizontale
+-->
+
+<div class="navbar_myevents">
+    <div class="left_side_myevents">
+      <div class="tabs">
+        <a class="tab active" data-target="#yourevent">
+          <p>Your informations</p>
+        </a>
+        <a class="tab" data-target="#participation">
+          <p>Your friends</p>
+        </a>
+        <a class="tab" data-target="#cancelled_event">
+          <p>Your photos</p>
+        </a>
+      </div>
+    </div>
+    <div class="right_side_myevents">
+    </div>
+</div>
 <div class="wrapper">
   <div class="container">
-    <div class="user-show-layout text-center">
-      <p><%= @user.firstname %></p>
-      <p><%= @user.email %></p>
-      <p><%=@user.created_at %></p>
-      <p><%=@user.address %></p>
-      <p><%=@user.age%></p>
-      <p><%=@user.gender%></p>
-      <p><%= cl_image_tag @user.facebook_picture_url, class: "avatar-xl"%></p>
+    <div class="tab-content" id="yourevent">
+      <div class="user-show-layout">
+        <div class="user-info">
+          <h1><%= @user.firstname %></h1>
+          <p><%=@user.age%> year old</p>
+          <p><%=@user.gender%></p>
+          <p><%= @user.email %></p>
+          <p>member since: <%=@user.created_at.strftime("%d %B %Y") %></p>
+          <p><%=@user.address %></p>
+        </div>
+        <div class="user-pic">
+          <p><%= cl_image_tag @user.facebook_picture_url, class: "avatar-mega-xl"%></p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content hidden" id="participation">
+
+    </div>
+    <div class="tab-content hidden" id="cancelled_event">
+
     </div>
   </div>
 </div>
