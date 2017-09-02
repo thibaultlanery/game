@@ -16,5 +16,10 @@ root to: "pages#home"
     end
   end
 
-resources :users, only: [:show]
+resources :users, only: [:show] do
+  member do
+    resources :category_preferences, only: [:update, :create]
+    end
+  end
+
 end

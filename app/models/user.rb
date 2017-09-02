@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :category_preferences
+  has_many :categories, through: :category_preferences
   has_many :events, dependent: :destroy
   has_many :participations, dependent: :destroy
   validates :gender, presence: true

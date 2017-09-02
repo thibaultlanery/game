@@ -44,7 +44,31 @@ niveau de jeux echelle horizontale
         <div class="user-pic">
           <p><%= cl_image_tag @user.facebook_picture_url, class: "avatar-mega-xl"%></p>
         </div>
+
       </div>
+    <div class="user-show-layout">
+    <%= simple_form_for :category_preferences, url: category_preferences_path do |f| %>
+        <%= f.fields_for :category_preferences do |uf| %>
+          <% Category.all.each do |category| %>
+            <label>
+              <%= uf.check_box :category, { multiple: true }, category.id, nil %>
+              <p><%= category.name %></p>
+            </label>
+          <% end %>
+           <%= f.submit  %>
+        <% end %>
+       <% end %>
+      </div>
+
+<!--
+doit aller chercher les category les charger dans le simple form et la selection cree une category preference -->
+
+      <% if @category_preferences.present? %>
+      <% @category_preferences.each do |category_preference| %>
+        <p><%= category_preference.category.name %></p>
+        <% end %>
+      <% end %>
+    </div>
     </div>
     <div class="tab-content hidden" id="participation">
 
