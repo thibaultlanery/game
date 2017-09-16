@@ -18,7 +18,7 @@ root to: "pages#home"
 
 resources :users, only: [:show] do
   member do
-    resources :category_preferences, only: [:update, :create]
+    resources :category_preferences, only: [:update, :create, :destroy]
     end
   end
 

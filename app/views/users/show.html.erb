@@ -26,8 +26,8 @@ niveau de jeux echelle horizontale
         </a>
       </div>
     </div>
-    <div class="right_side_myevents">
-    </div>
+  <div class="right_side_myevents">
+</div>
 </div>
 <div class="wrapper">
   <div class="container">
@@ -44,8 +44,8 @@ niveau de jeux echelle horizontale
         <div class="user-pic">
           <p><%= cl_image_tag @user.facebook_picture_url, class: "avatar-mega-xl"%></p>
         </div>
+    </div>
 
-      </div>
     <div class="user-show-layout">
     <%= simple_form_for :category_preferences, url: category_preferences_path do |f| %>
         <%= f.fields_for :category_preferences do |uf| %>
@@ -58,14 +58,13 @@ niveau de jeux echelle horizontale
            <%= f.submit  %>
         <% end %>
        <% end %>
-      </div>
-
-<!--
-doit aller chercher les category les charger dans le simple form et la selection cree une category preference -->
+    </div>
 
       <% if @category_preferences.present? %>
       <% @category_preferences.each do |category_preference| %>
         <p><%= category_preference.category.name %></p>
+        <P><%= link_to "Delete", category_preference_path(category_preference), method: :delete, data: { confirm: "Are you sure?" }
+        %></p>
         <% end %>
       <% end %>
     </div>

@@ -9,13 +9,21 @@ class CategoryPreferencesController < ApplicationController
       if category_preference.save
       flash[:notice] = 'thanks'
       else
-      flash[:alert] = 'Something went wrong'
+      flash[:alert] = 'you already choose this category'
 
       end
     end
   redirect_to user_path(@user)
 
   end
+
+  def destroy
+    @user = current_user
+    @category_preference = CategoryPreference.find(params[:id])
+    @category_preference.destroy
+  redirect_to user_path(@user)
+  end
+
 
 def category_preference_params
    params.require(:category_preference).permit(:user, :category)
