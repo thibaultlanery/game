@@ -8,6 +8,7 @@
 Event.destroy_all
 User.destroy_all
 Participation.destroy_all
+Category.destroy_all
 
 users = [
 
@@ -241,3 +242,17 @@ status: 1,
 
 participations.each { |participation| Participation.create!(participation) }
 
+categories = [
+  {
+name: "Jeux plein air"
+},
+{
+name: "Jeux de société"
+
+},
+{
+name: "Jeux de rôle"
+}
+]
+
+categories.each { |category| Category.create!(category)}

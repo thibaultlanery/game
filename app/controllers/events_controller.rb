@@ -104,7 +104,7 @@ class EventsController < ApplicationController
     @participations_confirmed = current_user.participations.where(status: :confirmed)
     @participation_demand = current_user.participations.where(status: :interested) #pending
     @participations_loc = current_user.participations.map do |participation, event| participation.event end
-    @coordonates = @events + @cancelled_events + @participations_loc
+    @coordonates = @events + @participations_loc
     @hash = Gmaps4rails.build_markers(@coordonates) do |coordonate, marker|
     marker.lat coordonate.latitude
     marker.lng coordonate.longitude
