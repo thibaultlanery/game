@@ -47,7 +47,11 @@
               <% end %>
               <% if current_user == @event.user %>
                 <%= link_to 'Update event', edit_event_path(@event), class: "btn btn-outline-primary btn-sm " %>
-                <%= link_to 'delete event', event_path(@event), method: :delete, class: "btn btn-outline-primary btn-sm" %>
+                  <% if @event.canceled_at %>
+                    <%= link_to 'Re-launch event', event_path(@event, event: {canceled_at: :nil}), method: :patch, class: "btn-confirm" %>
+                  <% else %>
+                      <%= link_to 'delete event', event_path(@event), method: :delete, class: "btn btn-outline-primary btn-sm" %>
+                  <% end %>
                 <%= link_to 'List of events', myevents_events_path(@event), class: "btn btn-outline-primary btn-sm" %>
                 <%= link_to 'Manage my events', myevents_events_path(@event), class: "btn btn-outline-primary btn-sm" %>
               <% end %>
