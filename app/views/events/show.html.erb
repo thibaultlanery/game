@@ -43,7 +43,7 @@
                 <% if @no_participation_yet %>
                   <%= link_to 'Send interest', event_participations_path(@event, @participation, participation: {status: :interested}), method: :post, class: "btn-btn-medium"%>
                 <% elsif @participation_demand %>
-                  <%= link_to 'cancel participation', participation_path(@participation, participation: {status: :declined}), method: :patch, class: "btn-btn-medium" %>
+                  <%= link_to 'cancel participation', participation_path(@participation), method: :delete, class: "btn-btn-medium" %>
                 <% else %>
                   <%= link_to 'Send interest', participation_path(@participation, participation: {status: :interested}), method: :patch, class: "btn-btn-medium" %>
                 <% end %>

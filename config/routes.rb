@@ -13,7 +13,7 @@ root to: "pages#home"
     end
     resources :participations, only: [:create]
   end
-resources :participations, only: [:update]
+resources :participations, only: [:update, :destroy]
 
 resources :users, only: [:show] do
   member do
