@@ -57,7 +57,8 @@ class EventsController < ApplicationController
     @participation =  current_user.participations.where({event: @event}).first
     @no_participation_yet = current_user.participations.where({event: @event}).first == nil
     @participation_demand = current_user.participations.where(status: :interested, event: @event).first
-
+    @count_of_interested = @event.participations.where(status: "interested").count
+    @count_of_confirmed = @event.participations.where(status: "confirmed").count
   end
 
   def new

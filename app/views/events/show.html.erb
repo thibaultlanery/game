@@ -45,16 +45,15 @@
                 <% elsif @participation_demand %>
                   <%= link_to 'cancel participation', participation_path(@participation, participation: {status: :declined}), method: :patch, class: "btn-btn-medium" %>
                 <% else %>
-                <%= link_to 'Send interest', participation_path(@participation, participation: {status: :interested}), method: :patch, class: "btn-btn-medium" %>
+                  <%= link_to 'Send interest', participation_path(@participation, participation: {status: :interested}), method: :patch, class: "btn-btn-medium" %>
                 <% end %>
-             <!--     changer la route pour pouvoir modifier le status a facon sans que cela crée une participation -->
               <% end %>
               <% if current_user == @event.user %>
-                <%= link_to 'Update event', edit_event_path(@event), class: "btn btn-outline-primary btn-sm " %>
                   <% if @event.canceled_at %>
                     <%= link_to 'Re-launch event', event_path(@event, event: {canceled_at: :nil}), method: :patch, class: "btn-confirm" %>
                   <% else %>
-                      <%= link_to 'delete event', event_path(@event), method: :delete, class: "btn btn-outline-primary btn-sm" %>
+                    <%= link_to 'Delete event', event_path(@event), method: :delete, class: "btn btn-outline-primary btn-sm" %>
+                    <%= link_to 'Edit event', edit_event_path(@event), class: "btn btn-outline-primary btn-sm " %>
                   <% end %>
                 <%= link_to 'List of events', myevents_events_path(@event), class: "btn btn-outline-primary btn-sm" %>
                 <%= link_to 'Manage my events', myevents_events_path(@event), class: "btn btn-outline-primary btn-sm" %>
@@ -92,15 +91,16 @@
                     <p><%= participation.user.age %></p>
                     <p><%= participation.user.address %></p>
                     <p><%= participation.id %></p>
-                     <p><%= participation.status %></p>
+                    <p><%= participation.status %></p>
                   </div>
 
                   <div class="user-selection">
-                  <% if current_user == @event.user %>
-                    <%= link_to "send confirmation", participation_path(participation, participation: {status: :confirmed}), method: :patch, class: "btn btn-outline-primary btn-sm " %>
-                    <%= link_to "another time!", participation_path(participation, participation: {status: :declined}), method: :patch, class: "btn btn-outline-primary btn-sm "  %>
-                  <% else %>
-
+                  <% if current_user == @event.user && @event.canceled_at == nil %>
+                    <% if participation.status == "confirmed" %>
+                      <%= link_to "cancel", participation_path(participation, participation: {status: :declined}), method: :patch, class: "btn btn-outline-primary btn-sm "  %>
+                    <% else %>
+                      <%= link_to "send confirmation", participation_path(participation, participation: {status: :confirmed}), method: :patch, class: "btn btn-outline-primary btn-sm " %>
+                    <% end %>
                   <% end %>
                    </div>
                 </div>
@@ -125,8 +125,12 @@
         </div>
       </div>
     </div>
-    <div class="testgrid5">
+    <div class="testgrid5 text-center">
       <p>Ceci est un futur compteur de personnes</p>
+      <h1><%= @count_of_confirmed %></h1>
+      <h4>personnes confirmées</h4>
+      <h1><%= @count_of_interested %></h1>
+      <h4>personnes interessées</h4>
     </div>
   </div>
 </div>
