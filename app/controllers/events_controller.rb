@@ -54,7 +54,10 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    # @participation = @event.participations.all
+    @participation =  current_user.participations.where({event: @event}).first
+    @no_participation_yet = current_user.participations.where({event: @event}).first == nil
+    @participation_demand = current_user.participations.where(status: :interested, event: @event).first
+
   end
 
   def new

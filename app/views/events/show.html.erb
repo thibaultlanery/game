@@ -40,10 +40,14 @@
           <div class="row">
             <div class="col-xs-12">
               <% if current_user != @event.user %>
-              <%= link_to 'Send interest', participations_path(@event, @participation, participation: {status: :interested}), method: :post, class: "btn-btn-medium"%>
-
+                <% if @no_participation_yet %>
+                  <%= link_to 'Send interest', event_participations_path(@event, @participation, participation: {status: :interested}), method: :post, class: "btn-btn-medium"%>
+                <% elsif @participation_demand %>
+                  <%= link_to 'cancel participation', participation_path(@participation, participation: {status: :declined}), method: :patch, class: "btn-btn-medium" %>
+                <% else %>
+                <%= link_to 'Send interest', participation_path(@participation, participation: {status: :interested}), method: :patch, class: "btn-btn-medium" %>
+                <% end %>
              <!--     changer la route pour pouvoir modifier le status a facon sans que cela crée une participation -->
-
               <% end %>
               <% if current_user == @event.user %>
                 <%= link_to 'Update event', edit_event_path(@event), class: "btn btn-outline-primary btn-sm " %>
