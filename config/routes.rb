@@ -11,10 +11,9 @@ root to: "pages#home"
     collection do
       get 'myevents', to: "events#myevents"
     end
-    member do
-    resources :participations, only: [:update, :create]
-    end
+    resources :participations, only: [:create]
   end
+resources :participations, only: [:update, :destroy]
 
 resources :users, only: [:show] do
   member do

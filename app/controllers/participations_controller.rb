@@ -6,7 +6,7 @@ class ParticipationsController < ApplicationController
 
   def create
     @participation = Participation.new(participation_params)
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event_id])
     @participation.event = @event
     @participation.user = current_user
     if @participation.save
@@ -20,7 +20,7 @@ class ParticipationsController < ApplicationController
 
   def update
       @participation = Participation.find(params[:id])
-      @event = Event.find(params[:id])
+      # @event = Event.find(params[:id])
       # @user = @event.participations.find(params[:user_id])
 
     if @participation.update(participation_params)
@@ -32,10 +32,16 @@ class ParticipationsController < ApplicationController
       redirect_to event_path(@participation.event)
   end
 
+  def destroy
+      @participation = Participation.find(params[:id])
+      @participation.destroy
+     redirect_to event_path(@participation.event)
+  end
+
   private
 
   def participation_params
-    params.require(:participation).permit(:status, :user_id, :event)
+    params.require(:participation).permit(:id, :status, :user_id, :event)
   end
 
 end
