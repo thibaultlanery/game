@@ -23,6 +23,8 @@ margin-right: 10px;
   margin-left: 60px;
 }
 
+
+
 //mise en forme du simpleform.
   #style {
       height: 34px;
@@ -77,18 +79,9 @@ margin-right: 10px;
 //     border-radius: 50px;
 //     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 //     font-family: inherit;
-// }
+//
 
 
-.card-result-layout {
-  max-width: 850px;
-padding-top: 10px;
-text-align: center;
-}
-
-.card-result-layout h1 {
-font-family: 'Raleway', sans-serif;
-}
 
 .map-result-layout {
     display: block;
@@ -101,4 +94,46 @@ font-family: 'Raleway', sans-serif;
     border-left: 1px solid #CCC;
 }
 
+// customisation du contenu bouton recherche en format xs
+.xs_search_bar {
+  margin-left: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+
+  h4 {
+    margin-left: 10px;
+  }
+
+}
+
+.xs_search_form {
+  margin-top: 25px;
+}
+
+.search_form_xs_button {
+  margin-left: 42%;
+  margin-top: 5px;
+}
+
+  .form_style2 {
+    margin-bottom: 15px;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: rgb(85, 85, 85);
+    background-color: rgb(255, 255, 255);
+    background-image: none;
+    box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset;
+    padding: 6px 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+    border-image: initial;
+    border-radius: 50px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    font-family: inherit;
+    }
 
