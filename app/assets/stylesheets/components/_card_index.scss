@@ -14,6 +14,8 @@
   }
 
 
+
+
   // .col-xs-12 {
   //   background-color: #f6f7f8;
   // }
@@ -79,3 +81,36 @@
 .card-link:hover{
   opacity: 0.1;
 }
+
+.card-result-layout {
+
+max-width: 850px;
+padding-top: 10px;
+text-align: center;
+}
+
+.card-result-layout h1 {
+font-family: 'Raleway', sans-serif;
+}
+
+
+@media (max-width: 768px) {
+
+  .card {
+max-height: 115px;
+  }
+
+.card-result-layout {
+
+max-width: 100%;
+
+}
+
+.card-address {
+  font-size: 10px;
+}
+
+}
+
+
+
