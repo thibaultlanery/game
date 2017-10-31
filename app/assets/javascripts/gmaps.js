@@ -20,5 +20,6 @@ function initMap() {
     fullscreenControl: true
   });
 
-  
+
 }
+

@@ -3,7 +3,7 @@ $( ".xs_search_form" ).hide();
 
 
 
-$( ".xs_search_bar" ).click(function() {
+$( ".search_xs_button" ).click(function() {
   $( ".xs_search_form" ).toggle('ease');
 });
 

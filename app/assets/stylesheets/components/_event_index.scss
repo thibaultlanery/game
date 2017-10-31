@@ -96,15 +96,20 @@ margin-right: 10px;
 
 // customisation du contenu bouton recherche en format xs
 .xs_search_bar {
-  margin-left: 60px;
+  margin-left: 80px;
   color: white;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 
   h4 {
-    margin-left: 10px;
+    margin-left: 20px;
   }
 
+}
+
+.fa-map-custom2 {
+margin-right: 10px;
 }
 
 .xs_search_form {
@@ -114,6 +119,11 @@ margin-right: 10px;
 .search_form_xs_button {
   margin-left: 42%;
   margin-top: 5px;
+}
+
+.search_map_xs_button {
+margin-left: 140px;
+
 }
 
   .form_style2 {
