@@ -2,7 +2,7 @@
 
 $( document ).ready(function() {
   $( ".xs_search_form" ).hide();
-  // $( ".map-result-layout" ).hide();
+  // $( ".map_xs_js" ).hide();
   // $( "#map" ).hide();
 
     $( ".search_xs_button" ).click(function() {
@@ -12,7 +12,7 @@ $( document ).ready(function() {
     });
     $( ".search_map_xs_button" ).click(function() {
       $( ".xs_search_form" ).hide('ease');
-       $( ".map-result-layout" ).toggle('ease');
+       $( ".map_xs_js" ).toggle('ease');
 
 
 
