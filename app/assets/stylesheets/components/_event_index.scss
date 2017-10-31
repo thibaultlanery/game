@@ -81,8 +81,7 @@ margin-right: 10px;
 //     font-family: inherit;
 //
 
-
-
+@media(min-width: 768px) {
 .map-result-layout {
     display: block;
     position: fixed;
@@ -92,6 +91,29 @@ margin-right: 10px;
     right: 0;
     background-color: #f6f7f8;
     border-left: 1px solid #CCC;
+    }
+
+#map {
+    width: 100%;
+    height: 90%;
+    }
+
+}
+
+@media(max-width: 768px) {
+.map-result-layout {
+    display: block;
+    width: 100%;
+    height: 400px;
+    top: 110px;
+    background-color: #f6f7f8;
+    border-left: 1px solid #CCC;
+    }
+
+#map {
+    width: 100%;
+    height: 100%;
+    }
 }
 
 // customisation du contenu bouton recherche en format xs

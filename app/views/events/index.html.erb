@@ -8,6 +8,7 @@
       <%= f.submit "Find", :class => "btn btn" %>
       <%end%>
     </div>
+<!-- visible xs -->
     <div class="visible-xs">
       <div class="xs_search_bar">
         <div class="search_xs_button">
@@ -18,10 +19,12 @@
         <i class="fa fa-map-o fa-2x fa-map-custom2" aria-hidden="true"></i>
 <!--         <h4>map</h4> -->
         </div>
+      </div>
     </div>
   </div>
-    </div>
-    <div class="visible-xs hidden-sm-md-lg">
+
+  <div class="container">
+    <div class="visible-xs">
         <div class="xs_search_form">
           <div>
           <%= simple_form_for :search, url: events_path, method: :get do |f| %>
@@ -41,9 +44,31 @@
           <%end%>
         </div>
       </div>
+      <div class="map-result-layout map_xs_js" >
+    <div id="map">
+      <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(12);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(12);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
   </div>
 </div>
-
+<!-- fin visible xs -->
 <div class="wrapper">
   <div class="card-result-layout">
     <% @events.each do |event| %>
@@ -69,26 +94,8 @@
       </div>
     <% end %>
   </div>
-  <div class="map-result-layout hidden-md hidden-sm hidden-xs">
-    <div id="map" style="width: 100%; height: 90%;">
-      <% content_for(:after_js) do %>
-        <%= javascript_tag do %>
-          $(document).ready(function() {
-            var handler = Gmaps.build('Google');
-            handler.buildMap({ internal: { id: 'map' } }, function() {
-              markers = handler.addMarkers(<%= raw @hash.to_json %>);
-              handler.bounds.extendWith(markers);
-              handler.fitMapToBounds();
-              if (markers.length == 0) {
-                handler.getMap().setZoom(12);
-              } else if (markers.length == 1) {
-                handler.getMap().setZoom(12);
-              }
-            });
-          });
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+
+
 </div>
+
 
