@@ -8,12 +8,7 @@
   margin-top: -45px;
 }
 
-.menu_show {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 10px;
-}
+
 
 .testgrid1 {
   grid-row: 1 / span 1;
@@ -29,7 +24,7 @@
 .testgrid3 {
   grid-row: 2 / span 1;
   grid-column: 1 / span 2;
-  background: #FAFBFB;
+  background: white;
   padding-left: 15px;
 }
 .testgrid4 {
@@ -47,6 +42,13 @@
   padding:20px;
 }
 
+.menu_show {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .count_of_confirmed {
   color: #32B796;
   padding: 10px;
@@ -61,6 +63,7 @@
 .content_show {
   font-family: 'Raleway', sans-serif;
   background-color: white;
+  height: 100%;
 }
 
 .banner_head {
@@ -124,6 +127,8 @@ padding: 7%;
 .scrollmenu {
     overflow: scroll;
     white-space: nowrap;
+    margin-top: 10px;
+    margin-bottom: -7px;
 }
 
 .scrollmenu .item {
@@ -153,19 +158,9 @@ padding: 7%;
   .testgrid3 {
     grid-row: 3 / span 1;
     grid-column: 1 / span 1;
-    background: #FAFBFB;
+    background: white;
     padding-left: 15px;
   }
-
-  .banner_head {
-    height: 115px;
-    margin: 0px;
-  }
-
-.organiser p {
-   padding-top: 5px;
-  }
-
 
   .testgrid4 {
     display: none;
@@ -185,6 +180,15 @@ padding: 7%;
       margin-bottom: unset;
     }
 
+  }
+
+  .banner_head {
+    height: 115px;
+    margin: 0px;
+  }
+
+  .organiser p {
+   padding-top: 5px;
   }
 
   .count_of_confirmed {

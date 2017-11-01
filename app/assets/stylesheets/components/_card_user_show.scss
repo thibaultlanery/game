@@ -10,7 +10,7 @@
   height: 300px;
   width: 240px;
   background-color: white;
-  display: flex;
+  // display: flex;
 
   // overflow-wrap: break-word;
 }
@@ -49,9 +49,12 @@
 }
 
 .user-selection {
-position: absolute;
-bottom: 10px;
-justify-content: space-between;
+  position: absolute;
+  bottom: 10px;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 //visible xs
