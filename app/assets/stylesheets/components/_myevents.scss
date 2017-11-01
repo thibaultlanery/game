@@ -42,6 +42,15 @@ align-items: center;
 height: 100%;
 }
 
+@media (max-width: 768px) {
+.left_side_myevents {
+width: 100%;
+display: flex;
+align-items: center;
+height: 100%;
+}
+}
+
 .right_side_myevents {
   width: 50%;
   background-color: blue;
