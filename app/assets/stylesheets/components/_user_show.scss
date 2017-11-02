@@ -3,10 +3,43 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 30px;
+  margin-top: 10px;
   font-family: 'Raleway', sans-serif;
 }
 
+.user_preferences {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10px;
+  font-family: 'Raleway', sans-serif;
+
+}
+
+.preference_form {
+  background-color: white;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.preference_form label {
+    margin-right: 50px;
+    display: inline-block;
+
+}
+
+.add_preference {
+color: #23CE6B;
+
+}
+
+.add_preference p {
+color: #23CE6B;
+
+}
 
 .user-info {
 line-height: 35px;

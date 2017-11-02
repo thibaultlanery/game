@@ -24,7 +24,7 @@
   margin: 0 0 2px;
   font-size: 12px;
 
-
+}
 
 
 .tab {
@@ -33,17 +33,14 @@
 
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   .tab.active {
     border-bottom: 2px solid !important;
-    }
-
-    }
+  }
   .tabs a:hover {
     color: white;
     cursor: pointer;
     text-decoration: none;
-
   }
   .tab:hover {
     border-bottom: 2px solid !important;
@@ -54,6 +51,7 @@
 @media (max-width: 767px) {
   .tab.active {
   color: yellow;
+  border-bottom: none;
   }
   .tabs a:hover {
   color: yellow;
