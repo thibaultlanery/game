@@ -2,7 +2,7 @@
 
 $( document ).ready(function() {
   $( ".xs_search_form" ).hide();
-  $( ".map_xs_js" ).hide();
+  // $( ".map_xs_js" ).hide();
   // $( "#map" ).hide();
 
     $( ".search_xs_button" ).click(function() {

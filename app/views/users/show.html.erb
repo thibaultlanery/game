@@ -53,6 +53,7 @@ niveau de jeux echelle horizontale
       <% if @category_preferences.present? %>
       <% @category_preferences.each do |category_preference| %>
         <p><%= category_preference.category.name %></p>
+        <%= cl_image_tag("003-football_pq494e.png") %>
         <P><%= link_to "Delete", category_preference_path(category_preference), method: :delete, data: { confirm: "Are you sure?" }
         %></p>
         <% end %>
