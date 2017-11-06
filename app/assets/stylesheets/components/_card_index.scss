@@ -1,16 +1,22 @@
 
 .card {
   font-family: 'Raleway', sans-serif;
+  // font-family: 'Roboto', sans-serif;
+  // font-family: 'Rozha One', serif;
+// font-family: 'Maven Pro', sans-serif;
+  letter-spacing: 0.4px;
+  font-weight: 500;
+  color:#004677;
   background-size: cover !important;
-  color: black;
-  position: relative;
-  margin-top: 20px;
-  border: 1px solid #ededf0;
-  border-bottom: 1,4px solid #dcdce0;
-  border-radius: 3px;
-  height: 220px;
-
   background-color: white;
+  // color: #a9a698;
+  position: relative;
+  margin-top: 15px;
+  // border: 1px solid #ededf0;
+  // border-bottom: 1.4px solid #dcdce0;
+  box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  height: 190px;
   }
 
 
@@ -29,6 +35,9 @@
   position: absolute;
   right: 10px;
   top: 10px;
+  p {
+    margin-top: 10px;
+  }
 }
 .card-category {
   position: absolute;
@@ -48,7 +57,10 @@
   bottom: 40px;
   left: 0px;
   color: white;
+  //essai couleurs//
   background-color: #4BC7CF;
+  // background-color: #F38D68;
+  //essai couleurs//
   width: 60%;
   border-top-right-radius: 5px;
 }
@@ -83,15 +95,12 @@
 }
 
 .card-result-layout {
-
+font-family: 'Roboto', sans-serif;
 max-width: 850px;
-padding-top: 10px;
+padding-top: 20px;
 text-align: center;
 }
 
-.card-result-layout h1 {
-font-family: 'Raleway', sans-serif;
-}
 
 
 @media (max-width: 768px) {

@@ -4,16 +4,20 @@
       <div class="left_side_myevents">
         <div class="tabs">
           <a class="tab active" data-target="#yourevent">
-            <p>Your events</p>
+            <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
+            <p class="hidden-xs">events</p>
           </a>
           <a class="tab" data-target="#participations_confirmed">
-            <p>Coming participations</p>
+            <i class="fa fa-hand-pointer-o fa-lg" aria-hidden="true"></i>
+            <p class="hidden-xs">participations</p>
           </a>
           <a class="tab" data-target="#participations_requests">
-            <p>Pending request</p>
+            <i class="fa fa-question fa-lg" aria-hidden="true"></i>
+            <p class="hidden-xs">Pending request</p>
           </a>
           <a class="tab" data-target="#cancelled_event">
-            <p>Deleted events</p>
+            <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+            <p class="hidden-xs">Deleted events</p>
           </a>
         </div>
       </div>
@@ -34,6 +38,7 @@
                 </div>
                 <div class="card-user">
                   <%= event.user.firstname %>
+                  <%= @count_of_interested %>
                 </div>
                 <div class="card-description">
                  <p><%= event.game.capitalize %></p>

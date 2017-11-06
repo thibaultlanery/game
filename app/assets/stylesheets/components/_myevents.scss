@@ -10,7 +10,9 @@ text-align: center;
   position: fixed;
   top: 60px;
   z-index: 10 !important;
-  background-color: #4BC7CF;
+  // background-color: #4BC7CF;
+  // background-color:#39A0ED;
+   background-color: #335D7F;
   margin-bottom: 15px;
   width: 100%;
   box-shadow: 0 7px 4px -2px rgba(0, 0, 0, 0.2);
@@ -42,9 +44,18 @@ align-items: center;
 height: 100%;
 }
 
+@media (max-width: 767px) {
+.left_side_myevents {
+width: 100%;
+display: flex;
+align-items: center;
+height: 100%;
+}
+}
+
 .right_side_myevents {
   width: 50%;
-  background-color: blue;
+
 }
 // .logo_myevents {
 //   width:15%;

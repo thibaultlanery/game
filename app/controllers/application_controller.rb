@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
 
 
   end
+
+  if Rails.env.staging?
+    http_basic_authenticate_with name: "game", password: "onboard"
+  end
+  if Rails.env.production?
+    http_basic_authenticate_with name: "game", password: "onboard"
+  end
+
 end

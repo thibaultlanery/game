@@ -16,13 +16,16 @@ niveau de jeux echelle horizontale
     <div class="left_side_myevents">
       <div class="tabs">
         <a class="tab active" data-target="#yourevent">
-          <p>Your informations</p>
+        <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>
+          <p class= "hidden-xs">Your informations</p>
         </a>
         <a class="tab" data-target="#participation">
-          <p>Your friends</p>
+          <i class="fa fa-users fa-lg" aria-hidden="true"></i>
+          <p class= "hidden-xs">Your friends</p>
         </a>
         <a class="tab" data-target="#cancelled_event">
-          <p>Your photos</p>
+          <i class="fa fa-picture-o fa-lg" aria-hidden="true"></i>
+          <p class= "hidden-xs">Your photos</p>
         </a>
       </div>
     </div>
@@ -46,28 +49,39 @@ niveau de jeux echelle horizontale
         </div>
     </div>
 
-    <div class="user-show-layout">
-    <%= simple_form_for :category_preferences, url: category_preferences_path do |f| %>
-        <%= f.fields_for :category_preferences do |uf| %>
-          <% Category.all.each do |category| %>
-            <label>
-              <%= uf.check_box :category, { multiple: true }, category.id, nil %>
-              <p><%= category.name %></p>
-            </label>
-          <% end %>
-           <%= f.submit  %>
-        <% end %>
-       <% end %>
-    </div>
-
+    <div class="user_preferences">
       <% if @category_preferences.present? %>
       <% @category_preferences.each do |category_preference| %>
         <p><%= category_preference.category.name %></p>
+        <%= cl_image_tag("003-football_pq494e.png") %>
         <P><%= link_to "Delete", category_preference_path(category_preference), method: :delete, data: { confirm: "Are you sure?" }
         %></p>
         <% end %>
       <% end %>
+      <div class="add_preference">
+      <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+      </div>
     </div>
+    <div class="preference_form">
+        <%= simple_form_for :category_preferences, url: category_preferences_path do |f| %>
+            <%= f.fields_for :category_preferences do |uf| %>
+
+              <% Category.all.each do |category| %>
+
+                <label>
+                  <%= uf.check_box :category, { multiple: true }, category.id, nil %>
+                  <p><%= category.name %></p>
+                </label>
+
+              <% end %>
+
+               <%= f.submit "save" %>
+            <% end %>
+
+           <% end %>
+      </div>
+
+  </div>
     </div>
     <div class="tab-content hidden" id="participation">
 
