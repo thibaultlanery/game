@@ -84,8 +84,3 @@ production:
   username: game
   password: <%= ENV['GAME_DATABASE_PASSWORD'] %>
 
-staging:
-   <<: *default
-  database: game_staging
-  username: game
-  password: <%= ENV['GAME_DATABASE_PASSWORD'] %>
