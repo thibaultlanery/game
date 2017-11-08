@@ -1,9 +1,16 @@
 
 
 $( document ).ready(function() {
-  $( ".xs_search_form" ).hide();
+  // $( ".map_xs_js" ).show();
+  // $( "#map" ).show();
+
+
+
+
   // $( ".map_xs_js" ).hide();
-  // $( "#map" ).hide();
+
+  $( ".xs_search_form" ).hide();
+
 
     $( ".search_xs_button" ).click(function() {
       $( ".map-result-layout" ).hide('ease');
