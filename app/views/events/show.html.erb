@@ -3,6 +3,7 @@
     <div class="show-layout">
       <div class="testgrid1">
         <div class="content_show">
+          <div class="row">
             <div class="col-xs-12 banner_head">
               <h1><%= @event.title %></h1>
                 <h4><% if @event.canceled_at %>
@@ -18,13 +19,14 @@
                 <p><%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
               </div>
             </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="date">
-                <h4><%=@event.happen_at.strftime("%A %v")%></h4>
+          </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="date">
+                  <h4><%=@event.happen_at.strftime("%A %v")%></h4>
+                </div>
               </div>
             </div>
-          </div>
           <div class="row">
             <div class="col-xs-12">
               <div class="eventdescription">
@@ -38,34 +40,36 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12 menu_show">
-              <% if current_user != @event.user %>
-                <% if @no_participation_yet %>
-                  <%= link_to 'Send interest', event_participations_path(@event, @participation, participation: {status: :interested}), method: :post, class: "btn-btn-medium"%>
-                <% elsif @participation_demand %>
-                  <%= link_to 'cancel participation', participation_path(@participation), method: :delete, class: "btn-btn-medium" %>
-                <% else %>
-                  <%= link_to 'Send interest', participation_path(@participation, participation: {status: :interested}), method: :patch, class: "btn-btn-medium" %>
-                <% end %>
-              <% end %>
-              <% if current_user == @event.user %>
-                  <% if @event.canceled_at %>
-                    <%= link_to 'Re-launch event', event_path(@event, event: {canceled_at: :nil}), method: :patch, class: "btn-confirm" %>
+            <div class="col-xs-12">
+              <div class="menu_show">
+                <% if current_user != @event.user %>
+                  <% if @no_participation_yet %>
+                    <%= link_to 'Send interest', event_participations_path(@event, @participation, participation: {status: :interested}), method: :post, class: "btn-btn-medium"%>
+                  <% elsif @participation_demand %>
+                    <%= link_to 'cancel participation', participation_path(@participation), method: :delete, class: "btn-btn-medium" %>
                   <% else %>
-                    <%= link_to event_path(@event), method: :delete do %>
-                    <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
-                    <% end %>
-                    <%= link_to edit_event_path(@event) do %>
-                    <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                    <% end %>
+                    <%= link_to 'Send interest', participation_path(@participation, participation: {status: :interested}), method: :patch, class: "btn-btn-medium" %>
                   <% end %>
-                <%= link_to myevents_events_path(@event) do %>
-                <i class="fa fa-list-ul fa-lg" aria-hidden="true"></i>
                 <% end %>
-                <%= link_to myevents_events_path(@event) do %>
-                <i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
+                <% if current_user == @event.user %>
+                    <% if @event.canceled_at %>
+                      <%= link_to 'Re-launch event', event_path(@event, event: {canceled_at: :nil}), method: :patch, class: "btn-confirm" %>
+                    <% else %>
+                      <%= link_to event_path(@event), method: :delete do %>
+                      <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+                      <% end %>
+                      <%= link_to edit_event_path(@event) do %>
+                      <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                      <% end %>
+                    <% end %>
+                  <%= link_to myevents_events_path(@event) do %>
+                  <i class="fa fa-list-ul fa-lg" aria-hidden="true"></i>
+                  <% end %>
+                  <%= link_to myevents_events_path(@event) do %>
+                  <i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           </div>
         </div>
