@@ -1,5 +1,5 @@
 .container_search_bar {
-  padding: 15px;
+  padding: 8px;
   //essai de couleurs //
   // background:  #4BC7CF !important;
   // // background: #39A0ED;
@@ -12,9 +12,9 @@
   z-index: 10 !important;
   height: 50px !important;
   margin-bottom: 15px;
-  display: flex;
-  // justify-content: space-around;
-  align-items: center;
+  // display: flex;
+  // // justify-content: space-around;
+  // align-items: center;
   font-family: 'Raleway', sans-serif;
   box-shadow: 0 7px 4px -2px rgba(0, 0, 0, 0.2);
 
@@ -109,7 +109,7 @@ margin-right: 10px;
 .map-result-layout {
     display: block;
     width: 100%;
-    height: 400px;
+    height: 300px;
     top: 110px;
     background-color: #f6f7f8;
     border-left: 1px solid #CCC;
@@ -123,34 +123,47 @@ margin-right: 10px;
 
 // customisation du contenu bouton recherche en format xs
 .xs_search_bar {
-  margin-left: 80px;
-  color: white;
+
+color: white;
+width: 100%;
+  // justify-content: space-around;
+height: 100%;
+
+}
+
+.items_search_bar_xs {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  // margin-top: 40px;
 
-  h4 {
-    margin-left: 20px;
-  }
+  height: 100%;
+  flex: 1 0 auto;
+
+    a {
+      color: white;
+    }
 
 }
 
-.fa-map-custom2 {
-margin-right: 10px;
-}
 
-.xs_search_form {
-  margin-top: 25px;
-}
 
-.search_form_xs_button {
-  margin-left: 42%;
-  margin-top: 5px;
+.search_xs_button {
+  flex: 0 1 34%;
+  text-align: center;
+
 }
 
 .search_map_xs_button {
-margin-left: 140px;
+  flex: 0 1 34%;
+  text-align: center;
 
+}
+
+.xs_search_form {
+margin-top: 25px;
 }
 
   .form_style2 {
