@@ -1,4 +1,5 @@
 <div class="wrapper">
+  <!-- <div class="navbar_myevents"> -->
   <div class="container_search_bar">
     <div class="search_bar hidden-xs">
       <%= simple_form_for :search, url: events_path, method: :get, html: { class: 'form-inline' } do |f| %>
@@ -9,21 +10,38 @@
       <%end%>
     </div>
 <!-- visible xs -->
+
+
     <div class="visible-xs">
-      <div class="xs_search_bar">
-        <div class="search_xs_button">
-        <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-<!--         <h4>search</h4> -->
-        </div>
-        <div class= "search_map_xs_button">
-        <i class="fa fa-map-o fa-2x fa-map-custom2" aria-hidden="true"></i>
-<!--         <h4>map</h4> -->
+
+    <div class="xs_search_bar">
+        <div class="items_search_bar_xs">
+          <a class="search_xs_button">
+            <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+
+          </a>
+          <a class= "search_map_xs_button">
+            <i class="fa fa-map-o fa-2x fa-map-custom2" aria-hidden="true"></i>
+
+          </a>
         </div>
       </div>
+      <!-- <div class="xs_search_bar">
+        <div class="items_search_bar_xs">
+          <div class="search_xs_button">
+            <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+
+          </div>
+          <div class= "search_map_xs_button">
+          <i class="fa fa-map-o fa-2x fa-map-custom2" aria-hidden="true"></i>
+
+          </div>
+        </div>
+      </div> -->
     </div>
   </div>
 
-  <div class="container">
+  <div class="container text-center">
     <div class="visible-xs">
         <div class="xs_search_form">
           <div>

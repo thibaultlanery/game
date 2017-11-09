@@ -16,7 +16,7 @@ geocoded_by :address
   has_attachments :photos, maximum:4
 
   def self.include_address(location)
-    Event.near(location, 1000)
+    Event.near(location, 70)
   end
 
   def self.exclude_user(user)

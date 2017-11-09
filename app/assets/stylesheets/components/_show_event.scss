@@ -58,15 +58,13 @@
 
 
 .menu_show {
-  background-color: #335D7F;
-
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 8px;
 
   i {
-     color: white;
+     color: #335D7F;
     &:hover{
       color:  #F38D68;
       cursor: pointer;
@@ -234,7 +232,7 @@ height: 75%;
 }
 
   .date {
-  margin-top: -50px;
+  margin-top: -20px;
   }
 
 }

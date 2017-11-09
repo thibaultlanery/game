@@ -3,7 +3,7 @@
     <div class="show-layout">
       <div class="testgrid1">
         <div class="content_show">
-          <div class="row">
+
             <div class="col-xs-12 banner_head">
               <h1><%= @event.title %></h1>
                 <h4><% if @event.canceled_at %>
@@ -19,7 +19,7 @@
                 <p><%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
               </div>
             </div>
-          </div>
+
             <div class="row">
               <div class="col-xs-12">
                 <div class="date">
@@ -44,11 +44,11 @@
               <div class="menu_show">
                 <% if current_user != @event.user %>
                   <% if @no_participation_yet %>
-                    <%= link_to 'Send interest', event_participations_path(@event, @participation, participation: {status: :interested}), method: :post, class: "btn-btn-medium"%>
+                    <%= link_to 'Send interest', event_participations_path(@event, @participation, participation: {status: :interested}), method: :post, html: {class: "btn btn-outline-success"}%>
                   <% elsif @participation_demand %>
-                    <%= link_to 'cancel participation', participation_path(@participation), method: :delete, class: "btn-btn-medium" %>
+                    <%= link_to 'cancel participation', participation_path(@participation), method: :delete,html: {class: "btn btn-outline-danger"} %>
                   <% else %>
-                    <%= link_to 'Send interest', participation_path(@participation, participation: {status: :interested}), method: :patch, class: "btn-btn-medium" %>
+                    <%= link_to 'Send interest', participation_path(@participation, participation: {status: :interested}), method: :patch, html: {class: "btn btn-outline-success"} %>
                   <% end %>
                 <% end %>
                 <% if current_user == @event.user %>
