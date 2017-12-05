@@ -100,6 +100,7 @@ events = [
     happen_at: Date.today + 7,
     due_at: Date.today + 5,
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem quibusdam soluta eos amet dolore laudantium optio id saepe voluptates, atque placeat vitae ea reiciendis aspernatur explicabo harum voluptatibus cum quos.",
+    participant_number: 5,
   },
    {
     game: "Bixit",
@@ -108,6 +109,7 @@ events = [
     happen_at: Date.today + 5,
     due_at: Date.today + 3,
     description: "Pas besoin de te faire un dessin, on est deux on a besoin de 2 buddies!",
+    participant_number: 5,
   },
    {
     game: "Jeux de cochon",
@@ -116,6 +118,7 @@ events = [
     happen_at: Date.today + 6,
     due_at: Date.today + 5,
     description: "Avec mon petit on souhaiterai jouer au jeux de cochons! on a fait un gateau",
+    participant_number: 2,
   },
    {
     game: "Bridge",
@@ -124,6 +127,7 @@ events = [
     happen_at: Date.today + 2,
     due_at: Date.today + 1,
     description: "Amateurs s'abstenir on est chaud du bridge!",
+    participant_number: 4,
   },
    {
     game: "Poker",
@@ -132,6 +136,7 @@ events = [
     happen_at: Date.today + 4,
     due_at: Date.today + 3,
     description: "Poker Texas Hold'hem besoin de 3 joueurs!",
+    participant_number: 10,
   },
    {
     game: "Puissance 4",
@@ -140,6 +145,7 @@ events = [
     happen_at: Date.today + 5,
     due_at: Date.today + 4,
     description: "Je suis tout seul on peut se faire un puissance 4 après j'ai d'autres jeux",
+    participant_number: 9,
   }
 ]
 
