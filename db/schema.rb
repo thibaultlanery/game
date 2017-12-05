@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831220912) do
+ActiveRecord::Schema.define(version: 20171205144730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20170831220912) do
     t.integer  "user_id"
     t.string   "address"
     t.string   "game"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.float    "latitude"
     t.float    "longitude"
     t.date     "happen_at"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170831220912) do
     t.date     "canceled_at"
     t.string   "title"
     t.string   "description"
+    t.integer  "participant_number"
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 

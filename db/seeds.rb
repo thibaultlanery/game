@@ -91,6 +91,7 @@ events = [
     happen_at: Date.today + 2,
     due_at: Date.today + 1,
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos possimus amet nam mollitia ut eveniet, similique est quibusdam illo libero, quas maxime magni quasi exercitationem praesentium nihil, modi veritatis iure!",
+    participant_number: 3,
   },
     {
     game: "Jeu de dé",
