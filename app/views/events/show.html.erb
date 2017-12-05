@@ -106,7 +106,6 @@
                       <p><%= participation.status %></p>
                     </div>
                       <div class="user-selection">
-
                         <% if current_user == @event.user && @event.canceled_at == nil %>
                           <% if participation.status == "confirmed" %>
                             <%= link_to participation_path(participation, participation: {status: :declined}), method: :patch do  %>
