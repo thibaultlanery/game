@@ -14,6 +14,7 @@
               <div class="eventgame">
                 <p><%= @event.game %></p>
               </div>
+
               <div class="organiser text-center">
                 <%= image_tag @event.user.facebook_picture_url, class: "avatar-xl avatar-show" %>
                 <p><%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
@@ -43,14 +44,12 @@
             <div class="col-xs-12">
               <div class="menu_show">
                 <% if current_user != @event.user %>
-                  <% if @event.participant_number < @count_of_confirmed %>
-                    <% if @no_participation_yet %>
-                      <%= link_to 'Send interest', event_participations_path(@event, @participation, participation: {status: :interested}), method: :post, html: {class: "btn btn-outline-success"}%>
-                    <% elsif @participation_demand %>
-                      <%= link_to 'cancel participation', participation_path(@participation), method: :delete,html: {class: "btn btn-outline-danger"} %>
-                    <% else %>
-                      <%= link_to 'Send interest', participation_path(@participation, participation: {status: :interested}), method: :patch, html: {class: "btn btn-outline-success"} %>
-                    <% end %>
+                  <% if @no_participation_yet %>
+                    <%= link_to 'Send interest', event_participations_path(@event, @participation, participation: {status: :interested}), method: :post, html: {class: "btn btn-outline-success"}%>
+                  <% elsif @participation_demand %>
+                    <%= link_to 'cancel participation', participation_path(@participation), method: :delete,html: {class: "btn btn-outline-danger"} %>
+                  <% else %>
+                    <%= link_to 'Send interest', participation_path(@participation, participation: {status: :interested}), method: :patch, html: {class: "btn btn-outline-success"} %>
                   <% end %>
                 <% end %>
                 <% if current_user == @event.user %>
@@ -80,6 +79,11 @@
            <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=12&scale=2false&size=300x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
       </div>
       <div class="testgrid3">
+        <% if @event.participations.empty? %>
+          <div class="empty-message">
+          <h4 class="text-center"> Soyez le premier à envoyer votre participation! </h4>
+        </div>
+      <% else %>
         <div class="scrollmenu" >
           <div class="item" >
             <ul class="list-inline">
@@ -131,6 +135,7 @@
             </ul>
           </div>
         </div>
+      <% end %>
       </div>
       <div class="testgrid4">
         <div class="mcs-horizontal-example">
@@ -148,8 +153,13 @@
         </div>
       </div>
       <div class="testgrid5 text-center">
+        <div class="col-xs-6 col-sm-12 remaining_places">
+          <h1><%= @event.participant_number - @count_of_confirmed %>
+          <i class="fa fa-user fa-lg" aria-hidden="true"></i></h1>
+          <h4>restantes</h4>
+        </div>
         <div class="col-xs-6 col-sm-12 count_of_confirmed" >
-          <h6><%= @count_of_confirmed %>
+          <h6><%= @count_of_confirmed%>
           <i class="fa fa-user fa-lg" aria-hidden="true"></i></h6>
           <p>confirmées</p>
         </div>
@@ -158,6 +168,9 @@
             <i class="fa fa-user fa-lg" aria-hidden="true"></i></h6>
             <p>interessées</p>
         </div>
+        <% if @count_of_confirmed == @event.participant_number %>
+        <h4> Nombre maximum atteint </h4>
+        <% end %>
       </div>
     </div>
   </div>

@@ -29,6 +29,11 @@
   background: white;
   padding: 15px;
   box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    h4 {
+    color: grey;
+
+
+    }
 }
 .testgrid4 {
   grid-row: 3 / span 1;
@@ -62,6 +67,7 @@
   justify-content: space-around;
   align-items: center;
   padding: 8px;
+  width: 50%;
 
   i {
      color: #335D7F;
@@ -74,6 +80,10 @@
 
 }
 
+.remaining_places {
+  color: orange;
+  padding: 10px;
+}
 
 .count_of_confirmed {
   color: #32B796;
@@ -175,7 +185,9 @@ height: 75%;
     grid-template-rows: 40% 30% 30%;
     justify-items: stretch;
   }
-
+  .menu_show {
+    width: 100%;
+  }
   .testgrid1 {
     grid-row: 1 / span 1;
     grid-column: 1 / span 1;
