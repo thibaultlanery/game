@@ -1,34 +1,61 @@
-.badg-container {
-  position: relative;
-text-overflow: ellipsis;
-}
+
 
 .badg {
   position: absolute;
   top: -5px;
   right: -5px;
+  z-index: 2;
   font-size: 10px;
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 25px;
   width: 25px;
-  text-align: center;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
   border-radius: 50%;
 }
 
 .badg-red {
   background: #EE5F5B;
+
+}
+
+.border-red {
+  background: #EE5F5B;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -2px;
+  z-index: 0;
 }
 
 .badg-green {
   background: #32B796;
 }
 
+.border-green {
+  background: #32B796;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -2px;
+  z-index: 0;
+}
+
 .badg-blue {
   background: #469AE0;
+}
+
+.border-blue {
+  background: #469AE0;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -2px;
+  z-index: 0;
 }
 
 .badg-black {
@@ -44,6 +71,12 @@ text-overflow: ellipsis;
   position: relative;
   line-height: 30px;
   width: 30px;
+}
+
+.img-badg {
+  position: absolute;
+  right: 5px;
+  z-index: 1;
 }
 
 
