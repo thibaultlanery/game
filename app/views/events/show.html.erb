@@ -14,6 +14,7 @@
               <div class="eventgame">
                 <p><%= @event.game %></p>
               </div>
+
               <div class="organiser text-center">
                 <%= image_tag @event.user.facebook_picture_url, class: "avatar-xl avatar-show" %>
                 <p><%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
@@ -78,6 +79,11 @@
            <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=12&scale=2false&size=300x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
       </div>
       <div class="testgrid3">
+        <% if @event.participations.empty? %>
+          <div class="empty-message">
+          <h4 class="text-center"> Soyez le premier à envoyer votre participation! </h4>
+        </div>
+      <% else %>
         <div class="scrollmenu" >
           <div class="item" >
             <ul class="list-inline">
@@ -85,17 +91,22 @@
               <li>
                 <div class="mini-card-user ">
                   <div class="badg-container">
-                    <p><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show" %></p>
-                    <% if participation.status == "interested" %>
-                      <div class="badg badg-blue "> </div>
-                    <% elsif participation.status == "confirmed" %>
-                      <div class="badg badg-green border_green"> </div>
-                    <% elsif participation.status == "declined" %>
-                      <div class="badg badg-red "> </div>
-                    <% else %>
-                      <div class="badg badg-bordered">?</div>
-                    <% end %>
-                     </div>
+                    <div class="image-container">
+                      <div><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show img-badg" %></div>
+                      <% if participation.status == "interested" %>
+                        <div class="badg badg-blue "> </div>
+                        <div class="border-blue"></div>
+                      <% elsif participation.status == "confirmed" %>
+                        <div class="badg badg-green"> </div>
+                        <div class="border-green"></div>
+                      <% elsif participation.status == "declined" %>
+                        <div class="badg badg-red"> </div>
+                        <div class="border-red"></div>
+                      <% else %>
+                        <div class="badg badg-bordered">?</div>
+                      <% end %>
+                    </div>
+                  </div>
                     <div class="user-infos">
                       <p><%= participation.user.firstname %></p>
                       <p><%= participation.user.gender %></p>
@@ -104,14 +115,16 @@
                       <p><%= participation.status %></p>
                     </div>
                       <div class="user-selection">
-                      <% if current_user == @event.user && @event.canceled_at == nil %>
-                        <% if participation.status == "confirmed" %>
-                          <%= link_to participation_path(participation, participation: {status: :declined}), method: :patch do  %>
-                          <i class="fa fa-times-circle fa-2x" style="color: #f35d5e" aria-hidden="true"></i>
-                          <% end %>
-                        <% else %>
-                          <%= link_to participation_path(participation, participation: {status: :confirmed}), method: :patch do  %>
-                          <i class="fa fa-check-circle fa-2x" style="color: #18b798" aria-hidden="true"></i>
+                        <% if current_user == @event.user && @event.canceled_at == nil %>
+                          <% if participation.status == "confirmed" %>
+                            <%= link_to participation_path(participation, participation: {status: :declined}), method: :patch do  %>
+                            <i class="fa fa-times-circle fa-2x" style="color: #f35d5e" aria-hidden="true"></i>
+                            <% end %>
+                          <% else %>
+                          <% if @count_of_confirmed < @event.participant_number %>
+                            <%= link_to participation_path(participation, participation: {status: :confirmed}), method: :patch do  %>
+                            <i class="fa fa-check-circle fa-2x" style="color: #18b798" aria-hidden="true"></i>
+                            <% end %>
                           <% end %>
                         <% end %>
                       <% end %>
@@ -122,6 +135,7 @@
             </ul>
           </div>
         </div>
+      <% end %>
       </div>
       <div class="testgrid4">
         <div class="mcs-horizontal-example">
@@ -139,9 +153,14 @@
         </div>
       </div>
       <div class="testgrid5 text-center">
+        <div class="col-xs-6 col-sm-12 remaining_places">
+          <h1><%= @event.participant_number - @count_of_confirmed %>
+          <i class="fa fa-user fa-lg" aria-hidden="true"></i></h1>
+          <h4>restantes</h4>
+        </div>
         <div class="col-xs-6 col-sm-12 count_of_confirmed" >
-          <h6><%= @count_of_confirmed %>
-          <i class="fa fa-user" aria-hidden="true"></i></h6>
+          <h6><%= @count_of_confirmed%>
+          <i class="fa fa-user fa-lg" aria-hidden="true"></i></h6>
           <p>confirmées</p>
         </div>
         <div class="col-xs-6 col-sm-12 count_of_interested">
@@ -149,6 +168,9 @@
             <i class="fa fa-user fa-lg" aria-hidden="true"></i></h6>
             <p>interessées</p>
         </div>
+        <% if @count_of_confirmed == @event.participant_number %>
+        <h4> Nombre maximum atteint </h4>
+        <% end %>
       </div>
     </div>
   </div>

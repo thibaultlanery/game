@@ -31,6 +31,14 @@
             </div>
           </div>
         </div>
+        <div class="participant_number">
+          <div class="row">
+            <div class="col-xs-4 text-left">
+              <h3>Max participants ?</h3>
+              <%= f.input :participant_number, collection: 1..100, label: false %>
+            </div>
+          </div>
+        </div>
 
         <div class="when">
           <div class="row">

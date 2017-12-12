@@ -6,12 +6,17 @@
   margin: 0;
   text-align: center;
   color: white;
-  z-index: 17 !important;
+  z-index: 100 !important;
+  margin-bottom: 50px !important;
 
 }
 .alert-info {
   background: $green;
+  z-index: 100 !important;
+  margin-bottom: 50px !important;
 }
 .alert-warning {
   background: $red;
+  z-index: 100 !important;
+  margin-bottom: 50px !important;
 }
