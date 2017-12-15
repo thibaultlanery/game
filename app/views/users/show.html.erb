@@ -46,7 +46,14 @@ niveau de jeux echelle horizontale
         </div>
         <div class="user-pic">
           <p><%= cl_image_tag @user.facebook_picture_url, class: "avatar-mega-xl"%></p>
+          <% if current_user.friends_with?(@user) %>
+              <p><%= link_to "remove friend", user_friendship_path(@user), method: :delete %>
+           <% else %>
+            <p><%= link_to "add friend", user_friendships_path(@user), method: :post %>
+          <% end %>
+
         </div>
+
     </div>
 
     <div class="user_preferences">
@@ -58,10 +65,12 @@ niveau de jeux echelle horizontale
         %></p>
         <% end %>
       <% end %>
+    <% if @user == current_user %>
       <div class="add_preference">
       <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
       </div>
     </div>
+
     <div class="preference_form">
         <%= simple_form_for :category_preferences, url: category_preferences_path do |f| %>
             <%= f.fields_for :category_preferences do |uf| %>
@@ -80,14 +89,21 @@ niveau de jeux echelle horizontale
 
            <% end %>
       </div>
+    <% end %>
 
   </div>
     </div>
     <div class="tab-content hidden" id="participation">
 
+      <p><% @user.friends.each do |friend| %></p>
+      <p><%= friend.firstname %></p>
+      <p><%= cl_image_tag friend.facebook_picture_url, class: "avatar-mega-xl"%></p>
+        <% end %>
+
+      <p>ici sont vos amis</p>
+
     </div>
     <div class="tab-content hidden" id="cancelled_event">
-
     </div>
   </div>
 </div>
