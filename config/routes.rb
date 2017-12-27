@@ -16,7 +16,7 @@ root to: "pages#home"
 resources :participations, only: [:update, :destroy]
 
 resources :users, only: [:show] do
-  resources :friendships, only: [:create, :destroy]
+  resources :friendships, only: [:create, :destroy, :update]
   member do
     resources :category_preferences, only: [:update, :create, :destroy]
     end

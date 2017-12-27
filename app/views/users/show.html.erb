@@ -17,15 +17,18 @@ niveau de jeux echelle horizontale
       <div class="tabs">
         <a class="tab active" data-target="#yourevent">
         <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>
-          <p class= "hidden-xs">Your informations</p>
+          <p class= "hidden-xs">informations</p>
         </a>
         <a class="tab" data-target="#participation">
           <i class="fa fa-users fa-lg" aria-hidden="true"></i>
-          <p class= "hidden-xs">Your friends</p>
+          <% if current_user.requested_friends.present? %>
+           <div class="badge badge-blue"><%= current_user.requested_friends.count%></div>
+          <% end %>
+          <p class= "hidden-xs">friends</p>
         </a>
         <a class="tab" data-target="#cancelled_event">
           <i class="fa fa-picture-o fa-lg" aria-hidden="true"></i>
-          <p class= "hidden-xs">Your photos</p>
+          <p class= "hidden-xs">photos</p>
         </a>
       </div>
     </div>
@@ -46,12 +49,13 @@ niveau de jeux echelle horizontale
         </div>
         <div class="user-pic">
           <p><%= cl_image_tag @user.facebook_picture_url, class: "avatar-mega-xl"%></p>
-          <% if current_user.friends_with?(@user) %>
-              <p><%= link_to "remove friend", user_friendship_path(@user), method: :delete %>
-           <% else %>
-            <p><%= link_to "add friend", user_friendships_path(@user), method: :post %>
+          <% if current_user != @user %>
+            <% if current_user.friends_with?(@user) %>
+                <p><%= link_to "remove friend", user_friendship_path(@user), method: :delete %>
+             <% else %>
+              <p><%= link_to "add friend", user_friendships_path(@user), method: :post %>
+            <% end %>
           <% end %>
-
         </div>
 
     </div>
@@ -94,15 +98,69 @@ niveau de jeux echelle horizontale
   </div>
     </div>
     <div class="tab-content hidden" id="participation">
-
-      <p><% @user.friends.each do |friend| %></p>
-      <p><%= friend.firstname %></p>
-      <p><%= cl_image_tag friend.facebook_picture_url, class: "avatar-mega-xl"%></p>
+      <div class="container">
+        <% if @user.requested_friends.present? %>
+          <div class="friends_request">
+            <h4>friend requests</h4>
+          <ul class= "list-inline">
+            <% @user.requested_friends.each do |requested_friend| %>
+            <li>
+              <div class="mini-card-user">
+                <div class="badg-container">
+                  <div class="image-container img-badg">
+                    <p><%= cl_image_tag requested_friend.facebook_picture_url, class: "avatar-mega-xl"%></p>
+                  </div>
+                </div>
+                  <div class="user-infos">
+                    <p><%= requested_friend.firstname %></p>
+                    <p><%= requested_friend.age %><p>
+                    <p><%= requested_friend.gender %></p>
+                  </div>
+                  <% if @user == current_user %>
+                    <div class="user-selection">
+                      <%= link_to user_friendship_path(requested_friend), method: :patch do  %>
+                      <i class="fa fa-check-circle fa-3x" style="color: #18b798" aria-hidden="true"></i>
+                      <% end %>
+                    </div>
+                   <% end %>
+              </div>
+            </li>
+            <% end %>
+          </div>
         <% end %>
 
-      <p>ici sont vos amis</p>
+        <div class="friends">
+            <ul class= "list-inline">
+              <% @user.friends.each do |friend| %>
+              <li>
+                <div class="mini-card-user">
+                  <div class="badg-container">
+                    <div class="image-container img-badg">
+                      <p><%= cl_image_tag friend.facebook_picture_url, class: "avatar-mega-xl"%></p>
+                    </div>
+                  </div>
+                  <div class="user-infos">
+                    <p><%= friend.firstname %></p>
+                    <p><%= friend.age %><p>
+                    <p><%= friend.gender %></p>
+                  </div>
+                  <% if @user == current_user %>
+                    <div class="user-selection">
+                      <%= link_to user_friendship_path(friend), method: :delete do  %>
+                      <i class="fa fa-times-circle fa-3x" style="color: #f35d5e" aria-hidden="true"></i>
+                    <% end %>
+                    </div>
+                  <% end %>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+        </div>
 
-    </div>
+  </div>
+</div>
+
+
     <div class="tab-content hidden" id="cancelled_event">
     </div>
   </div>
