@@ -50,3 +50,36 @@ line-height: 35px;
 font-size: 17px;
 font-weight: 200;
 }
+
+.friends {
+  width: 70%;
+  height: 100%;
+  float: left;
+}
+
+.friends h4 {
+  background-color: #F38D68;
+}
+.friends_request {
+  width: 30%;
+  height: 100%;
+  float: right;
+
+  // box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.2)
+
+}
+
+.friends_request h4 {
+  background-color: #4BC7CF;
+}
+
+#friends h4 {
+  padding: 5px;
+  color: white;
+  border-top-right-radius: 5px;
+  width: 60%;
+  text-align: center;
+  letter-spacing: 1.5px;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 25px;
+}
