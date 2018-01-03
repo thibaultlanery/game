@@ -33,6 +33,7 @@
       </div>
     </a>
 
+   <% if user_signed_in? %>
     <%= link_to user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
       <div class="badge-container">
         <i class="fa fa-users fa"></i>
@@ -41,7 +42,7 @@
         <% end %>
       </div>
       <% end %>
-
+ <% end %>
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
