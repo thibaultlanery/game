@@ -29,9 +29,18 @@
     <a href="" class="navbar-wagon-item navbar-wagon-link">
       <div class="badge-container">
         <i class="fa fa-envelope-o"></i>
-        <div class="badge badge-blue">3</div>
+        <div class="badge badge-blue"></div>
       </div>
     </a>
+
+    <%= link_to user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
+      <div class="badge-container">
+        <i class="fa fa-users fa"></i>
+        <% if current_user.requested_friends.present? %>
+        <div class="badge badge-blue"><%= current_user.requested_friends.count%></div>
+        <% end %>
+      </div>
+      <% end %>
 
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">

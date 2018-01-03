@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :categories, through: :category_preferences
   has_many :events, dependent: :destroy
   has_many :participations, dependent: :destroy
+  has_friendship
 
   validates :gender, presence: true
   validates :age, presence: true
