@@ -38,35 +38,36 @@ niveau de jeux echelle horizontale
       <% if @user.requested_friends.present? %>
         <div class="friends_request">
           <h4>friend requests</h4>
-          <ul class= "list-inline">
-              <% @user.requested_friends.each do |requested_friend| %>
-            <li>
-              <div class="mini-card-user">
-                <div class="badg-container">
-                  <div class="image-container img-badg">
-                    <p><%= cl_image_tag requested_friend.facebook_picture_url, class: "avatar-mega-xl"%></p>
+            <ul class= "list-inline">
+                <% @user.requested_friends.each do |requested_friend| %>
+              <li>
+                <div class="mini-card-user">
+                  <div class="badg-container">
+                    <div class="image-container img-badg">
+                      <p><%= cl_image_tag requested_friend.facebook_picture_url, class: "avatar-mega-xl"%></p>
+                    </div>
                   </div>
+                    <div class="user-infos">
+                      <p><%= requested_friend.firstname %></p>
+                      <p><%= requested_friend.age %><p>
+                      <p><%= requested_friend.gender %></p>
+                    </div>
+                  <% if @user == current_user %>
+                    <div class="user-selection">
+                      <%= link_to user_friendship_path(requested_friend), method: :patch do  %>
+                      <i class="fa fa-check-circle fa-3x" style="color: #18b798" aria-hidden="true"></i>
+                      <% end %>
+                    </div>
+                  <% end %>
                 </div>
-                  <div class="user-infos">
-                    <p><%= requested_friend.firstname %></p>
-                    <p><%= requested_friend.age %><p>
-                    <p><%= requested_friend.gender %></p>
-                  </div>
-                <% if @user == current_user %>
-                  <div class="user-selection">
-                    <%= link_to user_friendship_path(requested_friend), method: :patch do  %>
-                    <i class="fa fa-check-circle fa-3x" style="color: #18b798" aria-hidden="true"></i>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            </li>
-            <% end %>
-          </ul>
+              </li>
+              <% end %>
+            </ul>
         </div>
       <% end %>
     <% end %>
-    <div class="friends">
+      <div class="friends">
+      <h4>your friends</h4>
       <ul class= "list-inline">
         <% @user.friends.each do |friend| %>
         <li>
@@ -84,7 +85,7 @@ niveau de jeux echelle horizontale
             <% if @user == current_user %>
               <div class="user-selection">
                 <%= link_to user_friendship_path(friend), method: :delete do  %>
-                <i class="fa fa-times-circle fa-3x" style="color: #f35d5e" aria-hidden="true"></i>
+                <i class="fa fa-times-circle fa-2x" style="color: #f35d5e" aria-hidden="true"></i>
               <% end %>
               </div>
             <% end %>
