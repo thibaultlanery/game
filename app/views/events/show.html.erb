@@ -91,31 +91,35 @@
               <% @event.participations.each do |participation| %>
               <li>
                 <div class="mini-card-user ">
-                  <div class="badg-container">
-                    <div class="image-container">
-                      <div><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show img-badg" %>
-
-                      </div>
-                      <% if participation.status == "interested" %>
-                        <div class="badg badg-blue "> </div>
-                        <div class="border-blue"></div>
-                      <% elsif participation.status == "confirmed" %>
-                        <div class="badg badg-green"> </div>
-                        <div class="border-green"></div>
-                      <% elsif participation.status == "declined" %>
-                        <div class="badg badg-red"> </div>
-                        <div class="border-red"></div>
-                      <% else %>
-                        <div class="badg badg-bordered">?</div>
-                      <% end %>
+                  <div class="top_of_card">
+                    <%= link_to "", user_path(participation.user), class: "card-link" %>
                     </div>
-                  </div>
+                    <div class="badg-container">
+                      <div class="image-container">
+                        <div><%= cl_image_tag participation.user.facebook_picture_url, class: "avatar-xl avatar-show img-badg" %>
+                        </div>
+                        <% if participation.status == "interested" %>
+                          <div class="badg badg-blue "> </div>
+                          <div class="border-blue"></div>
+                        <% elsif participation.status == "confirmed" %>
+                          <div class="badg badg-green"> </div>
+                          <div class="border-green"></div>
+                        <% elsif participation.status == "declined" %>
+                          <div class="badg badg-red"> </div>
+                          <div class="border-red"></div>
+                        <% else %>
+                          <div class="badg badg-bordered">?</div>
+                        <% end %>
+                      </div>
+                    </div>
                     <div class="user-infos">
                       <p><%= participation.user.firstname %></p>
                       <p><%= participation.user.gender %></p>
                       <p><%= participation.user.age %></p>
                       <p><%= participation.status %></p>
                     </div>
+
+
                       <div class="user-selection">
                         <% if current_user == @event.user && @event.canceled_at == nil %>
                           <% if participation.status == "confirmed" %>
