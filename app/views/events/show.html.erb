@@ -22,20 +22,34 @@
             </div>
 
             <div class="row">
-              <div class="col-xs-12">
-                <div class="date">
+              <div class="col-xs-6">
+                <div class="date text-center">
                   <h4><%=@event.happen_at.strftime("%A %v")%></h4>
+                </div>
+                <div class="time">
+                  <div class="hour">
+                    <h4><%= @event.happen_at.hour %>h</h4>
+                  </div>
+                  <div class="min">
+                    <h4><%= @event.happen_at.min %></h4>
+                  </div>
                 </div>
               </div>
             </div>
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-8">
               <div class="eventdescription">
-                <div class="col-xs-12 col-md-6">
-                <p> organiser spirit: </p>
+                <div class="col-xs-12 ">
+                <h5> Descriptif de l'évènement:</h5>
                 </div>
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12 ">
                 <p><%= @event.description %></p>
+                </div>
+              </div>
+              <div class="food">
+                <div class="col-xs-12">
+                  <i class="fa fa-coffee fa-1x" aria-hidden="true"></i>  <i class="fa fa-cutlery fa-1x" aria-hidden="true"></i>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta inventore voluptatum autem tempora sit cupiditate quae est, fuga saepe laboriosam beatae earum odit, blanditiis reprehenderit, enim quam natus, nulla corrupti.</p>
                 </div>
               </div>
             </div>
@@ -78,6 +92,7 @@
       </div>
       <div class="testgrid2">
            <img class="google_map" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=12&scale=2false&size=300x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C<%= @event.address %>&key=<%= ENV['GOOGLE_API_KEY'] %>">
+           <p class="text-center"><%= @event.address %></p>
       </div>
       <div class="testgrid3">
         <% if @event.participations.empty? %>
