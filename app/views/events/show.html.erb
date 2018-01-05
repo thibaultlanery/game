@@ -3,6 +3,8 @@
     <div class="show-layout">
       <div class="testgrid1">
         <div class="content_show">
+
+          <div class="row">
             <div class="col-xs-12 banner_head">
               <h1><%= @event.title %></h1>
                 <h4><% if @event.canceled_at %>
@@ -20,6 +22,7 @@
                 <%= link_to "", user_path(@event.user), class: "card-link" %>
               </div>
             </div>
+          </div>
 
             <div class="row">
               <div class="col-xs-6">
@@ -36,6 +39,7 @@
                 </div>
               </div>
             </div>
+
           <div class="row">
             <div class="col-xs-8">
               <div class="eventdescription">
@@ -48,7 +52,7 @@
               </div>
               <div class="food">
                 <div class="col-xs-12">
-                  <i class="fa fa-coffee fa-1x" aria-hidden="true"></i>  <i class="fa fa-cutlery fa-1x" aria-hidden="true"></i>
+                  <i class="fa fa-coffee fa-2x" aria-hidden="true"></i>  <i class="fa fa-cutlery fa-2x" aria-hidden="true"></i>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta inventore voluptatum autem tempora sit cupiditate quae est, fuga saepe laboriosam beatae earum odit, blanditiis reprehenderit, enim quam natus, nulla corrupti.</p>
                 </div>
               </div>
