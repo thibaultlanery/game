@@ -41,7 +41,7 @@
                   <%= @count_of_interested %>
                 </div>
                 <div class="card-description">
-                 <p><%= event.game.capitalize %></p>
+                 <p><%= event.event_type.name.capitalize %></p>
                 </div>
                 <div class="card-address">
                  <p><%= event.address %></p>
@@ -83,7 +83,7 @@
                     <%=  participation_demand.event.user.firstname %>
                   </div>
                   <div class="card-description">
-                   <p><%= participation_demand.event.game.capitalize %></p>
+                   <p><%= participation_demand.event.event_type.name.capitalize %></p>
                   </div>
                   <div class="card-address">
                    <p><%= participation_demand.event.address %></p>
