@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104113511) do
+ActiveRecord::Schema.define(version: 20180108105821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,20 +46,29 @@ ActiveRecord::Schema.define(version: 20180104113511) do
     t.index ["user_id"], name: "index_category_preferences_on_user_id", using: :btree
   end
 
+  create_table "event_types", force: :cascade do |t|
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.index ["category_id"], name: "index_event_types_on_category_id", using: :btree
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
+    t.datetime "happen_at"
+    t.datetime "canceled_at"
+    t.datetime "due_at"
     t.string   "address"
-    t.string   "game"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "happen_at"
-    t.date     "due_at"
-    t.date     "canceled_at"
     t.string   "title"
     t.string   "description"
     t.integer  "participant_number"
+    t.integer  "event_type_id"
+    t.index ["event_type_id"], name: "index_events_on_event_type_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
@@ -110,6 +119,8 @@ ActiveRecord::Schema.define(version: 20180104113511) do
 
   add_foreign_key "category_preferences", "categories"
   add_foreign_key "category_preferences", "users"
+  add_foreign_key "event_types", "categories"
+  add_foreign_key "events", "event_types"
   add_foreign_key "events", "users"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"

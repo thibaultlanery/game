@@ -1,11 +1,12 @@
 class Event < ApplicationRecord
   belongs_to :user
+  belongs_to :event_type
 
 
 
   has_many :participations, dependent: :destroy
   has_many :users, through: :participations
-  validates :game, presence: true
+  validates :event_type, presence: true
   validates :happen_at, presence: true
   validates :address, presence: true
   validates :user, presence: true
