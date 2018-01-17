@@ -156,25 +156,25 @@ events = [
     due_at: Date.today + 1,
     description: "Amateurs s'abstenir on est chaud du bridge!",
     participant_number: 4,
+  },
+   {
+    event_type: EventType.find(6),
+    user: User.all.sample,
+    address: "29, rue diaz, 33000, Bordeaux, France",
+    happen_at: Date.today + 4,
+    due_at: Date.today + 3,
+    description: "Poker Texas Hold'hem besoin de 3 joueurs!",
+    participant_number: 10,
+  },
+   {
+    event_type: EventType.find(7),
+    user: User.all.sample,
+    address: "46, impasse du cochonnet, 75019, Paris, France",
+    happen_at: Date.today + 5,
+    due_at: Date.today + 4,
+    description: "Je suis tout seul on peut se faire un puissance 4 après j'ai d'autres jeux",
+    participant_number: 9,
   }
-  #  {
-  #   event_type: EventType.find(6),
-  #   user: User.all.sample,
-  #   address: "29, rue diaz, 33000, Bordeaux, France",
-  #   happen_at: Date.today + 4,
-  #   due_at: Date.today + 3,
-  #   description: "Poker Texas Hold'hem besoin de 3 joueurs!",
-  #   participant_number: 10,
-  # },
-  #  {
-  #   event_type: EventType.find(7),
-  #   user: User.all.sample,
-  #   address: "46, impasse du cochonnet, 75019, Paris, France",
-  #   happen_at: Date.today + 5,
-  #   due_at: Date.today + 4,
-  #   description: "Je suis tout seul on peut se faire un puissance 4 après j'ai d'autres jeux",
-  #   participant_number: 9,
-  # }
 ]
 
 

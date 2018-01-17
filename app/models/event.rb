@@ -17,15 +17,21 @@ geocoded_by :address
   has_attachments :photos, maximum:4
 
   def self.include_address(location)
-    Event.near(location, 200)
+    Event.near(location, 100)
   end
 
   def self.exclude_user(user)
     Event.where.not(user: user)
   end
 
+def self.game_name(game)
+  game = EventType.where(name: game)
+  Event.where(event_type: game)
+end
+
+
 # scope :include_address, -> (location) { where("address like ?", "%#{@location}%" )}
 scope :event_date, -> (formated_date) { where(happen_at: formated_date )}
-scope :game_name, -> (game) { where(game: game )}
+# scope :game_name, -> (game) { where(event_type.name == game )}
 # scope :exclude_user, -> (current_user) { where(user: != current_user )}
 end
