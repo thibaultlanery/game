@@ -3,38 +3,38 @@ class EventsController < ApplicationController
   def index
       search = params[:search]
       if search.present?
-          if search["game"].empty? && search["address"].empty? && search["date"].empty?
+          if search["event_type"].empty? && search["address"].empty? && search["date"].empty?
             @location = current_user.address
             @events = Event.include_address(@location).exclude_user(current_user)
           elsif search["game"].present? && search["address"].present? && search["date"].present?
             @location = search["address"]
-            @game = search["game"]
+            @game = search["event_type"]
             @date = Date.parse(search["date"])
             @formated_date = @date.strftime("%F")
             @events = Event.game_name(@game.capitalize).event_date(@formated_date).include_address(@location).exclude_user(current_user)
-          elsif search["address"].present? && search["game"].present?
+          elsif search["address"].present? && search["event_type"].present?
             @location = search["address"]
-            @game = search["game"]
+            @game = search["event_type"]
             @events = Event.game_name(@game.capitalize).include_address(@location).exclude_user(current_user)
           elsif search["address"].present? && search["date"].present?
             @location = search["address"]
             @date = Date.parse(search["date"])
             @formated_date = @date.strftime("%F")
             @events = Event.include_address(@location).event_date(@formated_date).exclude_user(current_user)
-          elsif search["game"].present? && search["date"].present?
+          elsif search["event_type"].present? && search["date"].present?
             @location = current_user.address
             @date = Date.parse(search["date"])
             @formated_date = @date.strftime("%F")
-            @game = search["game"]
+            @game = search["event_type"]
             @events = Event.include_address(@location).event_date(@formated_date).game_name(@game.capitalize).exclude_user(current_user)
           elsif search["date"].present?
             @location = current_user.address
             @date = Date.parse(search["date"])
             @formated_date = @date.strftime("%F")
             @events = Event.include_address(@location).event_date(@formated_date).exclude_user(current_user)
-          elsif search["game"].present?
+          elsif search["event_type"].present?
             @location = current_user.address
-            @game = search["game"]
+            @game = search["event_type"]
             @events = Event.include_address(@location).game_name(@game.capitalize).exclude_user(current_user)
           else search["address"].present?
             @location = search["address"]
