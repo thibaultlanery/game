@@ -60,6 +60,7 @@
   //essai couleurs//
   background-color: #4BC7CF;
   // background-color: #F38D68;
+  // background-color: #302683;
   //essai couleurs//
   width: 60%;
   border-top-right-radius: 5px;
@@ -102,6 +103,11 @@ padding-top: 20px;
 text-align: center;
 }
 
+.time p {
+font-size: 30px;
+font-weight: 200;
+color: #4BC7CF;
+}
 
 
 @media (max-width: 768px) {

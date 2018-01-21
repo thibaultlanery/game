@@ -94,9 +94,12 @@
         <div class="card">
           <div class="card-category">
             <p><%= event.happen_at.strftime("%A %v") %></p>
+            <div class="time">
+              <p><%= event.happen_at.strftime("%I h %M") %></p>
+            </div>
           </div>
           <div class="card-user">
-          <%= image_tag event.user.facebook_picture_url, class: "avatar-large" %>
+          <%= image_tag event.user.facebook_picture_url, class: "avatar-xl" %>
             <div class="name">
               <p><%= event.user.firstname %></p>
             </div>
