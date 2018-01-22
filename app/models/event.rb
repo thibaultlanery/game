@@ -24,11 +24,18 @@ geocoded_by :address
     Event.where.not(user: user)
   end
 
-def self.game_name(game)
-  game = EventType.where(name: game)
-  Event.where(event_type: game)
-end
+  def self.game_name(game)
+    game = EventType.where(name: game)
+    Event.where(event_type: game)
+  end
 
+  def event_type_name
+    event_type.try(:name)
+  end
+
+  def event_type_name=(name)
+    self.event_type = EventType.find_or_create_by(name: name) if name.present?
+  end
 
 # scope :include_address, -> (location) { where("address like ?", "%#{@location}%" )}
 scope :event_date, -> (formated_date) { where(happen_at: formated_date )}

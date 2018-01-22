@@ -22,4 +22,6 @@ resources :users, only: [:show] do
     end
   end
 
+  resources :event_types, only:[:index]
+
 end

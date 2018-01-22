@@ -9,7 +9,7 @@
           <div class="row">
               <div class="col-xs-12 text-left">
                 <h3>Which game?</h3>
-                <%= f.association :event_type, required: true, label: false %>
+                <%= f.text_field :event_type_name, data: { autocomplete_source: event_types_path } %>
             </div>
           </div>
         </div>
