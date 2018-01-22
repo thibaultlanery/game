@@ -7,9 +7,9 @@
 
         <div class="game">
           <div class="row">
-              <div class="col-xs-12 text-left">
+              <div class="col-xs-12 text-left ">
                 <h3>Which game?</h3>
-                <%= f.text_field :event_type_name, data: { autocomplete_source: event_types_path } %>
+                <%= f.input_field :event_type_name, data: { autocomplete_source: event_types_path }, class: "form-control" %>
             </div>
           </div>
         </div>
