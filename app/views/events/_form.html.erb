@@ -7,18 +7,9 @@
 
         <div class="game">
           <div class="row">
-              <div class="col-xs-12 text-left">
+              <div class="col-xs-12 text-left ">
                 <h3>Which game?</h3>
-                <%= f.association :event_type, required: true, label: false %>
-            </div>
-          </div>
-        </div>
-
-        <div class="game">
-          <div class="row">
-              <div class="col-xs-12 text-left">
-                <h3>Game doesn't exist? create a new game here!</h3>
-                <%= f.input :event_type, label: false %>
+                <%= f.input_field :event_type_name, data: { autocomplete_source: event_types_path }, class: "form-control" %>
             </div>
           </div>
         </div>
