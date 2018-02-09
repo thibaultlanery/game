@@ -20,6 +20,9 @@ resources :users, only: [:show] do
   member do
     resources :category_preferences, only: [:update, :create, :destroy]
     end
+     member do
+    resources :event_type_preferences, only: [:update, :create, :destroy]
+    end
   end
 
   resources :event_types, only:[:index]
