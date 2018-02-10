@@ -3,3 +3,4 @@ jQuery(function() {
     source: $('#event_event_type_name').data('autocomplete-source')
   });
 });
+

@@ -149,29 +149,26 @@ niveau de jeux echelle horizontale
     <% if @current_user.event_type_preferences.present? %>
       <% @event_type_preferences.each do |event_type_preference| %>
       <p><%= event_type_preference.event_type.name %></p>
-      <P><%= link_to "Delete", event_type_preference_path(event_type_preference), method: :delete, data: { confirm: "Are you sure?" }
+      <P><%= link_to "Delete", event_type_preference_path(event_type_preference), method: :delete
       %></p>
       <% end %>
     <% end %>
   </div>
-   <div class="add_event_type_preferences">
-        <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
-      </div>
-      <div class="event_type_preference_form">
-        <%= simple_form_for :event_type_preferences, url: event_type_preferences_path do |f| %>
-          <%= f.fields_for :event_type_preferences do |uf| %>
-            <% EventType.all.each do |event_type| %>
-              <label>
-                <%= uf.check_box :event_type, { multiple: true }, event_type.id, nil %>
-                <p><%= event_type.name %></p>
-              </label>
-            <% end %>
-              <%= f.submit "save" %>
-          <% end %>
-        <% end %>
 
-      </div>
+<div class="event_type_preference_form">
+      <%= simple_form_for :event_type_preference, url: event_type_preferences_path do |f| %>
+<%= f.input_field :event_type_name, data: { autocomplete_source: event_types_path }, class: "form-control" %>
+<% end %>
+</div>
 
+<!--
+1
+-proposer un autocomplete de la base des event_types (simple form autcomplete avec la base de donnée event_type)
+-a chaque selection l'event_type apparait sous forme de cards
+2
+ si l'element n'existe pas le user peu créer l'event_type
+ il doit ensuite asigner a une category l'event_type
+ -->
     <% end %>
 
 </div>
