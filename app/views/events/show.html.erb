@@ -17,7 +17,9 @@
               </div>
 
               <div class="organiser text-center">
-                <%= image_tag @event.user.facebook_picture_url, class: "avatar-mega-xl avatar-show" %>
+                <% if @event.user.facebook_picture_url %>
+                  <%= image_tag @event.user.facebook_picture_url, class: "avatar-mega-xl avatar-show" %>
+                <% end %>
                 <p><%=@event.user.firstname + ", " + @event.user.lastname.split(//).first%></p>
                 <%= link_to "", user_path(@event.user), class: "card-link" %>
               </div>

@@ -10,6 +10,7 @@ class Event < ApplicationRecord
   validates :happen_at, presence: true
   validates :address, presence: true
   validates :user, presence: true
+  validates :participant_number, presence: true
 
 geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -34,7 +35,7 @@ geocoded_by :address
   end
 
   def event_type_name=(name)
-    self.event_type = EventType.find_or_create_by(name: name) if name.present?
+    self.event_type = EventType.find_or_create_by(name: name.capitalize) if name.present?
   end
 
 # scope :include_address, -> (location) { where("address like ?", "%#{@location}%" )}

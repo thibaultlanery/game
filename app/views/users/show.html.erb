@@ -98,6 +98,7 @@ niveau de jeux echelle horizontale
 </div>
 
 <div class="tab-content hidden" id="informations">
+
   <div class="user-show-layout">
     <div class="user-info">
       <h1><%= @user.firstname %></h1>
@@ -118,7 +119,8 @@ niveau de jeux echelle horizontale
       <% end %>
     </div>
   </div>
-  <div class="user_preferences">
+<div class="container">
+  <!-- <div class="user_preferences">
     <% if @category_preferences.present? %>
     <% @category_preferences.each do |category_preference| %>
       <p><%= category_preference.category.name %></p>
@@ -144,8 +146,53 @@ niveau de jeux echelle horizontale
           <% end %>
         <% end %>
       </div>
-    <% end %>
+  </div> -->
+
+<% if current_user %>
+  <div class="event_type_preference_form">
+    <div class="col-xs-12 col-md-4">
+      <h5>Indiquez vos préférences</h5>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <%= simple_form_for :event_type_preference, url: event_type_preferences_path do |f| %>
+        <%= f.input_field :event_type_name, data: { autocomplete_source: event_types_path }, class: "form-control" %>
+      <% end %>
+    </div>
   </div>
+<% end %>
+
+<div class="event_type_preferences">
+  <div class="col-xs-12">
+    <ul class="list-inline">
+      <% if @current_user.event_type_preferences.present? %>
+        <% @event_type_preferences.each do |event_type_preference| %>
+        <li>
+          <div class="mini-card-preference text-center">
+            <h5><%= event_type_preference.event_type.name %></h5>
+            <h5><%= link_to event_type_preference_path(event_type_preference), method: :delete do %>
+              <i class="fa fa-times-circle " style="color: #f35d5e" aria-hidden="true"></i>
+              <% end %>
+            </h5>
+          </div>
+        </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+
+<!--
+1
+-proposer un autocomplete de la base des event_types (simple form autcomplete avec la base de donnée event_type)
+-a chaque selection l'event_type apparait sous forme de cards
+2
+ si l'element n'existe pas le user peu créer l'event_type
+ il doit ensuite asigner a une category l'event_type
+ -->
+    <% end %>
+</div>
 </div>
 
 
