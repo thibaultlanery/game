@@ -4,8 +4,8 @@ def create
   @user = current_user
     if params[:id]
       @event_type_preference = EventTypePreference.new(event_type_params)
-      @event_type = EventType.new(name: params[:event_type_preference][:event_type_name])
-      @event_type_preference.event_type = @event_type
+      # @event_type = EventType.new(name: params[:event_type_preference][:event_type_name])
+      # @event_type_preference.event_type = @event_type
       @event_type_preference.user = @user
         if @event_type_preference.save
           flash[:notice] = 'thanks'
@@ -36,7 +36,7 @@ end
   end
 
   def event_type_params
-   params.require(:event_type_preference).permit(:name, :category)
+   params.require(:event_type_preference).permit(:name, :category, :event_type_name)
   end
 
 end

@@ -9,6 +9,6 @@ class EventTypePreference < ApplicationRecord
   end
 
   def event_type_name=(name)
-    self.event_type = EventType.find_or_create_by(name: name) if name.present?
+    self.event_type = EventType.find_or_create_by(name: name.capitalize) if name.present?
   end
 end
