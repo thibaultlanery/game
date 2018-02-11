@@ -33,7 +33,7 @@
                 </div>
                 <div class="time">
                   <div class="hour">
-                    <h4><%= @event.happen_at.hour %>h</h4>
+                    <h4><%= @event.happen_at.strftime("%H") %>h</h4>
                   </div>
                   <div class="min">
                     <h4><%= @event.happen_at.strftime("%M") %></h4>
