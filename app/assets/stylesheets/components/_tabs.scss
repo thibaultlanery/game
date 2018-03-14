@@ -51,17 +51,17 @@
 
 @media (max-width: 767px) {
   .tab.active {
-  color:  #F38D68;
+  color:  #F38D68 !important;;
   border-bottom: none;
   }
   .tabs a:hover {
-  color:  #F38D68;
+  color:  #F38D68 !important;
   cursor: pointer;
   text-decoration: none;
 
   }
   .tab:hover {
-    color:  #F38D68;
+    color:  #F38D68 !important;;
     cursor: pointer;
     text-decoration: none;
   }
