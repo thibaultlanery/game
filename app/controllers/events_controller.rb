@@ -44,7 +44,6 @@ class EventsController < ApplicationController
         # @events = Event.where.not(latitude: nil, longitude: nil)
         @location = current_user.address
         @events = Event.include_address(@location).exclude_user(current_user)
-
       end
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
       marker.lat event.latitude

@@ -96,6 +96,11 @@
             <div class="time">
               <p><%= event.happen_at.strftime("%I h %M") %></p>
             </div>
+            <div class="counter">
+              <p class="count_of_confirmed"><%= @count_of_confirmed = event.participations.where(status: "confirmed").count %><i class="fa fa-user fa-lg" aria-hidden="true"></i><p>
+              <p class="remaining_places"><%= event.participant_number - @count_of_confirmed %><i class="fa fa-user fa-lg" aria-hidden="true"></i><p>
+              <p class="count_of_interested"><%= event.participations.where(status: "interested").count%> <i class="fa fa-user fa-lg" aria-hidden="true"></i> </p>
+          </div>
           </div>
           <div class="card-user">
           <%= image_tag event.user.facebook_picture_url, class: "avatar-xl" %>
@@ -106,7 +111,8 @@
           <div class="card-description">
            <p><%= event.event_type.name.capitalize %></p>
           </div>
-           <div class="card-address">
+
+          <div class="card-address">
            <p><%= event.address %></p>
           </div>
            <%= link_to "", event_path(event), class: "card-link" %>
