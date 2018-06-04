@@ -35,6 +35,14 @@
               <div class="card ">
                 <div class="card-category">
                   <p><%= event.happen_at.strftime("%A %v") %></p>
+                  <div class="time">
+                    <p><%= event.happen_at.strftime("%I h %M") %></p>
+                  </div>
+                  <div class="counter">
+                    <p class="count_of_confirmed"><% @count_of_confirmed = event.participations.where(status: "confirmed").count %><p>
+                    <p class="remaining_places"><%= event.participant_number - @count_of_confirmed %><i class="fa fa-user fa-lg" aria-hidden="true"></i></p>
+                    <p class="count_of_interested"><%= event.participations.where(status: "interested").count%> <i class="fa fa-user fa-lg" aria-hidden="true"></i></p>
+                  </div>
                 </div>
                 <div class="card-user">
                   <%= event.user.firstname %>
@@ -57,6 +65,14 @@
                 <div class="card ">
                   <div class="card-category">
                     <p><%=  participations_confirmed.event.happen_at.strftime("%A %v") %></p>
+                  <div class="time">
+                    <p><%= event.happen_at.strftime("%I h %M") %></p>
+                  </div>
+                  <div class="counter">
+                    <p class="count_of_confirmed"><%= @count_of_confirmed = participations_confirmed.event.participations.where(status: "confirmed").count %><p>
+                    <p class="remaining_places"><%= participations_confirmed.event.participant_number - @count_of_confirmed %><i class="fa fa-user fa-lg" aria-hidden="true"></i><p>
+                    <p class="count_of_interested"><%= participations_confirmed.event.participations.where(status: "interested").count%> <i class="fa fa-user fa-lg" aria-hidden="true"></i> </p>
+                  </div>
                   </div>
                   <div class="card-user">
                     <%=  participations_confirmed.event.user.firstname %>
@@ -78,6 +94,14 @@
                 <div class="card ">
                   <div class="card-category">
                     <p><%= participation_demand.event.happen_at.strftime("%A %v") %></p>
+                    <div class="time">
+                      <p><%= participation_demand.event.happen_at.strftime("%I h %M") %></p>
+                    </div>
+                    <div class="counter">
+                      <p class="count_of_confirmed"><% @count_of_confirmed = participation_demand.event.participations.where(status: "confirmed").count %><p>
+                      <p class="remaining_places"><%= participation_demand.event.participant_number - @count_of_confirmed %><i class="fa fa-user fa-lg" aria-hidden="true"></i><p>
+                      <p class="count_of_interested"><%= participation_demand.event.participations.where(status: "interested").count%> <i class="fa fa-user fa-lg" aria-hidden="true"></i> </p>
+                    </div>
                   </div>
                   <div class="card-user">
                     <%=  participation_demand.event.user.firstname %>
@@ -99,6 +123,14 @@
               <div class="card ">
                 <div class="card-category">
                   <p><%= cancelled_event.happen_at.strftime("%A %v") %></p>
+                  <div class="time">
+                    <p><%= cancelled_event.event.happen_at.strftime("%I h %M") %></p>
+                  </div>
+                  <div class="counter">
+                    <p class="count_of_confirmed"><% @count_of_confirmed = cancelled_events.event.participations.where(status: "confirmed").count %><p>
+                    <p class="remaining_places"><%= cancelled_event.event.participant_number - @count_of_confirmed %><i class="fa fa-user fa-lg" aria-hidden="true"></i><p>
+                    <p class="count_of_interested"><%= cancelled_event.event.participations.where(status: "interested").count%> <i class="fa fa-user fa-lg" aria-hidden="true"></i> </p>
+                  </div>
                 </div>
                 <div class="card-user">
                   <%= cancelled_event.user.firstname %>

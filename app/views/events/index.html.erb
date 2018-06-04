@@ -97,7 +97,7 @@
               <p><%= event.happen_at.strftime("%I h %M") %></p>
             </div>
             <div class="counter">
-              <p class="count_of_confirmed"><%= @count_of_confirmed = event.participations.where(status: "confirmed").count %><i class="fa fa-user fa-lg" aria-hidden="true"></i><p>
+              <p class="count_of_confirmed"><% @count_of_confirmed = event.participations.where(status: "confirmed").count %><p>
               <p class="remaining_places"><%= event.participant_number - @count_of_confirmed %><i class="fa fa-user fa-lg" aria-hidden="true"></i><p>
               <p class="count_of_interested"><%= event.participations.where(status: "interested").count%> <i class="fa fa-user fa-lg" aria-hidden="true"></i> </p>
           </div>
