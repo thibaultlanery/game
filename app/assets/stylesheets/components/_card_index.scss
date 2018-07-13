@@ -44,8 +44,9 @@
   top: 10px;
   left: 10px;
   font-size: 10px;
-  text-transform: uppercase;
-
+  p:first-child {
+    text-transform: uppercase;
+  }
 }
 
 .card-category p {
@@ -73,6 +74,12 @@
   letter-spacing: 1.5px;
 
 }
+
+.counter{
+  display: flex;
+  justify-content: center;
+}
+
 .card-address {
   font-size: 13px;
   position: absolute;

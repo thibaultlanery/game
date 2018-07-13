@@ -8,7 +8,10 @@
   color: white;
   // z-index: 100 !important;
   // margin-bottom: 50px !important;
+  // position: relative;
   position: relative;
+  top: -38px;
+  z-index: 999;
 
 }
 .alert-info {
