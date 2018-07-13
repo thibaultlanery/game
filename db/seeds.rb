@@ -14,7 +14,7 @@ EventType.destroy_all
 
 event_types = [
 {
-  name: "Jungle"
+  name: "Jungleeeeee"
 },
 {
   name: "Jeu de dé"
