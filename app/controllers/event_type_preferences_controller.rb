@@ -8,9 +8,16 @@ def create
       # @event_type_preference.event_type = @event_type
       @event_type_preference.user = @user
         if @event_type_preference.save
-          flash[:notice] = 'thanks'
+              respond_to do |format|
+            format.html {   redirect_to user_path(@user) }
+            format.js {} # <-- will render `app/views/reviews/create.js.erb`
+            end
         else
-          flash[:alert] = 'you already choose this category'
+              respond_to do |format|
+            format.html { render 'user/show' }
+            format.js {} # <-- idem
+            end
+
         end
     else
 
@@ -18,21 +25,35 @@ def create
       current_user.event_type_preferences << event_type_ids.map { |event_type_id| EventTypePreference.new(event_type_id: event_type_id) }
       current_user.event_type_preferences.each do |event_type_preference|
         if event_type_preference.save
-          flash[:notice] = 'thanks'
+            respond_to do |format|
+          format.html {   redirect_to user_path(@user)}
+          format.js {} # <-- will render `app/views/reviews/create.js.erb`
+          end
         else
-          flash[:alert] = 'you already choose this category'
+             respond_to do |format|
+          format.html { render 'user/show' }
+          format.js {} # <-- idem
+          end
         end
       end
     end
-  redirect_to user_path(@user)
 end
 
 
   def destroy
     @user = current_user
     @event_type_preference = EventTypePreference.find(params[:id])
-    @event_type_preference.destroy
-  redirect_to user_path(@user)
+    if @event_type_preference.destroy
+      respond_to do |format|
+      format.html { redirect_to user_path(@user)}
+      format.js {} # <-- will render `app/views/reviews/create.js.erb`
+      end
+    else
+      respond_to do |format|
+      format.html { render 'user/show' }
+      format.js {} # <-- idem
+      end
+    end
   end
 
   def event_type_params

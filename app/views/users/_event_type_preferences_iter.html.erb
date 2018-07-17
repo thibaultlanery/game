@@ -1,0 +1,11 @@
+
+        <li>
+          <div class="mini-card-preference text-center" id="event_type_preference-<%=event_type_preference.id%>">
+            <h5><%= event_type_preference.event_type.name %></h5>
+            <h5><%= link_to event_type_preference_path(event_type_preference), method: :delete, remote: true do %>
+              <i class="fa fa-times-circle " style="color: #f35d5e" aria-hidden="true"></i>
+              <% end %>
+            </h5>
+          </div>
+        </li>
+
