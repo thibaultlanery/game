@@ -18,7 +18,7 @@ resources :participations, only: [:update, :destroy]
 resources :users, only: [:show] do
   resources :friendships, only: [:create, :destroy, :update]
   member do
-    resources :category_preferences, only: [:update, :create, :destroy]
+    resources :category_preferences, only: [:create, :destroy]
     end
      member do
     resources :event_type_preferences, only: [:update, :create, :destroy]
@@ -26,5 +26,7 @@ resources :users, only: [:show] do
   end
 
   resources :event_types, only:[:index]
+  resources :category_preferences, only: [:destroy]
+
 
 end

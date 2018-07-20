@@ -154,27 +154,17 @@ niveau de jeux echelle horizontale
       <h5>Indiquez vos préférences</h5>
     </div>
     <div class="col-xs-12 col-md-6">
-        <%= simple_form_for :event_type_preference, url: event_type_preferences_path do |f| %>
-        <%= f.input_field :event_type_name, data: { autocomplete_source: event_types_path }, class: "form-control" %>
-      <% end %>
+      <%= render 'users/event_type_preferences_form' %>
     </div>
   </div>
 <% end %>
 
-<div class="event_type_preferences">
+<div class="event_type_preferences" >
   <div class="col-xs-12">
-    <ul class="list-inline">
+    <ul class="list-inline" id="event_type_pref">
       <% if @current_user.event_type_preferences.present? %>
         <% @event_type_preferences.each do |event_type_preference| %>
-        <li>
-          <div class="mini-card-preference text-center">
-            <h5><%= event_type_preference.event_type.name %></h5>
-            <h5><%= link_to event_type_preference_path(event_type_preference), method: :delete do %>
-              <i class="fa fa-times-circle " style="color: #f35d5e" aria-hidden="true"></i>
-              <% end %>
-            </h5>
-          </div>
-        </li>
+            <%= render 'users/event_type_preferences_iter', event_type_preference: event_type_preference %>
         <% end %>
       <% end %>
     </ul>
