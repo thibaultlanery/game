@@ -1,5 +1,5 @@
 
-    <%= simple_form_for :event_type_preference, remote: true, url: event_type_preferences_path do |f| %>
+    <%= simple_form_for :event_type_preference,  url: event_type_preferences_path do |f| %>
      <%= f.error_notification %>
     <%= f.input_field :event_type_name, data: { autocomplete_source: event_types_path }, class: "form-control" %>
     <%= f.button :submit %>
