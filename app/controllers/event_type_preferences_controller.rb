@@ -16,6 +16,9 @@ def create
             respond_to do |format|
           format.html { render 'user/show' }
           format.js {} # <-- idem
+            @event_type_preference.errors.any?
+            @event_type_preference.errors.each do |key, value|
+            end
           end
       end
   # else
