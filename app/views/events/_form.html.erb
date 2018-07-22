@@ -7,12 +7,22 @@
 
         <div class="game">
           <div class="row">
-              <div class="col-xs-12 text-left ">
-                <h3>Which game?</h3>
-                <%= f.input_field :event_type_name, data: { autocomplete_source: event_types_path }, class: "form-control" %>
+            <div class="col-xs-12 text-left ">
+              <h3>Which game?</h3>
+              <%= f.fields_for :event_type_pickeds do |uf| %>
+                <% EventType.all.each do |event_type| %>
+                <label>
+                  <ul>
+                  <li><%= uf.check_box "event_type_ids", { multiple: true }, event_type.id, nil %>
+                  <p><%= event_type.name %></p></li>
+                  </ul>
+                </label>
+               <% end %>
+              <% end %>
             </div>
           </div>
         </div>
+
 
         <div class="title">
           <div class="row">
@@ -74,8 +84,3 @@
   </div>
 <% end %>
 </div>
-
-
-
-
-
