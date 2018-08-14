@@ -8,8 +8,8 @@
 Event.destroy_all
 User.destroy_all
 Participation.destroy_all
-Category.destroy_all
 EventType.destroy_all
+EventTypePicked.destroy_all
 
 
 event_types = [
@@ -113,7 +113,6 @@ users.each { |user| User.create!(user) }
 
 events = [
   {
-    event_type: EventType.first,
     user: User.first,
     address: "5, rue Muller, 75018, Paris, France",
     happen_at: Date.today + 2,
@@ -122,7 +121,6 @@ events = [
     participant_number: 3,
   },
     {
-    event_type: EventType.second,
     user: User.first,
     address: "88, rue de la folie méricourt, 75011, Paris, France",
     happen_at: Date.today + 7,
@@ -131,7 +129,6 @@ events = [
     participant_number: 5,
   },
    {
-    event_type: EventType.third,
     user: User.first,
     address: "8, passage bradi, 75011, Paris, France",
     happen_at: Date.today + 5,
@@ -140,7 +137,6 @@ events = [
     participant_number: 5,
   },
    {
-    event_type: EventType.fourth,
     user: User.fourth,
     address: "46, avenue porte dauphine , 75016, Paris, France",
     happen_at: Date.today + 6,
@@ -149,7 +145,6 @@ events = [
     participant_number: 2,
   },
    {
-    event_type: EventType.fifth,
     user: User.second,
     address: "16, rue des Juifs, 50210, Cerisy la salle, France",
     happen_at: Date.today + 2,
@@ -158,7 +153,6 @@ events = [
     participant_number: 4,
   },
    {
-    event_type: EventType.find(6),
     user: User.all.sample,
     address: "29, rue diaz, 33000, Bordeaux, France",
     happen_at: Date.today + 4,
@@ -167,7 +161,6 @@ events = [
     participant_number: 10,
   },
    {
-    event_type: EventType.find(7),
     user: User.all.sample,
     address: "46, impasse du cochonnet, 75019, Paris, France",
     happen_at: Date.today + 5,
@@ -179,6 +172,42 @@ events = [
 
 
 events.each { |event| Event.create!(event) }
+
+event_type_pickeds = [
+
+{
+  event: Event.fourth,
+  event_type: EventType.first,
+},
+{
+  event: Event.fourth,
+  event_type: EventType.second,
+},
+{
+  event: Event.fourth,
+  event_type: EventType.third,
+},
+{
+  event: Event.fifth,
+  event_type: EventType.second,
+},
+{
+  event: Event.find(6),
+  event_type: EventType.second,
+},
+{
+  event: Event.find(7),
+  event_type: EventType.fourth,
+},
+{
+  event: Event.find(7),
+  event_type: EventType.third,
+},
+
+]
+
+event_type_pickeds.each { |event_type_picked| EventTypePicked.create!(event_type_picked) }
+
 
 participations = [
 {
@@ -276,18 +305,4 @@ status: 1,
 ]
 
 participations.each { |participation| Participation.create!(participation) }
-
-categories = [
-  {
-name: "Jeux plein air"
-},
-{
-name: "Jeux de société"
-},
-{
-name: "Jeux de rôle"
-}
-]
-
-categories.each { |category| Category.create!(category)}
 

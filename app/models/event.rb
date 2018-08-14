@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   has_many :event_type_pickeds, dependent: :destroy
   has_many :event_types, through: :event_type_pickeds, dependent: :destroy
 
-  validates :event_type_pickeds, presence: true
+  # validates :event_type_pickeds, presence: true
   validates :happen_at, presence: true
   validates :address, presence: true
   validates :user, presence: true
@@ -27,8 +27,11 @@ geocoded_by :address
   end
 
   def self.game_name(game)
-    game = EventType.where(name: game)
-    Event.where(event_type: game)
+    game = EventType.where(name: game.capitalize).pluck(:id)
+    # # etp = EventTypePicked.where(event_type: game)
+    # # etp.collect {|etp| etp.event}
+    # Event.joins(:event_type_pickeds).where(event_type_pickeds.event_type_id = game)
+    Event.joins(:event_type_pickeds).where({event_type_pickeds: {event_type:  game}})
   end
 
   # def event_type_name

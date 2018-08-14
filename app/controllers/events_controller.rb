@@ -35,7 +35,7 @@ class EventsController < ApplicationController
           elsif search["event_type"].present?
             @location = current_user.address
             @game = search["event_type"]
-            @events = Event.include_address(@location).game_name(@game.capitalize).exclude_user(current_user)
+            @events = Event.include_address(@location).game_name(@game).exclude_user(current_user)
           else search["address"].present?
             @location = search["address"]
             @events = Event.include_address(@location).exclude_user(current_user)

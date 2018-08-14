@@ -23,7 +23,6 @@
       </div>
       <div class="right_side_myevents">
       </div>
-
   </div>
 <div class="result-myevents">
   <!-- <div class="container"> -->
@@ -49,7 +48,9 @@
                   <%= @count_of_interested %>
                 </div>
                 <div class="card-description">
-                 <p><%= event.event_type.name.capitalize %></p>
+                  <% event.event_type_pickeds.each do |event_type_picked| %>
+                    <p><%= event_type_picked.event_type.name %></p>
+                  <% end %>
                 </div>
                 <div class="card-address">
                  <p><%= event.address %></p>
@@ -107,7 +108,9 @@
                     <%=  participation_demand.event.user.firstname %>
                   </div>
                   <div class="card-description">
-                   <p><%= participation_demand.event.event_type.name.capitalize %></p>
+                    <% participation_demand.event.event_type_pickeds.each do |event_type_picked| %>
+                    <p><%= event_type_picked.event_type.name.capitalize %></p>
+                    <% end %>
                   </div>
                   <div class="card-address">
                    <p><%= participation_demand.event.address %></p>
