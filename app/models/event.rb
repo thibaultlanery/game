@@ -4,8 +4,10 @@ class Event < ApplicationRecord
   has_many :participations, dependent: :destroy
   has_many :users, through: :participations
 
-  has_many :event_type_pickeds, dependent: :destroy
+  has_many :event_type_pickeds, dependent: :destroy #, inverse_of: :event
   has_many :event_types, through: :event_type_pickeds, dependent: :destroy
+
+  # accepts_nested_attributes_for :event_type_pickeds, allow_destroy: true
 
   # validates :event_type_pickeds, presence: true
   validates :happen_at, presence: true

@@ -9,15 +9,8 @@
           <div class="row">
             <div class="col-xs-12 text-left ">
               <h3>Which game?</h3>
-              <%= f.fields_for :event_type_pickeds do |uf| %>
-                <% EventType.all.each do |event_type| %>
-                <label>
-                  <ul>
-                  <li><%= uf.check_box "event_type_ids", { multiple: true }, event_type.id, nil %>
-                  <p><%= event_type.name %></p></li>
-                  </ul>
-                </label>
-               <% end %>
+              <%= f.simple_fields_for :event_type_pickeds do |e|  %>
+                <%= e.input :event_type_ids , collection: @event_types, label_method: :name, value_method: :id, label: false, input_html: {class: 'select2-event_type', multiple: 'multiple'}  %>
               <% end %>
             </div>
           </div>

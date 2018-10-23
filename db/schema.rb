@@ -74,14 +74,14 @@ ActiveRecord::Schema.define(version: 20180722195854) do
 
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "happen_at"
-    t.datetime "canceled_at"
-    t.datetime "due_at"
     t.string   "address"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.date     "happen_at"
+    t.date     "due_at"
+    t.date     "canceled_at"
     t.string   "title"
     t.string   "description"
     t.integer  "participant_number"

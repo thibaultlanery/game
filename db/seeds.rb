@@ -5,11 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+EventTypePicked.destroy_all
+Participation.destroy_all
 Event.destroy_all
 User.destroy_all
-Participation.destroy_all
 EventType.destroy_all
-EventTypePicked.destroy_all
+
 
 
 event_types = [
@@ -190,19 +191,19 @@ event_type_pickeds = [
 {
   event: Event.fifth,
   event_type: EventType.second,
-},
-{
-  event: Event.find(6),
-  event_type: EventType.second,
-},
-{
-  event: Event.find(7),
-  event_type: EventType.fourth,
-},
-{
-  event: Event.find(7),
-  event_type: EventType.third,
-},
+}#,
+# {
+#   event: Event.find(6),
+#   event_type: EventType.second,
+# },
+# {
+#   event: Event.find(7),
+#   event_type: EventType.fourth,
+# },
+# {
+#   event: Event.find(7),
+#   event_type: EventType.third,
+# }
 
 ]
 
@@ -230,79 +231,78 @@ user: User.fifth,
 event: Event.first,
 status: 1,
 },
-{
-user: User.find(6),
-event: Event.first,
-status: 1,
-},
-{
-user: User.find(7),
-event: Event.first,
-status: 1,
-},
+# {
+# user: User.find(6),
+# event: Event.first,
+# status: 1,
+# },
+# {
+# user: User.find(7),
+# event: Event.first,
+# status: 1,
+# },
 
 {
 user: User.second,
 event: Event.second,
-status: 1,
+status: 1
 },
 {
 user: User.third,
 event: Event.second,
-status: 1,
+status: 1
 },
 {
 user: User.fourth,
 event: Event.second,
-status: 1,
+status: 1
 },
 {
 user: User.fifth,
 event: Event.second,
-status: 1,
+status: 1
 },
-{
-user: User.find(6),
-event: Event.second,
-status: 1,
-},
-{
-user: User.find(7),
-event: Event.second,
-status: 1,
-},
+# {
+# user: User.find(6),
+# event: Event.second,
+# status: 1,
+# },
+# {
+# user: User.find(7),
+# event: Event.second,
+# status: 1,
+# },
 
 {
 user: User.second,
 event: Event.third,
-status: 1,
+status: 1
 },
 {
 user: User.third,
 event: Event.third,
-status: 1,
+status: 1
 },
 {
 user: User.fourth,
 event: Event.third,
-status: 1,
+status: 1
 },
 {
 user: User.fifth,
 event: Event.third,
-status: 1,
-},
-{
-user: User.find(6),
-event: Event.third,
-status: 1,
-},
-{
-user: User.find(7),
-event: Event.third,
-status: 1,
-}
+status: 1
+}#,
+# {
+# user: User.find(6),
+# event: Event.third,
+# status: 1,
+# },
+# {
+# user: User.find(7),
+# event: Event.third,
+# status: 1,
+# }
 ]
 
 participations.each { |participation| Participation.create!(participation) }
-

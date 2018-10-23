@@ -62,18 +62,26 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event_type_pickeds = @event.event_type_pickeds.build
+    # @event_types = EventType.all.map { |event_type| {id: event_type.id, text: event_type.name} }
+    @event_types = EventType.all
   end
 
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    event_type_ids = params[:event][:event_type_pickeds][:event_type_ids]
-    @event.event_type_pickeds << event_type_ids.map { |event_type_id| EventTypePicked.new(event_type_id: event_type_id) }
-      if @event.save
-       redirect_to event_path(@event),  notice: "Event created! Here is your recap :)"
-     else
-       render :new , alert: "Ooooops, something missing! Please try again"
-     end
+
+    event_type_ids = params[:event][:event_type_pickeds][:event_type_ids].reject(&:blank?)
+    event_type_ids.each { |event_type_id| @event.event_type_pickeds.build(event_type_id: event_type_id) }
+    # @event.event_type_pickeds = event_type_ids.map { |event_type_id| EventTypePicked.new(event_type_id: event_type_id) }
+    # event_type_ids = params[:event][:event_type_pickeds][:event_type_ids]
+    # @event.event_type_pickeds << event_type_ids.map { |event_type_id| EventTypePicked.new(event_type_id: event_type_id) }
+    
+    if @event.save
+      redirect_to event_path(@event),  notice: "Event created! Here is your recap :)"
+    else
+      render :new , alert: "Ooooops, something missing! Please try again"
+    end
   end
 
   def edit
@@ -119,6 +127,7 @@ class EventsController < ApplicationController
 
   def event_params
    params.require(:event).permit(:title, :description, :happen_at, :participant_number, :canceled_at, :address, photos: [])
+   #,event_type_pickeds_attributes: [:event_type_id]
   end
 
 
@@ -126,5 +135,3 @@ class EventsController < ApplicationController
 
 
 end
-
-

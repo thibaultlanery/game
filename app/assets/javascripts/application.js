@@ -23,6 +23,7 @@
 //= require bootstrap
 
 //= require underscore
+//= require select2
 //= require gmaps/google
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
