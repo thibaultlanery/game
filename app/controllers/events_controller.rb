@@ -70,13 +70,17 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
+  
+    event_types = params[:event][:event_type_pickeds][:event_type_names].reject(&:blank?)
+    event_types.map! { |event_type_name| { event_type_id: EventType.find_or_create_by(name: event_type_name).id } }
+    @event.event_type_pickeds.build(event_types)
 
-    event_type_ids = params[:event][:event_type_pickeds][:event_type_ids].reject(&:blank?)
-    event_type_ids.each { |event_type_id| @event.event_type_pickeds.build(event_type_id: event_type_id) }
+    # event_types.each { |event_type| @event.event_type_pickeds.build(event_type_id: event_type.id) }
+
     # @event.event_type_pickeds = event_type_ids.map { |event_type_id| EventTypePicked.new(event_type_id: event_type_id) }
     # event_type_ids = params[:event][:event_type_pickeds][:event_type_ids]
     # @event.event_type_pickeds << event_type_ids.map { |event_type_id| EventTypePicked.new(event_type_id: event_type_id) }
-    
+
     if @event.save
       redirect_to event_path(@event),  notice: "Event created! Here is your recap :)"
     else
