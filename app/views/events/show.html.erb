@@ -13,7 +13,9 @@
                 <% "" %>
                 <% end %></h4>
               <div class="eventgame">
-                <p><%= @event.event_type.name %></p>
+                <% @event.event_type_pickeds.each do |event_type_picked| %>
+                  <p><%= event_type_picked.event_type.name %></p>
+                  <% end %>
               </div>
 
               <div class="organiser text-center">

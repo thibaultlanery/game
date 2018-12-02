@@ -7,12 +7,15 @@
 
         <div class="game">
           <div class="row">
-              <div class="col-xs-12 text-left ">
-                <h3>Which game?</h3>
-                <%= f.input_field :event_type_name, data: { autocomplete_source: event_types_path }, class: "form-control" %>
+            <div class="col-xs-12 text-left ">
+              <h3>Which game?</h3>
+              <%= f.simple_fields_for :event_type_pickeds do |e|  %>
+                <%= e.input :event_type_names , collection: @event_types, label_method: :name, value_method: :name, label: false, input_html: {class: 'select2-event_type', multiple: 'multiple'}  %>
+              <% end %>
             </div>
           </div>
         </div>
+
 
         <div class="title">
           <div class="row">
@@ -74,8 +77,3 @@
   </div>
 <% end %>
 </div>
-
-
-
-
-

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122152719) do
+ActiveRecord::Schema.define(version: 20180722195854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20180122152719) do
     t.index ["user_id"], name: "index_category_preferences_on_user_id", using: :btree
   end
 
+  create_table "event_type_pickeds", force: :cascade do |t|
+    t.integer  "event_type_id"
+    t.integer  "event_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["event_id"], name: "index_event_type_pickeds_on_event_id", using: :btree
+    t.index ["event_type_id"], name: "index_event_type_pickeds_on_event_type_id", using: :btree
+  end
+
   create_table "event_type_preferences", force: :cascade do |t|
     t.integer  "event_type_id"
     t.integer  "user_id"
@@ -65,19 +74,17 @@ ActiveRecord::Schema.define(version: 20180122152719) do
 
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "happen_at"
-    t.datetime "canceled_at"
-    t.datetime "due_at"
     t.string   "address"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.date     "happen_at"
+    t.date     "due_at"
+    t.date     "canceled_at"
     t.string   "title"
     t.string   "description"
     t.integer  "participant_number"
-    t.integer  "event_type_id"
-    t.index ["event_type_id"], name: "index_events_on_event_type_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
@@ -128,10 +135,11 @@ ActiveRecord::Schema.define(version: 20180122152719) do
 
   add_foreign_key "category_preferences", "categories"
   add_foreign_key "category_preferences", "users"
+  add_foreign_key "event_type_pickeds", "event_types"
+  add_foreign_key "event_type_pickeds", "events"
   add_foreign_key "event_type_preferences", "event_types"
   add_foreign_key "event_type_preferences", "users"
   add_foreign_key "event_types", "categories"
-  add_foreign_key "events", "event_types"
   add_foreign_key "events", "users"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"

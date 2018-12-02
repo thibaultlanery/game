@@ -1,12 +1,15 @@
 class Event < ApplicationRecord
   belongs_to :user
-  belongs_to :event_type
-
-
 
   has_many :participations, dependent: :destroy
   has_many :users, through: :participations
-  validates :event_type, presence: true
+
+  has_many :event_type_pickeds, dependent: :destroy #, inverse_of: :event
+  has_many :event_types, through: :event_type_pickeds, dependent: :destroy
+
+  # accepts_nested_attributes_for :event_type_pickeds, allow_destroy: true
+
+  # validates :event_type_pickeds, presence: true
   validates :happen_at, presence: true
   validates :address, presence: true
   validates :user, presence: true
@@ -26,17 +29,20 @@ geocoded_by :address
   end
 
   def self.game_name(game)
-    game = EventType.where(name: game)
-    Event.where(event_type: game)
+    game = EventType.where(name: game.capitalize).pluck(:id)
+    # # etp = EventTypePicked.where(event_type: game)
+    # # etp.collect {|etp| etp.event}
+    # Event.joins(:event_type_pickeds).where(event_type_pickeds.event_type_id = game)
+    Event.joins(:event_type_pickeds).where({event_type_pickeds: {event_type:  game}})
   end
 
-  def event_type_name
-    event_type.try(:name)
-  end
+  # def event_type_name
+  #   event_type.try(:name)
+  # end
 
-  def event_type_name=(name)
-    self.event_type = EventType.find_or_create_by(name: name.capitalize) if name.present?
-  end
+  # def event_type_name=(name)
+  #   self.event_type = EventType.find_or_create_by(name: name.capitalize) if name.present?
+  # end
 
 # scope :include_address, -> (location) { where("address like ?", "%#{@location}%" )}
 scope :event_date, -> (formated_date) { where(happen_at: formated_date )}

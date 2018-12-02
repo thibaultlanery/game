@@ -109,7 +109,9 @@
             </div>
           </div>
           <div class="card-description">
-           <p><%= event.event_type.name.capitalize %></p>
+           <% event.event_type_pickeds.each do |event_type_picked| %>
+           <p><%= event_type_picked.event_type.name.capitalize %></p>
+           <% end %>
           </div>
 
           <div class="card-address">

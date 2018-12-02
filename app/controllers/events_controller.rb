@@ -35,7 +35,7 @@ class EventsController < ApplicationController
           elsif search["event_type"].present?
             @location = current_user.address
             @game = search["event_type"]
-            @events = Event.include_address(@location).game_name(@game.capitalize).exclude_user(current_user)
+            @events = Event.include_address(@location).game_name(@game).exclude_user(current_user)
           else search["address"].present?
             @location = search["address"]
             @events = Event.include_address(@location).exclude_user(current_user)
@@ -62,19 +62,30 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event_type_pickeds = @event.event_type_pickeds.build
+    # @event_types = EventType.all.map { |event_type| {id: event_type.id, text: event_type.name} }
+    @event_types = EventType.all
   end
 
   def create
     @event = Event.new(event_params)
-    # @event_type = EventType.new(name: params[:event][:event_type_name])
-    # @event.event_type = @event_type
     @event.user = current_user
+  
+    event_types = params[:event][:event_type_pickeds][:event_type_names].reject(&:blank?)
+    event_types.map! { |event_type_name| { event_type_id: EventType.find_or_create_by(name: event_type_name).id } }
+    @event.event_type_pickeds.build(event_types)
+
+    # event_types.each { |event_type| @event.event_type_pickeds.build(event_type_id: event_type.id) }
+
+    # @event.event_type_pickeds = event_type_ids.map { |event_type_id| EventTypePicked.new(event_type_id: event_type_id) }
+    # event_type_ids = params[:event][:event_type_pickeds][:event_type_ids]
+    # @event.event_type_pickeds << event_type_ids.map { |event_type_id| EventTypePicked.new(event_type_id: event_type_id) }
+
     if @event.save
-     redirect_to event_path(@event),  notice: "Event created! Here is your recap :)"
-   else
-     render :new , alert: "Ooooops, something missing! Please try again"
-   end
-    #ne pas oublier de formater les dates et les noms de villes en capitalise
+      redirect_to event_path(@event),  notice: "Event created! Here is your recap :)"
+    else
+      render :new , alert: "Ooooops, something missing! Please try again"
+    end
   end
 
   def edit
@@ -119,7 +130,8 @@ class EventsController < ApplicationController
 
 
   def event_params
-   params.require(:event).permit(:title, :event_type_name, :description, :happen_at, :participant_number, :canceled_at, :address, photos: [])
+   params.require(:event).permit(:title, :description, :happen_at, :participant_number, :canceled_at, :address, photos: [])
+   #,event_type_pickeds_attributes: [:event_type_id]
   end
 
 
@@ -127,5 +139,3 @@ class EventsController < ApplicationController
 
 
 end
-
-

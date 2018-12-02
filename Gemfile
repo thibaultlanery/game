@@ -54,6 +54,7 @@ gem 'has_friendship'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-datepicker'
   gem "rails-assets-underscore"
+  gem "rails-assets-select2"
 end
 
 group :development, :test do
